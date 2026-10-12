@@ -1,0 +1,30 @@
+Subject: [PATCH] eci_pcm: runtime choice of upsampling method
+
+--- a/src/eci/sound/eci_pcm.c
++++ b/src/eci/sound/eci_pcm.c
+@@ -615,6 +615,15 @@
+ 
+ const uint32_t pcm_cvt_bytes = sizeof(AudioConverter);
+ 
++/* Runtime override for the Android and Spanish NVDA audio controls.
++   Negative keeps the upstream EVV_UPSAMPLE default. */
++int evv_upsample_override = -1;
++
++void evv_setUpsampleMethod(int method)
++{
++    evv_upsample_override = method;
++}
++
+ /* Read once, because it is an experiment knob and not a setting: an engine
+    that changed its mind halfway through an utterance would be comparing two
+    things at once. */
+@@ -622,6 +631,9 @@
+ {
+     static int decided;
+     static int method = CVT_SINC;
++
++    if (evv_upsample_override >= CVT_HOLD && evv_upsample_override <= CVT_SINC)
++        return evv_upsample_override;
+ 
+     if (!decided) {
+         const char *say = getenv("EVV_UPSAMPLE");

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">OpenEVV Principal</string>
+    <string name="engine_name" translatable="false">OpenEVV Principal</string>
+    <string name="keep_alive_title">OpenEVV Principal attivo</string>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="page_experimental_title">Respuesta experimental</string>
+    <string name="page_experimental_description">Prueba la respuesta del lector de pantalla, las interrupciones y los búferes en este dispositivo.</string>
+    <string name="exp_intro">Desactivado por defecto. Los cambios se aplican a la siguiente petición de voz. Los valores pequeños pueden responder antes, pero causar micropausas, voz recortada o mayor consumo de CPU. Restablecer desactiva todos los cambios experimentales. Los cálculos expresan duración de audio, no tiempos de respuesta medidos.</string>
+    <string name="exp_enable">Activar respuesta experimental</string>
+    <string name="exp_on">Activado</string><string name="exp_off">Desactivado</string>
+    <string name="exp_profile">Perfil de partida</string><string name="exp_custom">Personalizado</string>
+    <string name="exp_reference">Referencia</string><string name="exp_balanced">Prueba equilibrada</string><string name="exp_fast">Navegación rápida</string><string name="exp_extreme">Extremo, con cortes de palabras</string>
+    <string name="exp_reference_note">250 caracteres, 150 ms de adelanto, 2048 muestras y un hilo. Mantiene los tamaños actuales; la preparación experimental del texto sí cambia.</string>
+    <string name="exp_balanced_note">250 caracteres, 120 ms de adelanto, 1024 muestras, dos fragmentos preparados y un hilo. Punto de partida moderado; pueden aparecer micropausas.</string>
+    <string name="exp_fast_note">100 caracteres, 60 ms de adelanto, 512 muestras y dos hilos. Descarta antes y entrega bloques más frecuentes; puede aumentar la CPU y producir micropausas.</string>
+    <string name="exp_extreme_note">32 caracteres, 20 ms de adelanto, 128 muestras y dos hilos. Cortar dentro de palabras puede alterar pronunciaciones, números y sustituciones. Puede generar muchas micropausas y llamadas.</string>
+    <string name="exp_profile_note">Los perfiles ajustan solo la respuesta. Conservan tu voz, frecuencia, remuestreador, ecualizador y ruta de audio. Elegir un perfil no activa los experimentos.</string>
+    <string name="exp_reset">Desactivar y restablecer la respuesta original</string>
+    <string name="exp_text_heading">Texto y cancelación</string>
+    <string name="exp_piece">Tamaño del fragmento</string>
+    <string name="exp_piece_note">Los fragmentos pequeños acotan antes la síntesis que ya no interesa, pero añaden llamadas y pausas en los límites. Los grandes conservan más contexto, pero pueden retrasar el siguiente elemento. Al conservar palabras completas, es un objetivo y no un máximo estricto: las palabras largas permanecen enteras.</string>
+    <string name="exp_chars">caracteres</string><string name="exp_ms">ms</string><string name="exp_pieces_unit">fragmentos preparados</string><string name="exp_threads">hilos de preparación</string><string name="exp_kib">KiB</string><string name="exp_percent">por ciento</string>
+    <string name="exp_boundary">Límites de corte</string><string name="exp_whole_word">Conservar palabras completas</string><string name="exp_inside_word">Permitir cortes dentro de palabras</string>
+    <string name="exp_boundary_note">Conservar palabras protege la pronunciación. Cortar dentro acota más el fragmento, pero puede partir palabras, SSML, direcciones, secuencias de emojis, coincidencias de diccionario o códigos. Es un corte por caracteres, no una detección de sílabas. Al interrumpir se descarta el audio pendiente; si la lectura continúa, los fragmentos restantes siguen disponibles.</string>
+    <string name="exp_stream">Preparar por fragmentos por encima de</string>
+    <string name="exp_stream_note">0 prepara todas las peticiones por fragmentos: menos trabajo antes del primer audio, pero menos contexto para las reglas de texto. Los valores altos preparan enteras las peticiones más cortas y pueden retrasar su inicio. Cortar dentro de palabras siempre prepara por fragmentos. El modo experimental entrega el primero sin transformar antes el siguiente.</string>
+    <string name="exp_prefetch">Profundidad de la cola preparada</string>
+    <string name="exp_prefetch_note">Preparar más fragmentos puede evitar micropausas si el texto tarda en procesarse; ocupa más memoria y desperdicia más trabajo al deslizar. Esta cola contiene texto, no más voz audible. Un fragmento reduce el trabajo anticipado, pero puede dejar al motor esperando.</string>
+    <string name="exp_workers">Hilos de preparación del texto</string>
+    <string name="exp_workers_note">Un hilo consume menos CPU. Dos o tres permiten preparar la nueva petición mientras termina el trabajo cancelado. No sintetizan audio en paralelo ni dividen una transformación entre hilos. Pueden aumentar CPU, batería y competencia por recursos. La cancelación se comprueba entre etapas; una etapa individual todavía puede tardar en terminar.</string>
+    <string name="exp_audio_heading">Entrega del audio</string>
+    <string name="exp_lead">Audio adelantado</string>
+    <string name="exp_lead_note">Menos audio por delante del tiempo transcurrido puede limpiar las interrupciones, pero dejar al reproductor sin datos y generar micropausas. Más adelanto tolera retrasos, pero encola más sonido que aún no se ha oído. El límite se comprueba tras entregar cada bloque y puede superarse por un bloque; no garantiza la latencia total. En reproducción automática, el lector y Android controlan el descarte del audio ya entregado.</string>
+    <string name="exp_frame">Tamaño del bloque nativo</string>
+    <string name="exp_frame_estimate">%1$d muestras: %2$.1f ms de audio, unas %3$.1f llamadas por segundo de audio</string>
+    <string name="exp_frame_note">Los bloques pequeños entregan audio y comprueban el aborto más a menudo, pero añaden copias, bloqueos y despertares. Los grandes reducen ese coste, pero hacen la entrega menos fina. Abortar la entrega deja al motor terminando el fragmento de texto en curso. Las cifras usan la frecuencia de salida elegida; generar un bloque puede ser mucho más rápido que reproducirlo.</string>
+    <string name="exp_read">Bloque máximo de entrega</string>
+    <string name="exp_read_auto">Automático, búfer del sistema</string>
+    <string name="exp_read_note">Limita cuánto audio mono encolado se lee y entrega antes de comprobar otra vez el adelanto. Bajo acota el exceso, pero añade llamadas JNI y copias. Alto reduce ese coste, pero puede entregar varios bloques nativos juntos. El sistema puede imponer un tamaño menor; los bloques parciales contienen menos muestras. Una entrega pequeña no evita esperar a que se genere el bloque nativo.</string>
+    <string name="exp_ring">Capacidad de la cola nativa</string>
+    <string name="exp_ring_note">Una cola pequeña limita cuánto se adelanta la síntesis y el trabajo descartado; puede bloquear al productor más a menudo. Una grande tolera retrasos, pero permite generar más audio anticipado. Cambia la capacidad activa; la memoria asignada sigue reservada para reutilizarla con seguridad.</string>
+    <string name="exp_ring_estimate">Capacidad: %1$.1f ms de PCM mono a %2$d Hz. Es capacidad de almacenamiento, no una espera obligatoria.</string>
+    <string name="exp_light">Procesamiento de salida ligero</string>
+    <string name="exp_light_note">Mantiene el filtro de continua y el ecualizador, omite el análisis de picos y la ganancia automática y cambia el limitador suave por recorte duro. Puede reducir CPU; el volumen puede cambiar y los picos amplificados pueden sonar distorsionados. Desactivado utiliza la cadena normal.</string>
+    <string name="exp_player_heading">Solo reproducción propia</string>
+    <string name="exp_player_note">Los dos controles siguientes afectan a la reproducción propia por accesibilidad, multimedia o ambas rutas. La reproducción automática pertenece a Android y los ignora. El dispositivo puede imponer un búfer mayor. Esta pantalla no cambia tu ruta de audio.</string>
+    <string name="exp_player_buffer">Búfer de reproducción solicitado</string>
+    <string name="exp_player_buffer_note">Un búfer pequeño puede arrancar antes, pero quedarse sin audio si el dispositivo está ocupado. Uno grande tolera retrasos, pero puede aumentar el sonido encolado. El tamaño efectivo respeta el mínimo del dispositivo y se alinea a muestras estéreo.</string>
+    <string name="exp_start">Umbral de arranque</string>
+    <string name="exp_start_note">Porcentaje del búfer efectivo necesario para empezar. Bajo puede arrancar antes, pero producir micropausas; alto espera más audio. Disponible desde Android 12. En versiones anteriores se conserva el umbral del sistema. No es un porcentaje de la latencia total de la voz.</string>
+    <string name="exp_test_heading">Pruebas en el dispositivo</string>
+    <string name="exp_test_note">Estos botones usan el servicio de voz instalado, incluido el recorrido experimental. La prueba de interrupciones reemplaza seis elementos cada 350 ms; simula peticiones nuevas, no gestos reales de TalkBack. Prueba también navegando con TalkBack y compara el mismo texto, voz, ruta y frecuencia tras restablecer.</string>
+    <string name="exp_test_say">Probar un pasaje continuo</string><string name="exp_test_swipes">Probar interrupciones rápidas</string><string name="exp_test_stop">Detener la prueba</string>
+    <string name="exp_test_text">Primera frase: la voz debería empezar pronto. Segunda frase: escucha las micropausas entre fragmentos y comprueba que las palabras estén completas. Tercera frase: ciento veintitrés, una palabra extraordinariamente larga y el final del pasaje.</string>
+    <string name="exp_test_item">Elemento %1$d. Esta frase debería interrumpirse cuando llegue el siguiente elemento.</string>
+    <string name="exp_test_initializing">Abriendo el motor instalado. Si los botones siguen inactivos, comprueba que este paquete esté instalado y que su servicio de voz esté disponible.</string>
+    <string name="exp_measure_refresh">Actualizar la última medición de respuesta</string>
+    <string name="exp_measure">Última primera entrega: texto listo a %1$.1f ms; primer PCM a %2$.1f ms; entregado a %3$.1f ms desde la entrada de la petición.</string>
+    <string name="exp_measure_note">Solo se registran mediciones con los experimentos activos y cuando se entrega audio. Describen la última petición, que puede ser TalkBack leyendo un control. No miden el sonido que sale del altavoz, el retraso Bluetooth ni los cortes realmente oídos. Repite las pruebas; no son resultados de rendimiento del dispositivo.</string>
+    <string name="exp_player_actual">Última reproducción propia: búfer efectivo %1$.1f ms; umbral de arranque %2$s.</string>
+    <string name="exp_time_value">%1$.1f ms</string><string name="exp_unavailable">no disponible</string>
+    <string name="exp_resampling">Compara aparte la frecuencia y el remuestreo; las frecuencias altas y los filtros largos pueden consumir más CPU. Los perfiles de respuesta no los cambian.</string>
+    <string name="exp_block_small">Entrega fina, más llamadas y mayor coste de CPU.</string>
+    <string name="exp_block_large">Menos llamadas, entrega y cancelación menos finas.</string>
+    <string name="exp_stream_small">Prepara antes por fragmentos; las reglas de texto tienen menos contexto.</string>
+    <string name="exp_stream_large">Prepara enteras las peticiones hasta este tamaño; más contexto, pero el primer audio puede tardar más.</string>
+    <string name="exp_prefetch_small">Menos preparación descartada; puede haber más micropausas si el procesamiento se retrasa.</string>
+    <string name="exp_prefetch_large">Más texto preparado puede suavizar las pausas; más memoria y trabajo descartado.</string>
+    <string name="exp_worker_single">Menos competencia por CPU; una etapa cancelada puede retrasar la petición siguiente.</string>
+    <string name="exp_worker_extra">La nueva petición puede solaparse con la preparación cancelada; puede aumentar CPU y batería.</string>
+    <string name="exp_ring_small">Menos audio anticipado; el productor puede bloquearse más a menudo.</string>
+    <string name="exp_ring_large">Más tolerancia a retrasos; puede generar más audio que aún no se ha oído.</string>
+    <string name="exp_start_small">Puede empezar antes; aumenta el riesgo de quedarse sin audio.</string>
+    <string name="exp_start_large">Más audio disponible al arrancar; puede aumentar la espera inicial.</string>
+</resources>

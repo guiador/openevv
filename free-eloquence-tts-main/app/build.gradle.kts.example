@@ -1,0 +1,194 @@
+import java.util.Properties
+
+plugins {
+	alias(libs.plugins.android.application)
+	alias(libs.plugins.kotlin.compose)
+}
+
+val abis = (findProperty("evvdroid.abis") as String? ?: "arm64-v8a,armeabi-v7a,x86_64")
+	.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+val rulesForm = findProperty("evvdroid.rules") as String? ?: "c"
+// The eight language modules this app speaks, which are the eight IBM
+// finished: English (United States) and (United Kingdom), German, Spanish
+// (Spain) and (Mexico), French (France) and (Canada), and Italian. All eight
+// are offered above -- on the settings screen, in the voices the service
+// answers with, and in what a caller can ask for by locale -- so the weight of
+// each is weight the app can speak in. See [Eci.LANGUAGES], which lists the
+// same eight and is checked against this by a test. The Japanese and the
+// unfinished Polish modules are left out on purpose. American English stays
+// first: the engine's Makefile takes the first as its default language.
+val languages = "lang/enus lang/engb lang/dede lang/eses lang/esus lang/frfr lang/frca lang/itit"
+val nativeOut = layout.buildDirectory.dir("native/jniLibs")
+val pinnedNdkVersion = findProperty("evvdroid.ndkVersion") as String? ?: "28.2.13676358"
+
+// The engine is built by its own Makefile rather than by CMake, because that
+// Makefile writes the language rules with Python before it compiles them and
+// nothing here has a reason to reimplement that.
+val buildNative by tasks.registering(Exec::class) {
+	group = "build"
+	description = "Cross-compiles the openevv engine and the JNI bridge for each ABI."
+	val engine = rootProject.layout.projectDirectory.dir("native/openevv")
+	val script = rootProject.layout.projectDirectory.file("native/build-native.sh")
+	// Deliberately not the engine's own sources. The script patches them, so a
+	// task declaring them would be rewriting its own inputs every time it ran
+	// and would never settle: the first build after any change fails and the
+	// next one succeeds. What decides the output is the submodule's commit, the
+	// patches laid on it, and the files named here. Editing native/openevv by
+	// hand wants --rerun-tasks. The patches are a file tree rather than a
+	// directory, so the set is what is there -- one, at the moment -- and a
+	// patch added or changed is a rebuild.
+	inputs.files(rootProject.fileTree("native/patches"))
+	inputs.file(rootProject.layout.projectDirectory.file("native/android.mk"))
+	inputs.file(rootProject.layout.projectDirectory.file(".gitmodules"))
+	inputs.file(rootProject.layout.projectDirectory.file("native/openevv-revision.txt"))
+	inputs.file(script)
+	inputs.file(layout.projectDirectory.file("src/main/cpp/evv_jni.c"))
+	inputs.property("abis", abis)
+	inputs.property("rules", rulesForm)
+	inputs.property("langs", languages)
+	inputs.property("ndkVersion", pinnedNdkVersion)
+	outputs.dir(nativeOut)
+	val shell = if (System.getProperty("os.name").startsWith("Windows", ignoreCase = true)) {
+		val git = System.getenv("PROGRAMFILES")?.let { file("$it/Git/bin/bash.exe") }
+		if (git != null && git.exists()) git.absolutePath else "bash"
+	} else {
+		"bash"
+	}
+	commandLine(shell, script.asFile.absolutePath)
+	environment("ABIS", abis.joinToString(" "))
+	environment("RULES", rulesForm)
+	environment("LANGS", languages)
+	environment("OUT", nativeOut.get().asFile.absolutePath)
+	doFirst {
+		environment("ANDROID_NDK_HOME", androidComponents.sdkComponents.ndkDirectory.get().asFile.absolutePath)
+		if (!engine.file("Makefile").asFile.exists()) {
+			throw GradleException("native/openevv is empty. Run: git submodule update --init --recursive")
+		}
+	}
+}
+
+android {
+	namespace = "com.blindtechnexus.freeeloquencetts"
+    flavorDimensions += "engine"
+    productFlavors {
+        create("principal") { dimension = "engine"; applicationId = "org.openevv.android.principal" }
+        create("auxiliar") { dimension = "engine"; applicationId = "org.openevv.android.auxiliar" }
+    }
+	compileSdk = 37
+	ndkVersion = pinnedNdkVersion
+
+	defaultConfig {
+		applicationId = "org.openevv.android.principal"
+		minSdk = 23
+		targetSdk = 36
+		// API 37 adds while-in-use requirements for background audio. Keep the
+		// existing runtime contract until screen-reader/device validation passes.
+		versionCode = 12
+		versionName = "0.4.3-es"
+		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		ndk {
+			abiFilters += abis
+		}
+	}
+
+	sourceSets.getByName("androidTest") {
+		kotlin.directories += "src/androidTest/kotlin"
+	}
+
+	sourceSets.getByName("main") {
+		kotlin.directories += "src/main/kotlin"
+		jniLibs.directories += nativeOut.get().asFile.absolutePath
+	}
+
+	signingConfigs {
+		create("release") {
+			storeFile = rootProject.file("release.jks")
+			storePassword = providers.gradleProperty("releaseStorePassword").orElse(providers.environmentVariable("OPENEVV_STORE_PASSWORD")).orNull
+			keyAlias = "release"
+			keyPassword = providers.gradleProperty("releaseKeyPassword").orElse(providers.environmentVariable("OPENEVV_KEY_PASSWORD")).orNull
+			// Off by default in AGP. It is what lets the key be rotated
+			// later without every install having to be thrown away.
+			enableV3Signing = true
+		}
+	}
+
+	buildTypes {
+		release {
+			signingConfig = signingConfigs.findByName("release")
+			isMinifyEnabled = true
+			isShrinkResources = true
+			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+		}
+		debug {
+			isJniDebuggable = true
+		}
+	}
+
+	packaging {
+		jniLibs {
+			// A screen reader cannot wait for a library to be unpacked, and an
+			// uncompressed one is mapped straight out of the APK.
+			useLegacyPackaging = false
+		}
+	}
+
+	splits {
+		abi {
+			isEnable = (findProperty("evvdroid.abiSplits") as String?)?.toBoolean() ?: false
+			reset()
+			include(*abis.toTypedArray())
+			isUniversalApk = true
+		}
+	}
+
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
+	}
+
+
+	buildFeatures {
+		buildConfig = true
+		compose = true
+	}
+}
+
+tasks.named("preBuild") {
+	dependsOn(buildNative)
+}
+
+dependencies {
+	implementation(libs.androidx.core.ktx)
+	implementation(libs.material)
+	implementation(libs.androidx.activity.compose)
+	implementation(platform(libs.compose.bom))
+	implementation(libs.compose.ui)
+	implementation(libs.compose.material3)
+	implementation(libs.compose.material.icons.core)
+	implementation(libs.compose.material.icons.extended)
+
+	androidTestImplementation(libs.junit)
+	androidTestImplementation(libs.androidx.test.junit)
+	androidTestImplementation(libs.androidx.test.runner)
+	androidTestImplementation(libs.androidx.test.core)
+	// The bill of materials a second and a third time. It is what supplies the
+	// version to the versionless compose coordinates above, and a configuration
+	// carries only the constraints declared on it and on the ones it extends --
+	// neither androidTestImplementation nor debugImplementation extends
+	// implementation. Without this the two coordinates below have no version to
+	// resolve to, and the answer is "Could not find
+	// androidx.compose.ui:ui-test-junit4:." with nothing after the last colon
+	// rather than a missing library. It went unnoticed because no build here
+	// compiled the androidTest sources until one did.
+	androidTestImplementation(platform(libs.compose.bom))
+	androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+	debugImplementation(platform(libs.compose.bom))
+	debugImplementation("androidx.compose.ui:ui-test-manifest")
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+    }
+}
+

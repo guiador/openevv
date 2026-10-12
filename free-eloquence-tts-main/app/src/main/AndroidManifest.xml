@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- The voice of a screen reader is a thing that has to be allowed to keep
+	     running, and each of these is one of the four doors Android puts in
+	     front of it: a notification to hold the app up, the CPU to be held
+	     while a sentence is being said, the battery optimizer to be told this
+	     app is an exception, and, for an update, the installer to be handed
+	     a file. What is not here is a permission to read anything of yours: the
+	     network is used for one small file that names a version, and nothing
+	     else. -->
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+	<!-- Android 8 and later will not let an app offer to install anything until
+	     it has been allowed to, per app, on a system screen. The permission is
+	     the asking; the allowance is still the person's to give. -->
+
+	<!-- Which apps this app is prepared to hand a link to. Without this list,
+	     Android 11 and later answer "nothing" to the question of whether
+	     WhatsApp or Telegram is installed, and a button whose whole job is to
+	     open one of them has to be able to find out. The https scheme is here
+	     because the contact links are web addresses on devices with no
+	     messaging app at all, and a browser is a thing worth being sure of.
+
+	     It is a list of the apps the About screen names and nothing more: no
+	     QUERY_ALL_PACKAGES, which is what a well-behaved app never reaches for. -->
+	<queries>
+		<package android:name="com.whatsapp" />
+		<package android:name="com.whatsapp.w4b" />
+		<package android:name="org.telegram.messenger" />
+		<package android:name="org.telegram.messenger.web" />
+		<intent>
+			<action android:name="android.intent.action.VIEW" />
+			<data android:scheme="https" />
+		</intent>
+		<intent>
+			<action android:name="android.intent.action.SENDTO" />
+			<data android:scheme="mailto" />
+		</intent>
+	</queries>
+
+	<application
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:supportsRtl="true"
+		android:theme="@style/Theme.AltEloquenceTts">
+
+		<!-- Startable on the lock screen, which is where a screen reader is
+		     wanted first. What it reads there is in DirectBoot.kt. The
+		     special-use type is what the keep-alive notification promotes it
+		     to on Android 14 and later. -->
+		<service
+			android:name="com.blindtechnexus.freeeloquencetts.EvvTtsService"
+			android:label="@string/engine_name"
+			android:directBootAware="true"
+			android:exported="true"
+			android:foregroundServiceType="specialUse|mediaPlayback">
+			<property
+				android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+				android:value="Persistent notification that keeps the speech engine running in the background." />
+			<intent-filter>
+				<action android:name="android.intent.action.TTS_SERVICE" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<meta-data
+				android:name="android.speech.tts"
+				android:resource="@xml/tts_engine" />
+		</service>
+
+		<!-- The service that exists to hold the notification up when nothing is
+		     bound to the engine, which is the situation the keep-alive is for.
+		     It is not exported: nothing outside this app has a reason to start
+		     or stop somebody else's keep-alive, and it has no intent filter
+		     because it is never asked for by name from anywhere else.
+
+		     The same special-use type as the engine's, for the same reason: the
+		     notification is the price of a voice that stays available, and there
+		     is no type of foreground service for "so that a screen reader can
+		     answer when it is spoken to". -->
+		<service
+			android:name="com.blindtechnexus.freeeloquencetts.KeepAliveService"
+			android:label="@string/app_name"
+			android:directBootAware="true"
+			android:exported="false"
+			android:foregroundServiceType="specialUse|mediaPlayback">
+			<property
+				android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+				android:value="Persistent notification that keeps the speech engine running in the background." />
+		</service>
+
+		<!-- The boot, and the notification's own button.
+		     Not exported, which is what keeps "stop speaking" from being a
+		     command anybody on the phone can send: the notification's PendingIntent
+		     names this component, and a system broadcast reaches a receiver
+		     whatever its export state, so nothing is lost by the refusal. -->
+		<receiver
+			android:name="com.blindtechnexus.freeeloquencetts.EngineReceiver"
+			android:directBootAware="true"
+			android:exported="false">
+			<!-- The early one, for a device that has it: it arrives while the
+			     phone is still behind a lock screen, which is where a screen
+			     reader is wanted first. -->
+			<intent-filter>
+				<action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+			<!-- An update replaces the running service, and this is the one
+			     broadcast that says so to this app alone. -->
+			<intent-filter>
+				<action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+			</intent-filter>
+		</receiver>
+
+		<activity
+			android:name="com.blindtechnexus.freeeloquencetts.CheckVoiceDataActivity"
+			android:exported="true"
+			android:noHistory="true"
+			android:theme="@android:style/Theme.NoDisplay">
+			<intent-filter>
+				<action android:name="android.speech.tts.engine.CHECK_TTS_DATA" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name="com.blindtechnexus.freeeloquencetts.GetSampleTextActivity"
+			android:exported="true"
+			android:noHistory="true"
+			android:theme="@android:style/Theme.NoDisplay">
+			<intent-filter>
+				<action android:name="android.speech.tts.engine.GET_SAMPLE_TEXT" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name="com.blindtechnexus.freeeloquencetts.SettingsActivity"
+			android:exported="true"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.speech.tts.engine.CONFIGURE_ENGINE" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+
+		<!-- The one way an update can be handed to the installer: a content URI
+		     into this app's own cache, readable for the length of the install and
+		     by nobody else. A path would be unreadable outside the app, and
+		     granting a broader reach over shared storage so that a path could be
+		     pointed at is the worse of the two ways to do this.
+
+		     The authority is this app's id plus the suffix [Installer] names, so
+		     that a build with another id, a debug one or a fork's, still
+		     finds its own provider; and the path is the one directory the
+		     download writes to. A test holds the three together. -->
+
+	</application>
+</manifest>

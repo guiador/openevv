@@ -1,0 +1,42 @@
+"""Textos compartidos con Android y etiquetas específicas de NVDA."""
+import json
+from pathlib import Path
+
+STRINGS=json.loads(Path(__file__).with_name('openevv_es_ui.json').read_text(encoding='utf8'))
+# Each row follows the same five languages as the engine's interface.
+EXTRA={
+ 'prediction':('Predict phrase boundaries','Predecir límites de frases','Satzgrenzen vorhersagen','Prédire les limites des phrases','Prevedi i confini delle frasi'),
+ 'export':('Export WAV with saved settings','Exportar WAV con ajustes guardados','WAV mit gespeicherten Einstellungen exportieren','Exporter en WAV avec les réglages enregistrés','Esporta WAV con le impostazioni salvate'),
+ 'cancel':('Cancel export','Cancelar exportación','Export abbrechen','Annuler l’exportation','Annulla esportazione'),
+ 'exported':('WAV exported','WAV exportado','WAV exportiert','WAV exporté','WAV esportato'),
+ 'failed':('Export failed','Error de exportación','Export fehlgeschlagen','Échec de l’exportation','Esportazione non riuscita'),
+ 'cancelled':('Export cancelled','Exportación cancelada','Export abgebrochen','Exportation annulée','Esportazione annullata'),
+ 'tags':('Allow engine annotations (advanced)','Permitir anotaciones del motor (avanzado)','Motoranweisungen erlauben (erweitert)','Autoriser les annotations du moteur (avancé)','Consenti annotazioni del motore (avanzato)'),
+ 'panel':('OpenEVV: voice and sound','OpenEVV: voz y sonido','OpenEVV: Stimme und Klang','OpenEVV : voix et son','OpenEVV: voce e suono'),
+ 'select':('Select OpenEVV in Speech first.','Selecciona OpenEVV primero en Voz.','Zuerst OpenEVV unter Sprache auswählen.','Sélectionnez OpenEVV dans Parole.','Seleziona prima OpenEVV in Voce.'),
+ 'basic':('Voices, rate, pitch, inflection and volume: NVDA Speech settings.','Voces, velocidad, tono, entonación y volumen: ajustes de Voz de NVDA.','Stimmen, Tempo, Tonhöhe, Intonation und Lautstärke: NVDA-Sprachausgabe.','Voix, débit, hauteur, intonation et volume : réglages Parole de NVDA.','Voci, velocità, tono, intonazione e volume: impostazioni Voce di NVDA.'),
+ 'break':('Explicit NVDA pauses (%)','Pausas explícitas de NVDA (%)','Explizite NVDA-Pausen (%)','Pauses explicites NVDA (%)','Pause esplicite NVDA (%)'),
+ 'lockRate':('Keep configured rate','Mantener la velocidad configurada','Eingestelltes Tempo beibehalten','Conserver le débit configuré','Mantieni la velocità configurata'),
+ 'lockPitch':('Keep configured pitch','Mantener el tono configurado','Eingestellte Tonhöhe beibehalten','Conserver la hauteur configurée','Mantieni il tono configurato'),
+ 'lockVolume':('Keep configured volume','Mantener el volumen configurado','Eingestellte Lautstärke beibehalten','Conserver le volume configuré','Mantieni il volume configurato'),
+ 'fixes':('Normalize text','Normalizar texto','Text normalisieren','Normaliser le texte','Normalizza il testo'),
+ 'plain':('No level enhancement','Sin mejora de nivel','Ohne Pegelanpassung','Sans correction de niveau','Senza correzione del livello'),
+ 'left':('Left','Izquierda','Links','Gauche','Sinistra'),
+ 'center':('Center','Centro','Mitte','Centre','Centro'),
+ 'right':('Right','Derecha','Rechts','Droite','Destra'),
+ 'balance':('TTS balance','Balance del TTS','TTS-Balance','Balance TTS','Bilanciamento TTS'),
+ 'awake':('Keep audio output awake (global NVDA setting)','Mantener la salida de audio activa (ajuste global de NVDA)','Audioausgabe aktiv halten (globale NVDA-Einstellung)','Maintenir la sortie audio active (réglage global NVDA)','Mantieni attiva l’uscita audio (impostazione globale NVDA)'),
+ 'noise':('White noise intensity (%)','Intensidad de ruido blanco (%)','Weißes Rauschen (%)','Intensité du bruit blanc (%)','Intensità del rumore bianco (%)'),
+ 'off':('Off','Desactivado','Aus','Désactivé','Disattivato'),
+ 'nativeText':('Use NVDA speech dictionaries, punctuation/symbol pronunciation and CLDR emoji descriptions in the NVDA menu. They are applied before the engine; do not duplicate them here.','Usa los diccionarios de voz, la pronunciación de símbolos y las descripciones CLDR de emojis del menú de NVDA. Se aplican antes del motor; no los dupliques aquí.','NVDA-Sprachwörterbücher, Symbolaussprache und CLDR-Emoji-Beschreibungen werden vor dem Motor angewendet.','Les dictionnaires vocaux, symboles et descriptions CLDR des emojis de NVDA sont appliqués avant le moteur.','I dizionari vocali, i simboli e le descrizioni CLDR delle emoji di NVDA si applicano prima del motore.'),
+ 'test':('Preview saved settings','Probar ajustes guardados','Gespeicherte Einstellungen testen','Tester les réglages enregistrés','Prova le impostazioni salvate'),
+ 'preview':('Hello. This is OpenEVV. Verification code 492801.','Hola. Esta es la voz de OpenEVV. Código de verificación 492801.','Hallo. Dies ist OpenEVV. Bestätigungscode 492801.','Bonjour. Voici OpenEVV. Code de vérification 492801.','Ciao. Questa è la voce di OpenEVV. Codice di verifica 492801.'),
+}
+
+def translator(locale):
+    language=(locale or 'en').split('_')[0].split('-')[0]
+    if language not in STRINGS: language='en'
+    def text(key):
+        if key in EXTRA: return EXTRA[key][('en','es','de','fr','it').index(language)]
+        return STRINGS[language].get(key,STRINGS['en'].get(key,key))
+    return text

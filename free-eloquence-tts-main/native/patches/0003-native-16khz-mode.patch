@@ -1,0 +1,49 @@
+--- a/src/eci/api/eci_env.c
++++ b/src/eci/api/eci_env.c
+@@ -666,7 +666,7 @@
+         goto done;
+ 
+     if (which == ECI_OLD_WIDEBAND) {
+-        if (value < 0 || value > 1)
++        if (value < 0 || value > 2)
+             return -1;
+         old = inst->wideband;
+         inst->wideband = value;
+--- a/src/eci/api/eci_state.c
++++ b/src/eci/api/eci_state.c
+@@ -352,7 +352,7 @@
+     /* Ours, and only the thread keeps it: the older interface answers for
+        it from its own instance. */
+     case ECI_PARAM_WIDEBAND:
+-        if (v < 0 || v > 1)
++        if (v < 0 || v > 2)
+             return ECI_BAD_PARAM;
+         return st_setWideband(thread, v);
+ 
+--- a/src/eci/synth/eci_synthrun.c
++++ b/src/eci/synth/eci_synthrun.c
+@@ -256,7 +256,7 @@
+ {
+     (void)seq;
+     stw_processRemaining(t);
+-    ST_WIDEBAND(t) = on != 0;
++    ST_WIDEBAND(t) = on;
+     stw_createAudioConverter(t, ST_FORMAT(t));
+     finished(t);
+ }
+--- a/src/eci/synth/eci_synthwork.c
++++ b/src/eci/synth/eci_synthwork.c
+@@ -890,7 +890,12 @@
+     if (native == 0)
+         return ERR_BAD_RATE;
+ 
+-    wide = ST_WIDEBAND(t) && native == RATE_11025 && wanted > RATE_11025;
++    /* Local experimental mode 2 uses a fixed 16 kHz synthesis base.
++        The output converter still handles every supported output rate.
++        Modes are per instance and change at an utterance boundary. */
++    if (ST_WIDEBAND(t) == 2 && wanted > RATE_11025)
++        native = 16000;
++    wide = ST_WIDEBAND(t) == 1 && native == RATE_11025 && wanted > RATE_11025;
+     if (wide)
+         native = WIDE_RATE;
+ 

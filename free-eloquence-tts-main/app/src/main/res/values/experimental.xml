@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="page_experimental_title">Experimental response</string>
+    <string name="page_experimental_description">Test screen reader response, interruptions and audio buffers on this device.</string>
+    <string name="exp_intro">Disabled by default. Changes apply to the next speech request. Small values may respond sooner but cause gaps, truncated speech or extra CPU use. Reset disables all experimental overrides. Estimates describe audio duration, not measured response time.</string>
+    <string name="exp_enable">Enable experimental response</string>
+    <string name="exp_on">Enabled</string><string name="exp_off">Disabled</string>
+    <string name="exp_profile">Starting profile</string><string name="exp_custom">Custom</string>
+    <string name="exp_reference">Reference</string><string name="exp_balanced">Balanced trial</string><string name="exp_fast">Fast navigation</string><string name="exp_extreme">Extreme, with word cuts</string>
+    <string name="exp_reference_note">250 characters, 150 ms lead, 2048 samples, one worker. Current buffer sizes; experimental text scheduling still differs.</string>
+    <string name="exp_balanced_note">250 characters, 120 ms lead, 1024 samples, two prepared pieces, one worker. A moderate starting point; gaps remain possible.</string>
+    <string name="exp_fast_note">100 characters, 60 ms lead, 512 samples, two workers. Earlier discarding and more frequent callbacks; CPU use and gaps may increase.</string>
+    <string name="exp_extreme_note">32 characters, 20 ms lead, 128 samples, two workers. Cuts inside words can alter pronunciation, numbers and substitutions. Frequent gaps and callbacks are possible.</string>
+    <string name="exp_profile_note">Profiles set response controls only. Voice, sample rate, resampler, equalizer and audio routing stay at your chosen values. Selecting a profile does not enable experiments.</string>
+    <string name="exp_reset">Disable and restore response defaults</string>
+    <string name="exp_text_heading">Text and cancellation</string>
+    <string name="exp_piece">Fragment size</string>
+    <string name="exp_piece_note">Smaller fragments bound unwanted synthesis sooner but add calls and boundary pauses. Larger fragments preserve context but can delay the next item. With whole words this is a target, not a strict maximum: long words remain intact.</string>
+    <string name="exp_chars">characters</string><string name="exp_ms">ms</string><string name="exp_pieces_unit">prepared fragments</string><string name="exp_threads">workers</string><string name="exp_kib">KiB</string><string name="exp_percent">percent</string>
+    <string name="exp_boundary">Cut boundaries</string><string name="exp_whole_word">Keep whole words</string><string name="exp_inside_word">Allow cuts inside words</string>
+    <string name="exp_boundary_note">Whole words preserve pronunciation. Inside-word cuts bound fragments more tightly but may split words, SSML, URLs, emoji sequences, dictionary matches or verification codes. This is character slicing, not linguistic syllable detection. Unheard audio is discarded on interruption; the remainder stays available while speech continues.</string>
+    <string name="exp_stream">Prepare by fragments above</string>
+    <string name="exp_stream_note">0 prepares every request by fragments: less work before the first audio, but less context for text rules. Higher values prepare shorter requests in full and may delay their start. Inside-word cuts always use fragment preparation. Experimental scheduling publishes the first transformed piece without transforming the next first.</string>
+    <string name="exp_prefetch">Prepared queue depth</string>
+    <string name="exp_prefetch_note">More prepared fragments may avoid gaps if text processing is slow; they use more memory and waste more work after a swipe. This queues text, not extra audible speech. One fragment minimizes speculative work but may leave the engine waiting.</string>
+    <string name="exp_workers">Text preparation workers</string>
+    <string name="exp_workers_note">One worker uses less CPU. Two or three allow the next request to prepare while cancelled text work exits. They do not synthesize audio in parallel or make a single transform parallel. Extra workers may increase CPU, battery use and contention. Cancellation is checked between text stages; an individual stage may still take time to finish.</string>
+    <string name="exp_audio_heading">Audio delivery</string>
+    <string name="exp_lead">Audio lead</string>
+    <string name="exp_lead_note">Less audio ahead of wall time may make interruptions cleaner but may starve playback and cause gaps. More lead tolerates scheduling delays but queues more unheard audio. The limit is checked after each delivered block and can be exceeded by a block; it is not an end-to-end latency guarantee. On automatic playback, the client and Android control discarding audio already delivered.</string>
+    <string name="exp_frame">Native block size</string>
+    <string name="exp_frame_estimate">%1$d samples: %2$.1f ms of audio, about %3$.1f callbacks per second of audio</string>
+    <string name="exp_frame_note">Smaller blocks expose audio and cancellation more often but add copies, locks and wakeups. Larger blocks reduce overhead but make delivery coarser. Aborting delivery still leaves the engine finishing the current text fragment. These figures use the selected output rate; generating a block may be much faster than playing it.</string>
+    <string name="exp_read">Maximum delivery block</string>
+    <string name="exp_read_auto">Automatic, framework buffer</string>
+    <string name="exp_read_note">Limits how much queued mono audio is read and delivered before checking the lead again. Smaller values bound overshoot but add JNI calls and copies. Larger values reduce overhead but may deliver several native blocks at once. The framework can impose a smaller size; partial blocks have fewer samples. A small delivery block cannot bypass waiting for the native block to be generated.</string>
+    <string name="exp_ring">Native queue capacity</string>
+    <string name="exp_ring_note">A smaller queue limits synthesis running ahead and discarded work; it can block the producer more often. A larger queue tolerates scheduling delays but permits more speculative audio. This changes active capacity; allocated storage remains reserved for safe reuse.</string>
+    <string name="exp_ring_estimate">Capacity: %1$.1f ms of mono PCM at %2$d Hz. This is storage capacity, not a mandatory wait.</string>
+    <string name="exp_light">Light output processing</string>
+    <string name="exp_light_note">Keeps the DC filter and equalizer, skips peak analysis and automatic gain, and replaces the soft limiter with hard clipping. It may reduce CPU cost; volume can change and boosted peaks may sound distorted. Disabled uses the normal processing chain.</string>
+    <string name="exp_player_heading">App playback only</string>
+    <string name="exp_player_note">The next two controls affect app playback on accessibility, media or both routes. Automatic playback belongs to Android and ignores them. The device can impose a larger buffer. This screen does not change your audio route.</string>
+    <string name="exp_player_buffer">Requested playback buffer</string>
+    <string name="exp_player_buffer_note">Smaller buffers may start sooner but underrun on a busy device. Larger buffers tolerate delays but can increase queued sound. The effective size is at least the device minimum and is aligned to stereo frames.</string>
+    <string name="exp_start">Playback start threshold</string>
+    <string name="exp_start_note">Percentage of the effective playback buffer required to start. Lower values may start sooner but produce gaps; higher values wait for more audio. Available on Android 12 and later. Earlier Android versions use the system threshold. This is not a percentage of total voice latency.</string>
+    <string name="exp_test_heading">Device trials</string>
+    <string name="exp_test_note">These buttons use this installed TTS service, including the experimental path. The interruption trial flushes six items every 350 ms; it simulates new requests, not real TalkBack gestures. Also try navigating with TalkBack and compare the same text, voice, route and sample rate after resetting.</string>
+    <string name="exp_test_say">Test a continuous passage</string><string name="exp_test_swipes">Test rapid interruptions</string><string name="exp_test_stop">Stop the trial</string>
+    <string name="exp_test_text">First sentence: the voice should start promptly. Second sentence: listen for gaps between fragments and for complete words. Third sentence: one hundred twenty three, a long word, and the end of the passage.</string>
+    <string name="exp_test_item">Item %1$d. This sentence should be interrupted when the next item arrives.</string>
+    <string name="exp_test_initializing">Opening the installed engine. If the buttons stay unavailable, check that this package is installed and its voice service is available.</string>
+    <string name="exp_measure_refresh">Refresh last response measurement</string>
+    <string name="exp_measure">Last first delivery: text ready %1$.1f ms; first PCM %2$.1f ms; delivered %3$.1f ms from request entry.</string>
+    <string name="exp_measure_note">Measurements are recorded only when experiments are enabled and audio is delivered. They describe the last request, which may be TalkBack speaking a control. They do not measure sound leaving the speaker, Bluetooth delay or actual cuts heard. Repeat trials; these are not device benchmarks.</string>
+    <string name="exp_player_actual">Last app playback: effective buffer %1$.1f ms; start threshold %2$s.</string>
+    <string name="exp_time_value">%1$.1f ms</string><string name="exp_unavailable">unavailable</string>
+    <string name="exp_resampling">Compare output rate and resampling separately; higher rates and longer filters can cost more CPU. Response profiles do not change them.</string>
+    <string name="exp_block_small">Fine delivery, more callbacks and CPU overhead.</string>
+    <string name="exp_block_large">Fewer callbacks, coarser delivery and cancellation.</string>
+    <string name="exp_stream_small">Earlier fragment preparation; text rules have less context.</string>
+    <string name="exp_stream_large">Requests up to this size are prepared in full; more context, potentially later first audio.</string>
+    <string name="exp_prefetch_small">Less discarded preparation; gaps are more likely if processing stalls.</string>
+    <string name="exp_prefetch_large">More prepared text can smooth gaps; more memory and discarded work.</string>
+    <string name="exp_worker_single">Less CPU contention; a cancelled text stage may delay the next request.</string>
+    <string name="exp_worker_extra">Requests can overlap cancelled preparation; more CPU and battery use are possible.</string>
+    <string name="exp_ring_small">Less speculative audio; the producer may block more often.</string>
+    <string name="exp_ring_large">More scheduling tolerance; more unheard audio can be generated.</string>
+    <string name="exp_start_small">Earlier start is possible; greater underrun risk.</string>
+    <string name="exp_start_large">More audio available at start; potentially more initial waiting.</string>
+</resources>

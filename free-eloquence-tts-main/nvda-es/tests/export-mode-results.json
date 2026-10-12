@@ -1,0 +1,9 @@
+{
+  "passed": 3,
+  "checks": [
+    "native16 export produces stereo PCM16 at 16000 Hz",
+    "export applies selected pronunciation dictionaries",
+    "private export DLL leaves live synthesis mode and voice unchanged"
+  ],
+  "dll_sha256": "fd967fd13ee62a57604a8e9ccc36ba04dcc201e18bd76a80bfe64fbdea987d13"
+}

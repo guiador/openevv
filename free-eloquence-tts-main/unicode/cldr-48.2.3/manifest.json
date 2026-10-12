@@ -1,0 +1,51 @@
+{
+  "cldr": "48.2.3",
+  "unicode": "17.0.0",
+  "entries": {
+    "es": 3953,
+    "es-419": 3953
+  },
+  "sources": [
+    {
+      "file": "emoji-test.txt",
+      "url": "https://www.unicode.org/Public/17.0.0/emoji/emoji-test.txt",
+      "sha256": "1d8a944f88d7952f7ef7c5167fef3c67995bcae24543949710231b03a201acda"
+    },
+    {
+      "file": "es-annotations.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.3/cldr-json/cldr-annotations-full/annotations/es/annotations.json",
+      "sha256": "339cdf9ae5fe6d3250d3c53b95ff6d8a4dae96c7c0d279756ee7a73c43c84b56"
+    },
+    {
+      "file": "es-annotationsDerived.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.3/cldr-json/cldr-annotations-derived-full/annotationsDerived/es/annotations.json",
+      "sha256": "f9f43c327c5b76dbd337496738c0f5c526ee1c803dd683d60100b5fce85ab79e"
+    },
+    {
+      "file": "es-419-annotations.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.3/cldr-json/cldr-annotations-full/annotations/es-419/annotations.json",
+      "sha256": "df3c95ae55bdaee263095ecc05be9fa3bb2d0596b3c4c42106e662374a266c8b"
+    },
+    {
+      "file": "es-419-annotationsDerived.json",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.3/cldr-json/cldr-annotations-derived-full/annotationsDerived/es-419/annotations.json",
+      "sha256": "85c24c71d50b9b2990539653ce22612da8af0ea5e755e8eea27f5b6a67962ea4"
+    },
+    {
+      "file": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/48.2.3/LICENSE",
+      "sha256": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b"
+    }
+  ],
+  "unicodeSequences": 3953,
+  "coverage": {
+    "es": {
+      "missing": 0,
+      "additional": 0
+    },
+    "es-419": {
+      "missing": 0,
+      "additional": 0
+    }
+  }
+}

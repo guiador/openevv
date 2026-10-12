@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Where the file provider will look: the one directory an update is
+     downloaded into, and the one the audio generator writes into. The names
+     are what a granted URI is called by, and the paths are relative to the
+     cache, which the system is free to empty once the install has been handed
+     over or the audio shared. That is also what makes a half-finished
+     download, or a generated file nobody kept, a thing that costs the phone
+     nothing to get rid of. -->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+	<cache-path name="updates" path="update/" />
+	<cache-path name="audio" path="audio/" />
+</paths>

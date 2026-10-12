@@ -1,0 +1,21 @@
+{
+  "passed": 12,
+  "checks": [
+    "64 native voice defaults and deterministic initial voice",
+    "80 queued voice/profile loads preserve configured parameters",
+    "rapid language switch and return respects queued selection order",
+    "unclosed capital pitch and following normal speech restore native parameters",
+    "closed capital pitch and following normal speech restore native parameters",
+    "unclosed rate and volume and following normal speech restore native parameters",
+    "capitals pitch above range and following normal speech restore native parameters",
+    "pitch and volume below range and following normal speech restore native parameters",
+    "cancellation inside native synthesis restores parameters",
+    "batch exception restores parameters and worker remains usable",
+    "old controller demonstrably fails the delayed-load regression",
+    "old worker demonstrably leaks the capitals pitch"
+  ],
+  "dll": "actual packaged x64 eci.dll",
+  "dll_sha256": "fd967fd13ee62a57604a8e9ccc36ba04dcc201e18bd76a80bfe64fbdea987d13",
+  "nvda_ui": "simulated",
+  "native_commit": "f8a9e91221a15be68eb39845313186c683c1b90d"
+}

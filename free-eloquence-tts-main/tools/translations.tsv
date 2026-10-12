@@ -1,0 +1,475 @@
+go_back|Back|Zurück|Retour|Indietro
+welcome_title|Welcome to OpenEVV|Willkommen bei OpenEVV|Bienvenue dans OpenEVV|Benvenuto in OpenEVV
+welcome_alternative|A free voice that reads to you, without a subscription.|Eine kostenlose Vorlesestimme ohne Abonnement.|Une voix gratuite qui lit pour vous, sans abonnement.|Una voce gratuita che legge per te, senza abbonamento.
+welcome_free|No payments, accounts or subscriptions. The complete engine is included.|Keine Zahlungen, Konten oder Abonnements. Die gesamte Sprachengine ist enthalten.|Sans paiement, compte ni abonnement. Le moteur complet est inclus.|Senza pagamenti, account o abbonamenti. Il motore completo è incluso.
+welcome_intro|The engine is ready. Explore its features and permissions that help keep speech active.|Die Engine ist bereit. Entdecken Sie Funktionen und Berechtigungen für eine aktive Sprachausgabe.|Le moteur est prêt. Découvrez ses fonctions et les autorisations qui maintiennent la voix active.|Il motore è pronto. Scopri le funzioni e le autorizzazioni che mantengono attiva la voce.
+welcome_features|Features|Funktionen|Fonctions|Funzioni
+welcome_voices|Nine voices|Neun Stimmen|Neuf voix|Nove voci
+welcome_voices_description|Reed, Shelley, Bobby, Rocko, Glen, Sandy, Grandma, Grandpa and Luna. All are adjustable. Luna is a female profile created for this app.|Reed, Shelley, Bobby, Rocko, Glen, Sandy, Grandma, Grandpa und Luna. Alle sind anpassbar. Luna ist ein weibliches Profil dieser App.|Reed, Shelley, Bobby, Rocko, Glen, Sandy, Grandma, Grandpa et Luna. Toutes sont réglables. Luna est un profil féminin créé pour cette application.|Reed, Shelley, Bobby, Rocko, Glen, Sandy, Grandma, Grandpa e Luna. Tutte sono regolabili. Luna è un profilo femminile creato per questa app.
+welcome_languages|Eight language variants|Acht Sprachvarianten|Huit variantes linguistiques|Otto varianti linguistiche
+welcome_languages_description|US and UK English, German, Spain and Mexico Spanish, France and Canada French, and Italian. Each has nine voices. Choose one or let each app request its language.|US- und britisches Englisch, Deutsch, Spanisch aus Spanien und Mexiko, Französisch aus Frankreich und Kanada sowie Italienisch. Je neun Stimmen. Wählen Sie eine Variante oder lassen Sie jede App ihre Sprache anfordern.|Anglais américain et britannique, allemand, espagnol espagnol et mexicain, français de France et du Canada et italien. Neuf voix par variante. Choisissez-en une ou laissez chaque application demander sa langue.|Inglese statunitense e britannico, tedesco, spagnolo di Spagna e Messico, francese di Francia e Canada e italiano. Nove voci per variante. Scegline una o lascia che ogni app richieda la propria lingua.
+welcome_web|Web page reading|Webseiten vorlesen|Lecture de pages web|Lettura di pagine web
+welcome_web_description|Announces links, headings, bold, italics, lists, quotes and images when the text includes that information.|Nennt Links, Überschriften, Fett- und Kursivschrift, Listen, Zitate und Bilder, wenn diese Informationen im Text enthalten sind.|Annonce les liens, titres, gras, italique, listes, citations et images lorsque le texte contient ces informations.|Annuncia link, titoli, grassetto, corsivo, elenchi, citazioni e immagini quando il testo contiene queste informazioni.
+welcome_code|Code reading|Code vorlesen|Lecture de code|Lettura del codice
+welcome_code_description|Recognizes camelCase, operators and indentation in source code.|Erkennt camelCase, Operatoren und Einrückungen im Quelltext.|Reconnaît camelCase, les opérateurs et les retraits dans le code.|Riconosce camelCase, operatori e rientri nel codice.
+welcome_spelling|Spelling and symbols|Buchstabieren und Symbole|Épellation et symboles|Ortografia e simboli
+welcome_spelling_description|Spell words and read punctuation, emojis and numbers.|Buchstabiert Wörter und liest Satzzeichen, Emojis und Zahlen.|Épelle les mots et lit la ponctuation, les emojis et les nombres.|Compita le parole e legge punteggiatura, emoji e numeri.
+welcome_dictionaries|Custom dictionaries|Eigene Wörterbücher|Dictionnaires personnalisés|Dizionari personalizzati
+welcome_dictionaries_description|Customize names and abbreviations and import word lists. Active entries depend on available memory.|Passen Sie Namen und Abkürzungen an und importieren Sie Wortlisten. Aktive Einträge hängen vom verfügbaren Speicher ab.|Personnalisez les noms et abréviations et importez des listes. Le nombre d’entrées actives dépend de la mémoire disponible.|Personalizza nomi e abbreviazioni e importa elenchi. Le voci attive dipendono dalla memoria disponibile.
+welcome_permissions|Notification and battery optimization exemption permissions will be requested. The exemption helps keep speech active with the screen off. Speech works without granting them.|Benachrichtigungen und eine Ausnahme von der Akkuoptimierung werden angefragt. Die Ausnahme hilft bei ausgeschaltetem Bildschirm. Die Sprachausgabe funktioniert auch ohne diese Berechtigungen.|Les autorisations de notification et d’exclusion de l’optimisation de batterie seront demandées. Cette exclusion aide à garder la voix active écran éteint. La voix fonctionne aussi sans ces autorisations.|Verranno richieste le autorizzazioni per le notifiche e l’esclusione dall’ottimizzazione della batteria. L’esclusione aiuta a mantenere la voce attiva a schermo spento. La voce funziona anche senza queste autorizzazioni.
+welcome_about|You can change these settings later. The main screen opens voice settings, the audio generator and this welcome screen.|Sie können diese Einstellungen später ändern. Die Hauptseite öffnet Stimmeinstellungen, Audiogenerator und Begrüßung.|Vous pourrez modifier ces réglages plus tard. L’écran principal ouvre les réglages vocaux, le générateur audio et cet accueil.|Puoi cambiare le impostazioni più tardi. La schermata principale apre le impostazioni vocali, il generatore audio e questa introduzione.
+welcome_codes|Numbers and verification codes|Zahlen und Bestätigungscodes|Nombres et codes de vérification|Numeri e codici di verifica
+welcome_codes_description|Reads long numbers as digits, pairs or triplets. Detected verification codes are read digit by digit: 4 9 2 8 0 1.|Liest lange Zahlen als Ziffern, Paare oder Dreiergruppen. Erkannte Bestätigungscodes werden einzeln gelesen: 4 9 2 8 0 1.|Lit les nombres longs par chiffres, paires ou triplets. Les codes détectés sont lus chiffre par chiffre : 4 9 2 8 0 1.|Legge numeri lunghi per cifre, coppie o terne. I codici rilevati vengono letti cifra per cifra: 4 9 2 8 0 1.
+welcome_routing|Audio channel|Audiokanal|Canal audio|Canale audio
+welcome_routing_description|Each app can choose its channel. You can also send speech to accessibility, media or both.|Jede App kann ihren Kanal wählen. Sprache kann auch über Barrierefreiheit, Medien oder beide ausgegeben werden.|Chaque application choisit son canal. Vous pouvez aussi diriger la voix vers l’accessibilité, le multimédia ou les deux.|Ogni app può scegliere il canale. Puoi inviare la voce ad accessibilità, contenuti multimediali o entrambi.
+welcome_continue|Get started|Beginnen|Commencer|Inizia
+welcome_back_to_main|Back to main screen|Zur Hauptseite|Retour à l’écran principal|Torna alla schermata principale
+main_tagline|A free alternative to Eloquence TTS.|Kostenlose Alternative zu Eloquence TTS.|Une alternative gratuite à Eloquence TTS.|Un’alternativa gratuita a Eloquence TTS.
+main_configure_description|Adjust voice parameters.|Stimmparameter ändern.|Réglez les paramètres vocaux.|Regola i parametri della voce.
+main_configure_action|Voice settings|Stimmeinstellungen|Réglages vocaux|Impostazioni vocali
+main_system_description|Select the TTS engine in system settings.|Wählen Sie die Sprachengine in den Systemeinstellungen.|Choisissez le moteur TTS dans les paramètres système.|Seleziona il motore TTS nelle impostazioni di sistema.
+main_system_action|Open text-to-speech settings|Sprachausgabe-Einstellungen öffnen|Ouvrir les paramètres de synthèse vocale|Apri le impostazioni di sintesi vocale
+main_about_description|About the app and its developers.|Informationen zur App und ihren Entwicklern.|Informations sur l’application et ses développeurs.|Informazioni sull’app e sugli sviluppatori.
+main_about_action|About|Über die App|À propos|Informazioni
+main_audio_description|Write text and save it as audio using the selected voice.|Text eingeben und mit der gewählten Stimme als Audio speichern.|Saisissez du texte et enregistrez-le en audio avec la voix choisie.|Scrivi un testo e salvalo come audio con la voce selezionata.
+main_audio_action|Audio generator|Audiogenerator|Générateur audio|Generatore audio
+main_welcome_description|Explore the app’s features.|Funktionen der App kennenlernen.|Découvrez les fonctions de l’application.|Scopri le funzioni dell’app.
+main_welcome_action|Show welcome|Begrüßung anzeigen|Afficher l’accueil|Mostra introduzione
+main_system_unavailable|Text-to-speech settings cannot be opened on this device.|Die Sprachausgabe-Einstellungen lassen sich auf diesem Gerät nicht öffnen.|Impossible d’ouvrir les paramètres de synthèse vocale sur cet appareil.|Impossibile aprire le impostazioni di sintesi vocale su questo dispositivo.
+battery_title|Battery optimization exemption|Ausnahme von der Akkuoptimierung|Exclusion de l’optimisation de batterie|Esclusione dall’ottimizzazione della batteria
+battery_message|Android may stop speech in the background. Exclude this app from battery optimization to help keep it active.|Android kann Sprache im Hintergrund stoppen. Eine Ausnahme von der Akkuoptimierung hilft, sie aktiv zu halten.|Android peut arrêter la voix en arrière-plan. Excluez cette application de l’optimisation de batterie pour la garder active.|Android può arrestare la voce in background. Escludi questa app dall’ottimizzazione della batteria per mantenerla attiva.
+battery_allow|Allow now|Jetzt erlauben|Autoriser maintenant|Consenti ora
+battery_later|Not now|Jetzt nicht|Pas maintenant|Non ora
+default_tts_title|This TTS engine is not the default|Diese Sprachengine ist nicht Standard|Ce moteur TTS n’est pas celui par défaut|Questo motore TTS non è quello predefinito
+default_tts_message|Select OpenEVV as the default engine in system settings.|Wählen Sie OpenEVV als Standardengine in den Systemeinstellungen.|Choisissez OpenEVV comme moteur par défaut dans les paramètres système.|Seleziona OpenEVV come motore predefinito nelle impostazioni di sistema.
+section_voice|Voice|Stimme|Voix|Voce
+section_voice_description|Choose language, voice and vocal gender.|Sprache, Stimme und Stimmgeschlecht wählen.|Choisissez la langue, la voix et le genre vocal.|Scegli lingua, voce e genere vocale.
+language_label|Voice language|Sprache der Stimme|Langue de la voix|Lingua della voce
+language_description|Default language when an app does not request another. Each dialect has its own accent and dictionary: US or UK English, German, Spain or Mexico Spanish, France or Canada French, and Italian. The interface follows this selection.|Standardsprache, wenn eine App keine andere anfordert. Jede Variante hat einen eigenen Akzent und ein Wörterbuch: US- oder britisches Englisch, Deutsch, Spanisch aus Spanien oder Mexiko, Französisch aus Frankreich oder Kanada und Italienisch. Die Oberfläche folgt dieser Auswahl.|Langue par défaut si une application n’en demande pas une autre. Chaque variante a son accent et son dictionnaire : anglais américain ou britannique, allemand, espagnol espagnol ou mexicain, français de France ou du Canada et italien. L’interface suit ce choix.|Lingua predefinita quando un’app non ne richiede un’altra. Ogni variante ha accento e dizionario propri: inglese statunitense o britannico, tedesco, spagnolo di Spagna o Messico, francese di Francia o Canada e italiano. L’interfaccia segue questa scelta.
+force_language_label|Force this language|Diese Sprache erzwingen|Imposer cette langue|Forza questa lingua
+force_language_description|Reads all requests in the chosen language. When disabled, each app’s requested language is respected.|Liest alle Anfragen in der gewählten Sprache. Deaktiviert gilt die von der jeweiligen App angeforderte Sprache.|Lit toutes les demandes dans la langue choisie. Si désactivé, respecte la langue demandée par chaque application.|Legge tutte le richieste nella lingua scelta. Se disattivato, rispetta la lingua richiesta da ogni app.
+gender_label|Vocal gender|Stimmgeschlecht|Genre vocal|Genere vocale
+gender_male|Male|Männlich|Masculin|Maschile
+gender_female|Female|Weiblich|Féminin|Femminile
+section_behaviour|Voice characteristics|Stimmeigenschaften|Caractéristiques vocales|Caratteristiche vocali
+rate_description|Reading speed.|Vorlesegeschwindigkeit.|Vitesse de lecture.|Velocità di lettura.
+pitch_description|Voice pitch: low or high.|Tonhöhe der Stimme: tief oder hoch.|Hauteur de la voix : grave ou aiguë.|Altezza della voce: grave o acuta.
+set_rate|Speed|Geschwindigkeit|Vitesse|Velocità
+set_pitch|Pitch|Tonhöhe|Hauteur|Altezza
+set_inflection|Pitch variation|Tonhöhenvariation|Variation tonale|Variazione tonale
+set_breathiness|Breathiness|Behauchtheit|Souffle|Soffiosità
+set_head_size|Resonance (head size)|Resonanz (Kopfgröße)|Résonance (taille de tête)|Risonanza (dimensione della testa)
+set_roughness|Roughness|Rauheit|Raucité|Raucedine
+set_volume|Volume|Lautstärke|Volume|Volume
+force_over|Force in all apps|In allen Apps erzwingen|Imposer dans toutes les applications|Forza in tutte le app
+force_rate_description|Use this speed even if another app requests a different one.|Diese Geschwindigkeit auch bei anderen App-Anfragen verwenden.|Utilise cette vitesse même si une application en demande une autre.|Usa questa velocità anche se un’app ne richiede un’altra.
+force_pitch_description|Use this pitch even if another app requests a different one.|Diese Tonhöhe auch bei anderen App-Anfragen verwenden.|Utilise cette hauteur même si une application en demande une autre.|Usa questa altezza anche se un’app ne richiede un’altra.
+force_volume_description|Use this volume even if another app requests a different one.|Diese Lautstärke auch bei anderen App-Anfragen verwenden.|Utilise ce volume même si une application en demande un autre.|Usa questo volume anche se un’app ne richiede un altro.
+inflection_description|Range of rising and falling pitch.|Umfang der Tonhöhenänderungen.|Amplitude des montées et descentes de hauteur.|Ampiezza degli aumenti e delle diminuzioni di altezza.
+breathiness_description|Amount of breath noise in the voice.|Anteil des Atemgeräuschs in der Stimme.|Quantité de souffle dans la voix.|Quantità di rumore del respiro nella voce.
+head_size_description|Changes resonance and the perceived depth of the voice.|Ändert Resonanz und wahrgenommene Tiefe der Stimme.|Modifie la résonance et la profondeur perçue de la voix.|Modifica la risonanza e la profondità percepita della voce.
+roughness_description|Controls how rough or smooth the voice sounds.|Bestimmt, wie rau oder weich die Stimme klingt.|Détermine le caractère rauque ou doux de la voix.|Determina quanto la voce suona ruvida o morbida.
+volume_description|Volume level generated by the engine.|Von der Engine erzeugte Lautstärke.|Niveau de volume produit par le moteur.|Livello del volume generato dal motore.
+section_quality|Quality|Qualität|Qualité|Qualità
+section_quality_description|Audio processing and output sample rate.|Audioverarbeitung und Ausgabe-Abtastrate.|Traitement audio et fréquence d’échantillonnage de sortie.|Elaborazione audio e frequenza di campionamento in uscita.
+audio_optimization_label|Audio optimization|Audiooptimierung|Optimisation audio|Ottimizzazione audio
+audio_optimization_description|Choose balanced processing, higher volume or cleaner audio.|Ausgewogene Verarbeitung, höhere Lautstärke oder saubereres Audio wählen.|Choisissez un traitement équilibré, un volume accru ou un son plus propre.|Scegli elaborazione bilanciata, volume maggiore o audio più pulito.
+audio_optimization_balanced|Balanced|Ausgewogen|Équilibré|Bilanciato
+audio_optimization_balanced_description|Moderate leveling of the original audio.|Moderater Pegelausgleich des Originalaudios.|Nivellement modéré du son original.|Livellamento moderato dell’audio originale.
+audio_optimization_volume|Prioritize volume|Lautstärke priorisieren|Privilégier le volume|Priorità al volume
+audio_optimization_volume_description|Boosts volume in noisy environments.|Erhöht die Lautstärke in lauter Umgebung.|Augmente le volume dans les environnements bruyants.|Aumenta il volume negli ambienti rumorosi.
+audio_optimization_quality|Prioritize quality|Qualität priorisieren|Privilégier la qualité|Priorità alla qualità
+audio_optimization_quality_description|Filters resampling and preserves volume headroom.|Filtert die Neuabtastung und erhält Pegelreserven.|Filtre le rééchantillonnage et préserve une marge de volume.|Filtra il ricampionamento e mantiene un margine di volume.
+sample_rate_label|Output frequency (resampled)|Ausgabefrequenz (neu abgetastet)|Fréquence de sortie (rééchantillonnée)|Frequenza di uscita (ricampionata)
+sample_rate_description|The engine generates audio at 11,025 Hz and converts it to the chosen rate. Higher output may smooth playback but adds no acoustic information and uses more resources.|Die Engine erzeugt Audio mit 11 025 Hz und wandelt es in die gewählte Rate um. Höhere Raten können die Wiedergabe glätten, fügen aber keine Klanginformationen hinzu und benötigen mehr Ressourcen.|Le moteur produit du son à 11 025 Hz et le convertit à la fréquence choisie. Une sortie plus élevée peut lisser la lecture, mais n’ajoute aucune information acoustique et consomme davantage de ressources.|Il motore genera audio a 11.025 Hz e lo converte alla frequenza scelta. Un’uscita maggiore può rendere la riproduzione più fluida, ma non aggiunge informazioni acustiche e usa più risorse.
+routing_label|Synthesis channel|Synthesekanal|Canal de synthèse|Canale di sintesi
+routing_description|Choose each app’s requested channel or a common one. On Android 17, without an active foreground service, playback returns to the requesting app’s channel.|Wählen Sie den angeforderten Kanal jeder App oder einen gemeinsamen. Auf Android 17 wird ohne aktiven Vordergrunddienst über den Kanal der anfragenden App wiedergegeben.|Choisissez le canal demandé par chaque application ou un canal commun. Sous Android 17, sans service actif au premier plan, la lecture revient au canal de l’application demandeuse.|Scegli il canale richiesto da ogni app o uno comune. Su Android 17, senza un servizio attivo in primo piano, la riproduzione torna al canale dell’app richiedente.
+routing_automatic|Automatic|Automatisch|Automatique|Automatico
+routing_accessibility|Accessibility|Barrierefreiheit|Accessibilité|Accessibilità
+routing_media|Media|Medien|Multimédia|Multimedia
+routing_all|Both|Beide|Les deux|Entrambi
+routing_automatic_description|Automatic: each app plays speech on its requested channel. Recommended.|Automatisch: Jede App spielt Sprache auf ihrem angeforderten Kanal. Empfohlen.|Automatique : chaque application lit la voix sur le canal demandé. Recommandé.|Automatico: ogni app riproduce la voce sul canale richiesto. Consigliato.
+routing_accessibility_description|Accessibility: the engine plays speech on the accessibility channel. Apps requesting a file receive a silent one.|Barrierefreiheit: Die Engine spielt Sprache auf dem Barrierefreiheitskanal. Angeforderte Audiodateien sind stumm.|Accessibilité : le moteur lit sur le canal d’accessibilité. Les applications demandant un fichier en reçoivent un silencieux.|Accessibilità: il motore riproduce la voce sul canale di accessibilità. Le app che richiedono un file ne ricevono uno silenzioso.
+routing_media_description|Media: the engine plays speech on the media channel. Apps requesting a file receive a silent one.|Medien: Die Engine spielt Sprache auf dem Medienkanal. Angeforderte Audiodateien sind stumm.|Multimédia : le moteur lit sur le canal multimédia. Les applications demandant un fichier en reçoivent un silencieux.|Multimedia: il motore riproduce la voce sul canale multimediale. Le app che richiedono un file ne ricevono uno silenzioso.
+routing_all_description|Both: the engine plays on accessibility and the requesting app also plays on its own channel.|Beide: Die Engine spielt über Barrierefreiheit und die anfragende App zusätzlich über ihren Kanal.|Les deux : le moteur lit sur l’accessibilité et l’application lit aussi sur son propre canal.|Entrambi: il motore riproduce sul canale di accessibilità e l’app anche sul proprio canale.
+section_dictionaries|Dictionary|Wörterbuch|Dictionnaire|Dizionario
+dictionaries_description|Add words whose pronunciation you want to change.|Wörter hinzufügen, deren Aussprache Sie ändern möchten.|Ajoutez les mots dont vous souhaitez modifier la prononciation.|Aggiungi le parole di cui vuoi cambiare la pronuncia.
+dictionary_manager|My words|Meine Wörter|Mes mots|Le mie parole
+dictionary_manager_description|Manage custom pronunciations.|Eigene Aussprachen verwalten.|Gérez les prononciations personnalisées.|Gestisci le pronunce personalizzate.
+dictionary_screen_description|Tap a word to edit or delete it. Matching is case-insensitive.|Wort zum Bearbeiten oder Löschen antippen. Groß- und Kleinschreibung wird ignoriert.|Touchez un mot pour le modifier ou le supprimer. La casse est ignorée.|Tocca una parola per modificarla o eliminarla. Maiuscole e minuscole non vengono distinte.
+dictionary_add|Add word|Wort hinzufügen|Ajouter un mot|Aggiungi parola
+dictionary_import|Import file|Datei importieren|Importer un fichier|Importa file
+dictionary_export|Export file|Datei exportieren|Exporter un fichier|Esporta file
+dictionary_files_heading|Imported dictionaries|Importierte Wörterbücher|Dictionnaires importés|Dizionari importati
+dictionary_files_description|Tap an imported file to open it.|Importierte Datei zum Öffnen antippen.|Touchez un fichier importé pour l’ouvrir.|Tocca un file importato per aprirlo.
+dictionary_files_empty|No imported files. Import one to keep it under its name.|Keine importierten Dateien. Importieren Sie eine, um sie unter ihrem Namen zu speichern.|Aucun fichier importé. Importez-en un pour le conserver sous son nom.|Nessun file importato. Importane uno per conservarlo con il suo nome.
+dictionary_files_full|No space for another dictionary. Delete one first.|Kein Platz für ein weiteres Wörterbuch. Löschen Sie zuerst eines.|Plus de place pour un dictionnaire. Supprimez-en un d’abord.|Nessuno spazio per un altro dizionario. Eliminane prima uno.
+dictionary_importing|Importing %1$d words…|%1$d Wörter werden importiert…|Importation de %1$d mots…|Importazione di %1$d parole…
+dictionary_imported_file|Imported %1$d words into %2$s.|%1$d Wörter in %2$s importiert.|%1$d mots importés dans %2$s.|Importate %1$d parole in %2$s.
+dictionary_imported_file_truncated|Imported %1$d of %2$d words into %3$s. No room for the rest.|%1$d von %2$d Wörtern in %3$s importiert. Kein Platz für die übrigen.|%1$d mots sur %2$d importés dans %3$s. Plus de place pour les autres.|Importate %1$d parole su %2$d in %3$s. Nessuno spazio per le altre.
+dictionary_in_force|Speech uses all %1$d words in this list.|Die Stimme verwendet alle %1$d Wörter dieser Liste.|La voix utilise les %1$d mots de cette liste.|La voce usa tutte le %1$d parole di questo elenco.
+dictionary_in_force_some|Speech uses %1$d words. The other %2$d exceed available memory and remain saved but inactive. Reduce this or preceding lists to activate them.|Die Stimme verwendet %1$d Wörter. Weitere %2$d überschreiten den Speicher und bleiben gespeichert, aber inaktiv. Kürzen Sie diese oder vorherige Listen, um sie zu aktivieren.|La voix utilise %1$d mots. Les %2$d autres dépassent la mémoire et restent enregistrés mais inactifs. Réduisez cette liste ou les précédentes pour les activer.|La voce usa %1$d parole. Le altre %2$d superano la memoria e rimangono salvate ma inattive. Riduci questo elenco o quelli precedenti per attivarle.
+dictionary_file_words|%1$d words|%1$d Wörter|%1$d mots|%1$d parole
+dictionary_file_delete_title|Delete dictionary?|Wörterbuch löschen?|Supprimer le dictionnaire ?|Eliminare il dizionario?
+dictionary_file_delete_message|Delete %1$s and its %2$d words?|%1$s und seine %2$d Wörter löschen?|Supprimer %1$s et ses %2$d mots ?|Eliminare %1$s e le sue %2$d parole?
+dictionary_file_deleted|Deleted %1$s.|%1$s gelöscht.|%1$s supprimé.|%1$s eliminato.
+dictionary_file_search_hint|Search words|Wörter suchen|Rechercher des mots|Cerca parole
+dictionary_file_showing|Showing %1$d of %2$d words. Search to find more.|%1$d von %2$d Wörtern angezeigt. Suchen Sie nach weiteren.|Affichage de %1$d mots sur %2$d. Recherchez pour en trouver plus.|Visualizzate %1$d parole su %2$d. Usa la ricerca per trovarne altre.
+dictionary_empty|No words yet. Add one or import a file.|Keine Wörter. Fügen Sie eines hinzu oder importieren Sie eine Datei.|Aucun mot. Ajoutez-en un ou importez un fichier.|Nessuna parola. Aggiungine una o importa un file.
+dictionary_added|Added %1$s.|%1$s hinzugefügt.|%1$s ajouté.|%1$s aggiunto.
+dictionary_updated|Updated %1$s.|%1$s aktualisiert.|%1$s mis à jour.|%1$s aggiornato.
+dictionary_word_hint|Word|Wort|Mot|Parola
+dictionary_say_hint|Pronounce as|Aussprechen als|Prononcer comme|Pronuncia come
+dictionary_word_choice|What would you like to do?|Was möchten Sie tun?|Que souhaitez-vous faire ?|Cosa vuoi fare?
+dictionary_edit|Edit|Bearbeiten|Modifier|Modifica
+dictionary_delete|Delete|Löschen|Supprimer|Elimina
+dictionary_imported|Imported %1$d words.|%1$d Wörter importiert.|%1$d mots importés.|Importate %1$d parole.
+dictionary_import_nothing|The file contains no valid words.|Die Datei enthält keine gültigen Wörter.|Le fichier ne contient aucun mot valide.|Il file non contiene parole valide.
+dictionary_exported|Exported %1$d words.|%1$d Wörter exportiert.|%1$d mots exportés.|Esportate %1$d parole.
+dictionary_export_failed|Could not write the file.|Die Datei konnte nicht geschrieben werden.|Impossible d’écrire le fichier.|Impossibile scrivere il file.
+abbreviations_label|Expand engine abbreviations|Engine-Abkürzungen ausschreiben|Développer les abréviations du moteur|Espandi le abbreviazioni del motore
+abbreviations_description|Reads abbreviations as full words. Disabled by default.|Liest Abkürzungen als vollständige Wörter. Standardmäßig deaktiviert.|Lit les abréviations en mots complets. Désactivé par défaut.|Legge le abbreviazioni come parole intere. Disattivato per impostazione predefinita.
+expansions_description|Define abbreviations and their expansions. They replace text before synthesis; choose where they should match.|Abkürzungen und Langformen festlegen. Sie ersetzen Text vor der Synthese; die Trefferposition ist wählbar.|Définissez les abréviations et leurs développements. Ils remplacent le texte avant synthèse ; choisissez où ils doivent correspondre.|Definisci abbreviazioni e forme estese. Sostituiscono il testo prima della sintesi; scegli dove devono corrispondere.
+expansions_manager|My abbreviations|Meine Abkürzungen|Mes abréviations|Le mie abbreviazioni
+expansions_manager_description|Manage custom abbreviations and expansions.|Eigene Abkürzungen und Langformen verwalten.|Gérez les abréviations et développements personnalisés.|Gestisci abbreviazioni e forme estese personalizzate.
+expand_abbreviations_label|Expand my abbreviations|Meine Abkürzungen ausschreiben|Développer mes abréviations|Espandi le mie abbreviazioni
+expand_abbreviations_description|Reads the defined full text instead of the abbreviation.|Liest die festgelegte Langform statt der Abkürzung.|Lit le texte complet défini à la place de l’abréviation.|Legge il testo completo definito al posto dell’abbreviazione.
+expansions_screen_description|Tap an abbreviation to edit or delete it.|Abkürzung zum Bearbeiten oder Löschen antippen.|Touchez une abréviation pour la modifier ou la supprimer.|Tocca un’abbreviazione per modificarla o eliminarla.
+expansions_add|Add abbreviation|Abkürzung hinzufügen|Ajouter une abréviation|Aggiungi abbreviazione
+expansions_empty|No abbreviations. Add one or import a file.|Keine Abkürzungen. Fügen Sie eine hinzu oder importieren Sie eine Datei.|Aucune abréviation. Ajoutez-en une ou importez un fichier.|Nessuna abbreviazione. Aggiungine una o importa un file.
+expansions_key_hint|Abbreviation|Abkürzung|Abréviation|Abbreviazione
+expansions_row|%1$s, pronounced as %2$s, %3$s, %4$s|%1$s, ausgesprochen als %2$s, %3$s, %4$s|%1$s, prononcé comme %2$s, %3$s, %4$s|%1$s, pronunciato come %2$s, %3$s, %4$s
+expansions_any_capitals|case-insensitive|ohne Beachtung der Großschreibung|sans distinction de casse|senza distinguere maiuscole
+expansions_exact_capitals|case-sensitive|mit Beachtung der Großschreibung|avec distinction de casse|distinguendo maiuscole
+expansions_match_description|Choose where the abbreviation must match.|Wählen Sie die Trefferposition der Abkürzung.|Choisissez où l’abréviation doit correspondre.|Scegli dove deve corrispondere l’abbreviazione.
+expansions_match_whole|Whole word|Ganzes Wort|Mot entier|Parola intera
+expansions_match_whole_description|Only when it appears as a separate word.|Nur als eigenständiges Wort.|Seulement comme mot indépendant.|Solo come parola indipendente.
+expansions_match_starts|Start of a word|Wortanfang|Début d’un mot|Inizio di una parola
+expansions_match_starts_description|Matches at the beginning of a word.|Trifft am Anfang eines Wortes zu.|Correspond au début d’un mot.|Corrisponde all’inizio di una parola.
+expansions_match_anywhere|Anywhere|Beliebige Position|N’importe où|Qualsiasi posizione
+expansions_match_anywhere_description|Can match inside any word.|Kann innerhalb jedes Wortes zutreffen.|Peut correspondre à l’intérieur de tout mot.|Può corrispondere all’interno di qualsiasi parola.
+expansions_case_label|Ignore letter case|Groß- und Kleinschreibung ignorieren|Ignorer la casse|Ignora maiuscole e minuscole
+expansions_case_description|Recognizes any mix of upper and lower case. Disable to require exact spelling.|Erkennt beliebige Groß- und Kleinschreibung. Deaktivieren für exakte Schreibweise.|Reconnaît toute combinaison de casse. Désactivez pour exiger l’écriture exacte.|Riconosce qualsiasi combinazione di maiuscole. Disattiva per richiedere la scrittura esatta.
+expansions_imported|Imported %1$d abbreviations.|%1$d Abkürzungen importiert.|%1$d abréviations importées.|Importate %1$d abbreviazioni.
+expansions_import_nothing|The file contains no valid abbreviations.|Die Datei enthält keine gültigen Abkürzungen.|Le fichier ne contient aucune abréviation valide.|Il file non contiene abbreviazioni valide.
+expansions_exported|Exported %1$d abbreviations.|%1$d Abkürzungen exportiert.|%1$d abréviations exportées.|Esportate %1$d abbreviazioni.
+section_text|Reading|Vorlesen|Lecture|Lettura
+number_mode_label|Numbers|Zahlen|Nombres|Numeri
+number_mode_description|Normal reads whole numbers. Other modes split numbers of six or more digits: 985256 becomes 9 8 5 2 5 6, 98 52 56 or 985 256. Short numbers, years, prices, decimals and numbers with thousands separators remain whole.|Normal liest ganze Zahlen. Andere Modi teilen Zahlen ab sechs Ziffern: 985256 wird 9 8 5 2 5 6, 98 52 56 oder 985 256. Kurze Zahlen, Jahre, Preise, Dezimalzahlen und Zahlen mit Tausendertrennzeichen bleiben ganz.|Normal lit les nombres entiers. Les autres modes divisent ceux d’au moins six chiffres : 985256 devient 9 8 5 2 5 6, 98 52 56 ou 985 256. Nombres courts, années, prix, décimaux et nombres avec séparateurs de milliers restent entiers.|Normale legge numeri interi. Gli altri modi dividono quelli di almeno sei cifre: 985256 diventa 9 8 5 2 5 6, 98 52 56 o 985 256. Numeri brevi, anni, prezzi, decimali e numeri con separatori delle migliaia restano interi.
+otp_label|Read verification codes digit by digit|Bestätigungscodes ziffernweise lesen|Lire les codes chiffre par chiffre|Leggi i codici cifra per cifra
+otp_description|A code detected from context, such as “your code is 492801”, is read 4 9 2 8 0 1. Context is recognized in English, German, Spanish, French and Italian.|Ein anhand des Kontexts erkannter Code wie „Ihr Code ist 492801“ wird als 4 9 2 8 0 1 gelesen. Der Kontext wird auf Englisch, Deutsch, Spanisch, Französisch und Italienisch erkannt.|Un code détecté par le contexte, comme « votre code est 492801 », est lu 4 9 2 8 0 1. Le contexte est reconnu en anglais, allemand, espagnol, français et italien.|Un codice rilevato dal contesto, come «il tuo codice è 492801», viene letto 4 9 2 8 0 1. Il contesto è riconosciuto in inglese, tedesco, spagnolo, francese e italiano.
+number_as_is|Normal|Normal|Normal|Normale
+number_digits|Digits|Ziffern|Chiffres|Cifre
+number_pairs|Pairs|Paare|Paires|Coppie
+number_triplets|Triplets|Dreiergruppen|Triplets|Terne
+emoji_label|Read emojis|Emojis vorlesen|Lire les emojis|Leggi emoji
+emoji_description|Reads emoji names or skips them.|Liest Emoji-Namen oder überspringt sie.|Lit le nom des emojis ou les ignore.|Legge i nomi degli emoji o li ignora.
+capital_label|Capital letters|Großbuchstaben|Majuscules|Maiuscole
+capital_description|How to announce isolated capital letters.|Ansage einzelner Großbuchstaben.|Comment annoncer les majuscules isolées.|Come annunciare le lettere maiuscole isolate.
+capital_cap|Say capital|Großbuchstabe ansagen|Dire majuscule|Pronuncia maiuscola
+capital_pitch|Raise pitch|Tonhöhe erhöhen|Élever la hauteur|Alza l’altezza
+ssml_label|Remove tags|Tags entfernen|Supprimer les balises|Rimuovi tag
+ssml_description|Removes SSML tags so they are not spoken.|Entfernt SSML-Tags, damit sie nicht vorgelesen werden.|Supprime les balises SSML pour ne pas les prononcer.|Rimuove i tag SSML per non pronunciarli.
+text_styles_label|Read text styles|Textstile vorlesen|Lire les styles de texte|Leggi stili del testo
+text_styles_description|Announces bold, italics, links, colors and other styles when present in the text.|Nennt Fett- und Kursivschrift, Links, Farben und weitere enthaltene Stile.|Annonce gras, italique, liens, couleurs et autres styles présents dans le texte.|Annuncia grassetto, corsivo, link, colori e altri stili presenti nel testo.
+spelling_label|Spelling|Buchstabieren|Épellation|Compitazione
+spelling_description|Reads letter by letter using letter names or the radio alphabet.|Liest Buchstaben mit ihren Namen oder dem Funkalphabet.|Lit lettre par lettre avec les noms des lettres ou l’alphabet radio.|Legge lettera per lettera con i nomi delle lettere o l’alfabeto radiofonico.
+spelling_letters|Spell letters|Buchstaben vorlesen|Épeler les lettres|Compita lettere
+spelling_nato|Radio alphabet|Funkalphabet|Alphabet radio|Alfabeto radiofonico
+spelling_capitals|Spell uppercase words|Großgeschriebene Wörter buchstabieren|Épeler les mots en majuscules|Compita parole in maiuscolo
+spelling_capitals_nato|Uppercase with radio alphabet|Großschreibung mit Funkalphabet|Majuscules avec alphabet radio|Maiuscole con alfabeto radiofonico
+section_code_description|Options for reading source code.|Optionen zum Vorlesen von Quelltext.|Options de lecture du code source.|Opzioni per leggere il codice sorgente.
+code_mode_label|Read as code|Als Code vorlesen|Lire comme du code|Leggi come codice
+code_mode_description|Enables specialized source code reading.|Aktiviert die spezielle Quelltextlesung.|Active la lecture spécifique du code source.|Attiva la lettura specifica del codice sorgente.
+code_camel_label|Split camelCase|camelCase trennen|Séparer camelCase|Separa camelCase
+code_camel_description|Splits getElementById into get element by id.|Trennt getElementById in get element by id.|Sépare getElementById en get element by id.|Separa getElementById in get element by id.
+code_snake_label|Split snake_case|snake_case trennen|Séparer snake_case|Separa snake_case
+code_snake_description|Splits my_total_count into my total count.|Trennt my_total_count in my total count.|Sépare my_total_count en my total count.|Separa my_total_count in my total count.
+code_operators_label|Read operators|Operatoren vorlesen|Lire les opérateurs|Leggi operatori
+code_operators_description|Names operators such as equals, not equal or arrow.|Nennt Operatoren wie gleich, ungleich oder Pfeil.|Nomme les opérateurs comme égal, différent ou flèche.|Pronuncia operatori come uguale, diverso o freccia.
+code_braces_label|Read delimiters|Begrenzungszeichen vorlesen|Lire les délimiteurs|Leggi delimitatori
+code_braces_description|Names braces, brackets, parentheses, semicolons and other delimiters.|Nennt geschweifte und eckige Klammern, runde Klammern, Semikola und weitere Begrenzungszeichen.|Nomme les accolades, crochets, parenthèses, points-virgules et autres délimiteurs.|Pronuncia parentesi graffe, quadre, tonde, punti e virgola e altri delimitatori.
+code_indent_label|Announce indentation|Einrückung ansagen|Annoncer les retraits|Annuncia rientro
+code_indent_description|Announces each line’s indentation. Useful for Python.|Nennt die Einrückung jeder Zeile. Nützlich für Python.|Annonce le retrait de chaque ligne. Utile pour Python.|Annuncia il rientro di ogni riga. Utile per Python.
+code_paths_label|Read file paths|Dateipfade vorlesen|Lire les chemins de fichiers|Leggi percorsi dei file
+code_paths_description|Reads slashes and dots in paths.|Liest Schrägstriche und Punkte in Pfaden.|Lit les barres et les points des chemins.|Legge barre e punti nei percorsi.
+code_urls_label|Read web addresses|Webadressen vorlesen|Lire les adresses web|Leggi indirizzi web
+code_urls_description|Announces addresses, including dots and slashes.|Liest Adressen einschließlich Punkten und Schrägstrichen.|Annonce les adresses avec leurs points et barres.|Annuncia gli indirizzi con punti e barre.
+intonation_pauses_label|Pauses between sentences|Pausen zwischen Sätzen|Pauses entre les phrases|Pause tra le frasi
+intonation_pauses_description|Adds pauses between sentences.|Fügt Pausen zwischen Sätzen hinzu.|Ajoute des pauses entre les phrases.|Aggiunge pause tra le frasi.
+section_battery|Battery|Akku|Batterie|Batteria
+battery_section_description|Keep speech active in the background.|Sprachausgabe im Hintergrund aktiv halten.|Gardez la voix active en arrière-plan.|Mantieni la voce attiva in background.
+battery_open|Battery settings|Akkueinstellungen|Réglages de batterie|Impostazioni batteria
+battery_open_description|Options to keep speech active.|Optionen für aktive Sprachausgabe.|Options pour garder la voix active.|Opzioni per mantenere attiva la voce.
+battery_screen_description|These settings help Android keep speech available.|Diese Einstellungen helfen Android, Sprache verfügbar zu halten.|Ces réglages aident Android à garder la voix disponible.|Queste impostazioni aiutano Android a mantenere disponibile la voce.
+battery_exemption_label|Exclude from battery optimization|Von Akkuoptimierung ausschließen|Exclure de l’optimisation de batterie|Escludi dall’ottimizzazione della batteria
+battery_exemption_granted|Allowed|Erlaubt|Autorisé|Consentito
+battery_exemption_not_granted|Not allowed. Tap to allow.|Nicht erlaubt. Zum Erlauben antippen.|Non autorisé. Touchez pour autoriser.|Non consentito. Tocca per consentire.
+battery_exemption_description|Helps prevent Android from stopping speech when the phone sleeps.|Hilft, Sprachunterbrechungen im Ruhezustand zu vermeiden.|Aide à empêcher Android d’arrêter la voix quand le téléphone est en veille.|Aiuta a evitare che Android arresti la voce quando il telefono è in riposo.
+persistent_notification_label|Stay in foreground even when idle|Auch im Leerlauf im Vordergrund bleiben|Rester au premier plan au repos|Resta in primo piano anche a riposo
+persistent_notification_description|A persistent notification helps keep speech active while locked. Disabling it hides that notification.|Eine dauerhafte Benachrichtigung hilft bei gesperrtem Telefon. Deaktivieren blendet diese Benachrichtigung aus.|Une notification permanente aide à garder la voix active téléphone verrouillé. La désactivation masque cette notification.|Una notifica permanente mantiene attiva la voce a telefono bloccato. Disattivandola, la notifica viene nascosta.
+notification_stop_label|Stop button|Stopptaste|Bouton d’arrêt|Pulsante di arresto
+notification_stop_description|Adds a stop speech button to the notification.|Fügt eine Taste zum Stoppen der Sprache hinzu.|Ajoute un bouton pour arrêter la voix dans la notification.|Aggiunge alla notifica un pulsante per arrestare la voce.
+start_on_boot_label|Start when the phone turns on|Beim Einschalten starten|Démarrer à l’allumage|Avvia all’accensione
+start_on_boot_description|Starts the service after the phone restarts.|Startet den Dienst nach dem Neustart.|Démarre le service après redémarrage du téléphone.|Avvia il servizio dopo il riavvio del telefono.
+battery_notification_on|The notification is enabled and stays visible.|Die Benachrichtigung ist aktiviert und bleibt sichtbar.|La notification est activée et reste visible.|La notifica è attivata e rimane visibile.
+battery_notification_off|No persistent notification. Enable it using the option above.|Keine dauerhafte Benachrichtigung. Über die obige Option aktivieren.|Aucune notification permanente. Activez-la avec l’option ci-dessus.|Nessuna notifica permanente. Attivala con l’opzione precedente.
+foreground_while_speaking_label|Foreground while speaking|Vordergrund beim Sprechen|Premier plan pendant la lecture|Primo piano durante la lettura
+foreground_while_speaking_description|Keeps the service in foreground during reading.|Hält den Dienst während des Vorlesens im Vordergrund.|Maintient le service au premier plan pendant la lecture.|Mantiene il servizio in primo piano durante la lettura.
+battery_idle_heading|Idle|Im Leerlauf|Au repos|A riposo
+battery_speaking_heading|During reading|Beim Vorlesen|Pendant la lecture|Durante la lettura
+battery_fault_heading|Troubleshooting|Fehlerdiagnose|Diagnostic des pannes|Diagnosi dei problemi
+wake_lock_label|Keep CPU awake|CPU wach halten|Garder le processeur actif|Mantieni attiva la CPU
+wake_lock_description|Prevents the CPU from sleeping during reading.|Verhindert CPU-Ruhezustand beim Vorlesen.|Empêche le processeur de dormir pendant la lecture.|Impedisce alla CPU di entrare in riposo durante la lettura.
+track_actions_label|Log actions|Aktionen protokollieren|Journaliser les actions|Registra azioni
+track_actions_description|Saves actions in the log to investigate problems.|Speichert Aktionen zur Fehleruntersuchung im Protokoll.|Enregistre les actions pour examiner les pannes.|Salva le azioni nel registro per analizzare i problemi.
+keep_alive_channel|Speech active|Stimme aktiv|Voix active|Voce attiva
+keep_alive_channel_description|Indicates speech is active. Stop interrupts reading.|Zeigt aktive Sprache an. Stopp unterbricht das Vorlesen.|Indique que la voix est active. Arrêter interrompt la lecture.|Indica che la voce è attiva. Arresta interrompe la lettura.
+keep_alive_stop|Stop|Stoppen|Arrêter|Arresta
+keep_alive_title|OpenEVV active|OpenEVV aktiv|OpenEVV actif|OpenEVV attivo
+keep_alive_text|Speech remains active in the background.|Die Stimme bleibt im Hintergrund aktiv.|La voix reste active en arrière-plan.|La voce rimane attiva in background.
+battery_never|Never|Nie|Jamais|Mai
+battery_forever|Always|Immer|Toujours|Sempre
+wake_lock_tail_label|Keep CPU awake afterwards|CPU danach wach halten|Garder le processeur actif ensuite|Mantieni la CPU attiva dopo
+wake_lock_tail_description|How long the CPU stays awake after reading ends.|Dauer der CPU-Aktivität nach dem Vorlesen.|Durée pendant laquelle le processeur reste actif après la lecture.|Tempo durante il quale la CPU resta attiva dopo la lettura.
+speech_lead_label|Audio lookahead|Audiovorlauf|Anticipation audio|Anticipo audio
+speech_lead_description|How much audio is generated in advance. Lower values allow playback to stop sooner.|Vorab erzeugte Audiomenge. Kleinere Werte ermöglichen schnelleres Stoppen.|Quantité de son générée à l’avance. Une valeur moindre permet un arrêt plus rapide.|Quantità di audio generata in anticipo. Valori inferiori permettono un arresto più rapido.
+run_ahead_label|Synthesize long texts ahead|Lange Texte voraus synthetisieren|Anticiper la synthèse des textes longs|Anticipa la sintesi di testi lunghi
+run_ahead_description|Allows the engine to run ahead when synthesizing long paragraphs.|Erlaubt Vorausberechnung bei der Synthese langer Absätze.|Permet au moteur de prendre de l’avance sur les paragraphes longs.|Permette al motore di avanzare nella sintesi di paragrafi lunghi.
+engine_release_label|Release engine when idle|Engine im Leerlauf freigeben|Libérer le moteur au repos|Rilascia il motore a riposo
+engine_release_description|How long to keep the engine after reading ends.|Dauer, für die die Engine nach dem Vorlesen erhalten bleibt.|Durée de conservation du moteur après la lecture.|Tempo di mantenimento del motore dopo la lettura.
+engine_silence_label|Stop on prolonged silence|Bei langer Stille stoppen|Arrêter après un long silence|Arresta dopo un silenzio prolungato
+engine_silence_description|Timeout when the engine stops producing audio.|Wartezeit, wenn die Engine kein Audio mehr erzeugt.|Délai si le moteur cesse de produire du son.|Tempo di attesa se il motore smette di produrre audio.
+battery_manufacturer_open|Open phone background settings|Hintergrundeinstellungen des Telefons öffnen|Ouvrir les réglages d’arrière-plan du téléphone|Apri le impostazioni di background del telefono
+battery_android_open|Open Android battery settings|Android-Akkueinstellungen öffnen|Ouvrir les paramètres de batterie Android|Apri le impostazioni batteria di Android
+battery_manufacturer_description|Some manufacturers add battery and background settings. Open them here.|Manche Hersteller ergänzen Akku- und Hintergrundeinstellungen. Hier öffnen.|Certains fabricants ajoutent des réglages de batterie et d’arrière-plan. Ouvrez-les ici.|Alcuni produttori aggiungono impostazioni batteria e background. Aprile qui.
+battery_no_screen|No specific settings found. See Battery and Apps in system settings.|Keine speziellen Einstellungen gefunden. Prüfen Sie Akku und Apps in den Systemeinstellungen.|Aucun réglage spécifique trouvé. Consultez Batterie et Applications dans les paramètres système.|Nessuna impostazione specifica trovata. Consulta Batteria e App nelle impostazioni di sistema.
+battery_boot_needs_notification|The notification was also enabled.|Die Benachrichtigung wurde ebenfalls aktiviert.|La notification a aussi été activée.|È stata attivata anche la notifica.
+battery_now|Now: %1$s. %2$s Notifications: %3$s.|Jetzt: %1$s. %2$s Benachrichtigungen: %3$s.|Maintenant : %1$s. %2$s Notifications : %3$s.|Ora: %1$s. %2$s Notifiche: %3$s.
+battery_now_wanted|notification enabled|Benachrichtigung aktiviert|notification activée|notifica attivata
+battery_now_unwanted|notification disabled|Benachrichtigung deaktiviert|notification désactivée|notifica disattivata
+battery_now_service|Service active.|Dienst aktiv.|Service actif.|Servizio attivo.
+battery_now_none|Active only while in use.|Nur während der Nutzung aktiv.|Actif seulement pendant l’utilisation.|Attivo solo durante l’uso.
+battery_now_allowed|Allowed|Erlaubt|Autorisées|Consentite
+battery_now_refused|Not allowed|Nicht erlaubt|Non autorisées|Non consentite
+section_other|Other settings|Weitere Einstellungen|Autres réglages|Altre impostazioni
+pauses_label|Pauses|Pausen|Pauses|Pause
+pauses_description|Pause duration. Short pauses speed up reading.|Pausendauer. Kurze Pausen beschleunigen das Vorlesen.|Durée des pauses. Les pauses courtes accélèrent la lecture.|Durata delle pause. Pause brevi velocizzano la lettura.
+pauses_keep|Normal pauses|Normale Pausen|Pauses normales|Pause normali
+pauses_end|Shorten at the end|Am Ende verkürzen|Raccourcir à la fin|Accorcia alla fine
+pauses_all|Shorten all|Alle verkürzen|Tout raccourcir|Accorcia tutte
+symbol_label|Symbols|Symbole|Symboles|Simboli
+symbol_description|Choose which symbols are spoken.|Wählen Sie die vorgelesenen Symbole.|Choisissez les symboles prononcés.|Scegli i simboli da pronunciare.
+symbol_mode_label|Symbol mode|Symbolmodus|Mode des symboles|Modalità simboli
+symbol_mode_all|All|Alle|Tous|Tutti
+symbol_mode_most|Most|Die meisten|La plupart|La maggior parte
+symbol_mode_some|Some|Einige|Certains|Alcuni
+symbol_mode_custom|Custom|Benutzerdefiniert|Personnalisé|Personalizzato
+symbol_mode_none|None|Keine|Aucun|Nessuno
+symbol_all_description|Reads all symbols, including periods and commas.|Liest alle Symbole einschließlich Punkt und Komma.|Lit tous les symboles, y compris le point et la virgule.|Legge tutti i simboli, inclusi punto e virgola.
+symbol_most_description|Reads brackets, quotes, question marks, exclamation marks and other signs.|Liest Klammern, Anführungszeichen, Fragezeichen, Ausrufezeichen und weitere Zeichen.|Lit crochets, guillemets, points d’interrogation et d’exclamation et autres signes.|Legge parentesi, virgolette, punti interrogativi ed esclamativi e altri segni.
+symbol_some_description|Reads currency, math and isolated symbols.|Liest Währungs-, Mathematik- und einzelne Symbole.|Lit les symboles monétaires, mathématiques et isolés.|Legge simboli monetari, matematici e isolati.
+symbol_custom_description|Reads only selected symbols.|Liest nur ausgewählte Symbole.|Lit seulement les symboles choisis.|Legge solo i simboli selezionati.
+symbol_none_description|Does not read symbols.|Liest keine Symbole.|Ne lit pas les symboles.|Non legge i simboli.
+symbol_custom_hint|Symbols to read|Vorzulesende Symbole|Symboles à lire|Simboli da leggere
+reset_label|Reset voice|Stimme zurücksetzen|Réinitialiser la voix|Ripristina voce
+voice_reset|Reset %1$s parameters.|Parameter von %1$s zurückgesetzt.|Paramètres de %1$s réinitialisés.|Parametri di %1$s ripristinati.
+reset_description|Restores this voice’s default parameters.|Stellt die Standardparameter dieser Stimme wieder her.|Restaure les paramètres par défaut de cette voix.|Ripristina i parametri predefiniti di questa voce.
+section_test|Test|Test|Test|Prova
+test_description|Listen to the voice with current settings.|Stimme mit aktuellen Einstellungen anhören.|Écoutez la voix avec les réglages actuels.|Ascolta la voce con le impostazioni attuali.
+speak_label|Play sample|Beispiel abspielen|Lire l’échantillon|Riproduci esempio
+stop_label|Stop sample|Beispiel stoppen|Arrêter l’échantillon|Arresta esempio
+about_app|OpenEVV for Android and Wear OS. Experimental multilingual edition with equalizer.|OpenEVV für Android und Wear OS. Experimentelle mehrsprachige Ausgabe mit Equalizer.|OpenEVV pour Android et Wear OS. Édition multilingue expérimentale avec égaliseur.|OpenEVV per Android e Wear OS. Edizione sperimentale multilingue con equalizzatore.
+about_accessibility|Designed for blind and low-vision users, with accessible screen reader controls.|Für blinde und sehbehinderte Menschen entwickelt, mit zugänglichen Screenreader-Steuerelementen.|Conçu pour les personnes aveugles ou malvoyantes, avec des commandes accessibles aux lecteurs d’écran.|Progettato per persone cieche o ipovedenti, con controlli accessibili ai lettori di schermo.
+about_free|Free, with no account or payment. This edition works offline and does not check for updates.|Kostenlos, ohne Konto oder Zahlungen. Diese Ausgabe funktioniert offline und sucht keine Updates.|Gratuit, sans compte ni paiement. Cette édition fonctionne hors ligne et ne recherche pas de mises à jour.|Gratuito, senza account o pagamenti. Questa edizione funziona offline e non cerca aggiornamenti.
+about_unofficial|Independent project. Not a product of IBM, Nuance, Cerence or Google.|Unabhängiges Projekt. Kein Produkt von IBM, Nuance, Cerence oder Google.|Projet indépendant. Ce n’est pas un produit IBM, Nuance, Cerence ou Google.|Progetto indipendente. Non è un prodotto IBM, Nuance, Cerence o Google.
+about_developer_heading|Developers|Entwickler|Développeurs|Sviluppatori
+about_developer|Original project by Sujan Rai and the Blind Tech Nexus team.|Originalprojekt von Sujan Rai und dem Blind Tech Nexus-Team.|Projet original de Sujan Rai et de l’équipe Blind Tech Nexus.|Progetto originale di Sujan Rai e del team Blind Tech Nexus.
+about_team|Blind Tech Nexus creates apps for blind and low-vision users.|Blind Tech Nexus entwickelt Apps für blinde und sehbehinderte Menschen.|Blind Tech Nexus crée des applications pour les personnes aveugles ou malvoyantes.|Blind Tech Nexus crea app per persone cieche o ipovedenti.
+about_contact_heading|Original project contact|Kontakt zum Originalprojekt|Contact du projet original|Contatti del progetto originale
+about_contact_whatsapp|WhatsApp contact for bugs or ideas.|WhatsApp-Kontakt für Fehler oder Ideen.|Contact WhatsApp pour les erreurs ou idées.|Contatto WhatsApp per errori o idee.
+about_whatsapp_action|WhatsApp|WhatsApp|WhatsApp|WhatsApp
+about_contact_telegram|Telegram channel with news and other apps.|Telegram-Kanal mit Neuigkeiten und weiteren Apps.|Canal Telegram avec les nouveautés et d’autres applications.|Canale Telegram con novità e altre app.
+about_telegram_action|Telegram channel|Telegram-Kanal|Canal Telegram|Canale Telegram
+about_contact_email|Contact by email.|Kontakt per E-Mail.|Contact par courriel.|Contatto via email.
+about_email_action|Email|E-Mail|Courriel|Email
+about_build_heading|Version|Version|Version|Versione
+about_version|Version %1$s.|Version %1$s.|Version %1$s.|Versione %1$s.
+about_unavailable|Cannot open %1$s on this device.|%1$s kann auf diesem Gerät nicht geöffnet werden.|Impossible d’ouvrir %1$s sur cet appareil.|Impossibile aprire %1$s su questo dispositivo.
+about_updates_heading|Updates|Aktualisierungen|Mises à jour|Aggiornamenti
+about_updates|Original project updates may replace this experimental edition. They are not installed automatically.|Updates des Originalprojekts können diese experimentelle Ausgabe ersetzen. Sie werden nicht automatisch installiert.|Les mises à jour du projet original peuvent remplacer cette édition expérimentale. Elles ne sont pas installées automatiquement.|Gli aggiornamenti del progetto originale possono sostituire questa edizione sperimentale. Non vengono installati automaticamente.
+about_update_check|Check for updates|Nach Updates suchen|Rechercher des mises à jour|Cerca aggiornamenti
+about_update_check_description|Checks for a new version of the original project.|Prüft auf eine neue Version des Originalprojekts.|Recherche une nouvelle version du projet original.|Cerca una nuova versione del progetto originale.
+about_update_never_asked|Updates have not been checked yet.|Noch nicht nach Updates gesucht.|Les mises à jour n’ont pas encore été recherchées.|Non sono ancora stati cercati aggiornamenti.
+about_update_checking|Checking for updates.|Updates werden gesucht.|Recherche de mises à jour.|Ricerca aggiornamenti.
+about_update_current|Current version (%1$s).|Aktuelle Version (%1$s).|Version actuelle (%1$s).|Versione attuale (%1$s).
+about_update_found|Version %1$s is available.|Version %1$s ist verfügbar.|La version %1$s est disponible.|È disponibile la versione %1$s.
+about_update_unreachable|Could not check for updates.|Updates konnten nicht geprüft werden.|Impossible de rechercher les mises à jour.|Impossibile cercare aggiornamenti.
+about_update_dismissed|The update was not downloaded.|Das Update wurde nicht heruntergeladen.|La mise à jour n’a pas été téléchargée.|L’aggiornamento non è stato scaricato.
+about_update_answer_current|You have the current version: %1$s.|Sie haben die aktuelle Version: %1$s.|Vous avez la version actuelle : %1$s.|Hai la versione attuale: %1$s.
+about_update_answer_unreachable|Could not reach the update server.|Der Update-Server ist nicht erreichbar.|Impossible de joindre le serveur de mises à jour.|Impossibile raggiungere il server degli aggiornamenti.
+update_available_title|Update available|Update verfügbar|Mise à jour disponible|Aggiornamento disponibile
+update_available_message|Version %1$s is ready to download.|Version %1$s steht zum Download bereit.|La version %1$s est prête à télécharger.|La versione %1$s è pronta per il download.
+update_download_question|Download now?|Jetzt herunterladen?|Télécharger maintenant ?|Scaricare ora?
+update_download|Download|Herunterladen|Télécharger|Scarica
+update_later|Later|Später|Plus tard|Più tardi
+update_downloading_title|Downloading update|Update wird heruntergeladen|Téléchargement de la mise à jour|Download aggiornamento
+update_progress_of|%1$s of %2$s|%1$s von %2$s|%1$s sur %2$s|%1$s di %2$s
+update_progress_so_far|%1$s downloaded|%1$s heruntergeladen|%1$s téléchargés|%1$s scaricati
+update_cancel|Cancel|Abbrechen|Annuler|Annulla
+update_ready_title|Update ready to install|Update zur Installation bereit|Mise à jour prête à installer|Aggiornamento pronto per l’installazione
+update_nothing_to_install|Nothing to install.|Nichts zu installieren.|Rien à installer.|Niente da installare.
+update_refused|Cannot install the update.|Das Update kann nicht installiert werden.|Impossible d’installer la mise à jour.|Impossibile installare l’aggiornamento.
+update_failed|Download failed.|Download fehlgeschlagen.|Échec du téléchargement.|Download non riuscito.
+update_permission_title|Permission required|Berechtigung erforderlich|Autorisation nécessaire|Autorizzazione necessaria
+update_permission_message|Allow installation from this source, then check for updates again.|Erlauben Sie Installationen aus dieser Quelle und suchen Sie erneut nach Updates.|Autorisez l’installation depuis cette source puis recherchez à nouveau les mises à jour.|Consenti l’installazione da questa fonte e cerca di nuovo gli aggiornamenti.
+update_ok|OK|OK|OK|OK
+action_click_to_change|Tap to change|Zum Ändern antippen|Touchez pour modifier|Tocca per cambiare
+switch_on|On|Aktiviert|Activé|Attivato
+switch_off|Off|Deaktiviert|Désactivé|Disattivato
+save|Save|Speichern|Enregistrer|Salva
+percent_spoken|%1$d percent|%1$d Prozent|%1$d pour cent|%1$d per cento
+sample_text|Hello, this is an OpenEVV sample.|Hallo, dies ist ein OpenEVV-Beispiel.|Bonjour, voici un échantillon OpenEVV.|Ciao, questo è un esempio di OpenEVV.
+audio_description|Write text, generate audio with your voice and share or save it.|Text eingeben, Audio mit Ihrer Stimme erzeugen und teilen oder speichern.|Saisissez du texte, générez l’audio avec votre voix et partagez-le ou enregistrez-le.|Scrivi un testo, genera audio con la tua voce e condividilo o salvalo.
+audio_text_hint|Text to read|Vorzulesender Text|Texte à lire|Testo da leggere
+audio_generate|Generate audio|Audio erzeugen|Générer l’audio|Genera audio
+audio_generating|Generating… %1$d of %2$d characters.|Wird erzeugt… %1$d von %2$d Zeichen.|Génération… %1$d caractères sur %2$d.|Generazione… %1$d caratteri su %2$d.
+audio_ready|Audio ready. Share or save it.|Audio bereit. Teilen oder speichern.|Audio prêt. Partagez-le ou enregistrez-le.|Audio pronto. Condividilo o salvalo.
+audio_failed|Could not generate audio from this text.|Aus diesem Text konnte kein Audio erzeugt werden.|Impossible de générer l’audio de ce texte.|Impossibile generare audio da questo testo.
+audio_empty|Write some text first.|Geben Sie zuerst Text ein.|Saisissez d’abord du texte.|Scrivi prima un testo.
+audio_too_long|Text is too long. The limit is %1$d characters.|Text zu lang. Die Grenze liegt bei %1$d Zeichen.|Texte trop long. La limite est de %1$d caractères.|Testo troppo lungo. Il limite è di %1$d caratteri.
+audio_share|Share|Teilen|Partager|Condividi
+audio_saved|Saved.|Gespeichert.|Enregistré.|Salvato.
+audio_save_failed|Could not save the file.|Die Datei konnte nicht gespeichert werden.|Impossible d’enregistrer le fichier.|Impossibile salvare il file.
+audio_play|Play audio|Audio abspielen|Lire l’audio|Riproduci audio
+audio_pause|Pause|Pausieren|Pause|Pausa
+audio_replay|Play again|Erneut abspielen|Relire|Riproduci di nuovo
+audio_play_failed|Could not play the audio.|Das Audio konnte nicht abgespielt werden.|Impossible de lire l’audio.|Impossibile riprodurre l’audio.
+dictionary_search_hint|Search words or files|Wörter oder Dateien suchen|Rechercher des mots ou fichiers|Cerca parole o file
+eq_description|Five bands from −12 to +12 dB. Profiles adjust frequency balance; the limiter controls final amplitude. Neutral resets the equalizer. Settings apply to TTS, previews and audio files.|Fünf Bänder von −12 bis +12 dB. Profile ändern die Frequenzbalance; der Limiter begrenzt die Endamplitude. Neutral setzt den Equalizer zurück. Gilt für TTS, Beispiele und Audiodateien.|Cinq bandes de −12 à +12 dB. Les profils règlent l’équilibre fréquentiel ; le limiteur contrôle l’amplitude finale. Neutre réinitialise l’égaliseur. Ces réglages s’appliquent au TTS, aux échantillons et fichiers audio.|Cinque bande da −12 a +12 dB. I profili regolano il bilanciamento delle frequenze; il limitatore controlla l’ampiezza finale. Neutro ripristina l’equalizzatore. Vale per TTS, esempi e file audio.
+eq_title|Equalizer and timbre profiles|Equalizer und Klangprofile|Égaliseur et profils de timbre|Equalizzatore e profili di timbro
+page_home_description|Choose a category. Each subcategory opens a short screen.|Wählen Sie eine Kategorie. Jede Unterkategorie öffnet eine kurze Seite.|Choisissez une catégorie. Chaque sous-catégorie ouvre un écran court.|Scegli una categoria. Ogni sottocategoria apre una schermata breve.
+page_voice_title|Voice and sound|Stimme und Klang|Voix et son|Voce e suono
+page_voice_description|Language, voice characteristics, quality and equalization.|Sprache, Stimmeigenschaften, Qualität und Entzerrung.|Langue, caractéristiques vocales, qualité et égalisation.|Lingua, caratteristiche vocali, qualità ed equalizzazione.
+page_reading_title|Text reading|Texte vorlesen|Lecture de textes|Lettura testi
+page_reading_description|Numbers, capitals, spelling, pauses, symbols and code.|Zahlen, Großbuchstaben, Buchstabieren, Pausen, Symbole und Code.|Nombres, majuscules, épellation, pauses, symboles et code.|Numeri, maiuscole, compitazione, pause, simboli e codice.
+page_dictionaries_title|Pronunciation and dictionaries|Aussprache und Wörterbücher|Prononciation et dictionnaires|Pronuncia e dizionari
+page_dictionaries_description|Custom words and abbreviations.|Eigene Wörter und Abkürzungen.|Mots et abréviations personnalisés.|Parole e abbreviazioni personalizzate.
+page_system_title|Android operation|Android-Betrieb|Fonctionnement sous Android|Funzionamento in Android
+page_system_description|Battery, diagnostics and two independent engines.|Akku, Diagnose und zwei unabhängige Engines.|Batterie, diagnostic et deux moteurs indépendants.|Batteria, diagnosi e due motori indipendenti.
+page_selection_title|Language and voice selection|Sprach- und Stimmauswahl|Choix de langue et de voix|Selezione lingua e voce
+page_selection_description|Choose dialect, voice and vocal gender.|Sprachvariante, Stimme und Stimmgeschlecht wählen.|Choisissez la variante, la voix et le genre vocal.|Scegli variante linguistica, voce e genere vocale.
+page_timbre_description|Speed, pitch, pitch variation, resonance, breathiness and roughness.|Geschwindigkeit, Tonhöhe, Tonhöhenvariation, Resonanz, Behauchtheit und Rauheit.|Vitesse, hauteur, variation tonale, résonance, souffle et raucité.|Velocità, altezza, variazione tonale, risonanza, soffiosità e raucedine.
+page_quality_title|Quality and playback|Qualität und Wiedergabe|Qualité et lecture|Qualità e riproduzione
+page_quality_description|Output frequency, optimization and audio channel.|Ausgabefrequenz, Optimierung und Audiokanal.|Fréquence de sortie, optimisation et canal audio.|Frequenza di uscita, ottimizzazione e canale audio.
+page_eq_title|Equalizer and profiles|Equalizer und Profile|Égaliseur et profils|Equalizzatore e profili
+page_eq_description|Frequency bands, timbre profiles and resampling method.|Frequenzbänder, Klangprofile und Neuabtastungsmethode.|Bandes de fréquence, profils de timbre et méthode de rééchantillonnage.|Bande di frequenza, profili di timbro e metodo di ricampionamento.
+page_speed_title|Speed and volume|Geschwindigkeit und Lautstärke|Vitesse et volume|Velocità e volume
+page_speed_description|Pace and volume; priority over other apps’ settings.|Tempo und Lautstärke; Vorrang vor Einstellungen anderer Apps.|Rythme et volume ; priorité sur les réglages des autres applications.|Ritmo e volume; priorità sulle impostazioni delle altre app.
+page_pitch_title|Pitch and intonation|Tonhöhe und Intonation|Hauteur et intonation|Altezza e intonazione
+page_pitch_description|Voice pitch and range of pitch variation.|Tonhöhe und Umfang der Tonhöhenvariation.|Hauteur vocale et amplitude de variation tonale.|Altezza vocale e ampiezza della variazione tonale.
+page_color_title|Resonance and texture|Resonanz und Textur|Résonance et texture|Risonanza e consistenza
+page_color_description|Head size, roughness and breathiness.|Kopfgröße, Rauheit und Behauchtheit.|Taille de tête, raucité et souffle.|Dimensione della testa, raucedine e soffiosità.
+page_eq_bands_title|Bands and gain|Bänder und Verstärkung|Bandes et gain|Bande e guadagno
+page_eq_bands_description|Five-band equalizer and preamplification.|Fünfband-Equalizer und Vorverstärkung.|Égaliseur à cinq bandes et préamplification.|Equalizzatore a cinque bande e preamplificazione.
+page_eq_timbre_title|Timbre profiles|Klangprofile|Profils de timbre|Profili di timbro
+page_eq_timbre_description|Acoustic presets for a deep, high or soft voice.|Akustische Vorgaben für tiefe, hohe oder weiche Stimme.|Préréglages acoustiques pour voix grave, aiguë ou douce.|Profili acustici per una voce profonda, acuta o morbida.
+page_resampling_title|Resampling method|Neuabtastungsmethode|Méthode de rééchantillonnage|Metodo di ricampionamento
+page_resampling_description|Frequency conversion and explanation of source quality.|Frequenzumwandlung und Erklärung der Quellqualität.|Conversion de fréquence et explication de la qualité source.|Conversione della frequenza e spiegazione della qualità originale.
+page_text_title|Letters, styles and emojis|Buchstaben, Stile und Emojis|Lettres, styles et emojis|Lettere, stili ed emoji
+page_text_description|Capitals, spelling, tag and style handling.|Großbuchstaben, Buchstabieren, Tags und Stile.|Majuscules, épellation, traitement des balises et styles.|Maiuscole, compitazione, gestione di tag e stili.
+page_numbers_title|Numbers and codes|Zahlen und Codes|Nombres et codes|Numeri e codici
+page_numbers_description|Reading long numbers and verification codes.|Lange Zahlen und Bestätigungscodes vorlesen.|Lecture des nombres longs et codes de vérification.|Lettura di numeri lunghi e codici di verifica.
+page_prosody_title|Pauses and symbols|Pausen und Symbole|Pauses et symboles|Pause e simboli
+page_prosody_description|Pauses, sentence grouping and spoken signs.|Pausen, Satzgruppierung und vorgelesene Zeichen.|Pauses, regroupement de phrases et signes prononcés.|Pause, raggruppamento delle frasi e segni pronunciati.
+page_code_title|Programming text|Programmierungstext|Textes de programmation|Testi di programmazione
+page_code_description|Read operators, delimiters, indentation, paths and addresses.|Operatoren, Begrenzungszeichen, Einrückungen, Pfade und Adressen vorlesen.|Lecture des opérateurs, délimiteurs, retraits, chemins et adresses.|Lettura di operatori, delimitatori, rientri, percorsi e indirizzi.
+page_notification_title|Notification customization|Benachrichtigungen anpassen|Personnalisation des notifications|Personalizzazione notifiche
+page_notification_description|Quick controls, TTS balance and wireless maintenance.|Schnellsteuerung, TTS-Balance und Drahtlosverbindung.|Commandes rapides, balance TTS et maintien sans fil.|Controlli rapidi, bilanciamento TTS e mantenimento wireless.
+page_engines_title|Two independent engines|Zwei unabhängige Engines|Deux moteurs indépendants|Due motori indipendenti
+page_engines_description|Separate the screen reader from other apps.|Screenreader von anderen Apps trennen.|Séparer le lecteur d’écran des autres applications.|Separa il lettore di schermo dalle altre app.
+eq_text_4|Neutral|Neutral|Neutre|Neutro
+eq_text_5|Deep|Tief|Grave|Profondo
+eq_text_6|High|Hoch|Aigu|Acuto
+eq_text_7|Soft|Weich|Doux|Morbido
+eq_text_8|Clarity|Klarheit|Clarté|Chiarezza
+eq_text_10|Equalizer profile|Equalizer-Profil|Profil d’égalisation|Profilo di equalizzazione
+eq_text_11|Preamplification|Vorverstärkung|Préamplification|Preamplificazione
+eq_text_12|These profiles change the selected voice’s pitch, resonance, roughness and breathiness. Adjust each parameter afterwards or reset the voice.|Diese Profile ändern Tonhöhe, Resonanz, Rauheit und Behauchtheit der gewählten Stimme. Danach einzelne Parameter anpassen oder die Stimme zurücksetzen.|Ces profils modifient la hauteur, la résonance, la raucité et le souffle de la voix choisie. Réglez ensuite chaque paramètre ou réinitialisez la voix.|Questi profili cambiano altezza, risonanza, raucedine e soffiosità della voce scelta. Regola poi ogni parametro o ripristina la voce.
+eq_text_13|Deep|Tief|Grave|Profonda
+eq_text_14|High|Hoch|Aiguë|Acuta
+eq_text_16|Follow quality setting|Qualitätseinstellung folgen|Selon la qualité|Secondo la qualità
+eq_text_17|Hold|Halten|Maintien|Mantenimento
+eq_text_18|Linear|Linear|Linéaire|Lineare
+eq_text_19|Cubic|Kubisch|Cubique|Cubico
+eq_text_20|Sinc|Sinc|Sinc|Sinc
+eq_text_21|Engine resampling|Engine-Neuabtastung|Rééchantillonnage du moteur|Ricampionamento del motore
+eq_text_22|Choose how the engine converts its 11,025 Hz audio. Sinc filters spectral replicas without adding acoustic information. Follow quality preserves automatic selection.|Wählen Sie die Umwandlung des 11 025-Hz-Audios. Sinc filtert Spektralbilder ohne zusätzliche Klanginformationen. Qualitätseinstellung folgen behält die automatische Wahl bei.|Choisissez la conversion du son à 11 025 Hz. Sinc filtre les répliques spectrales sans ajouter d’information acoustique. Selon la qualité conserve le choix automatique.|Scegli come convertire l’audio a 11.025 Hz. Sinc filtra le repliche spettrali senza aggiungere informazioni acustiche. Secondo la qualità mantiene la scelta automatica.
+eq_text_23|Output frequency is not bit depth. Audio is 16-bit PCM. The usual source is 11,025 Hz, with a theoretical frequency limit of 5,512.5 Hz. 22,050, 24,000 and 32,000 Hz outputs are resampled. Sinc is recommended to filter spectral replicas.|Ausgabefrequenz ist keine Bittiefe. Audio ist 16-Bit-PCM. Die übliche Quelle hat 11 025 Hz mit theoretischer Frequenzgrenze 5 512,5 Hz. 22 050, 24 000 und 32 000 Hz sind neu abgetastet. Sinc wird zum Filtern von Spektralbildern empfohlen.|La fréquence de sortie n’est pas la profondeur de bits. Le son est PCM 16 bits. La source habituelle est à 11 025 Hz, limitée théoriquement à 5 512,5 Hz. Les sorties à 22 050, 24 000 et 32 000 Hz sont rééchantillonnées. Sinc est recommandé pour filtrer les répliques spectrales.|La frequenza di uscita non è la profondità in bit. L’audio è PCM a 16 bit. La fonte abituale è a 11.025 Hz, con limite teorico di 5.512,5 Hz. Le uscite a 22.050, 24.000 e 32.000 Hz sono ricampionate. Sinc è consigliato per filtrare le repliche spettrali.
+interface_text_1|Interface mode|Oberflächenmodus|Mode de l’interface|Modalità interfaccia
+interface_text_3|Standard|Standard|Standard|Standard
+interface_text_4|Expert|Experte|Expert|Esperto
+interface_text_5|Standard shows explanations. Expert keeps names, values and accessible controls with less text.|Standard zeigt Erklärungen. Experte behält Namen, Werte und zugängliche Steuerelemente mit weniger Text.|Standard affiche les explications. Expert conserve noms, valeurs et commandes accessibles avec moins de texte.|Standard mostra spiegazioni. Esperto conserva nomi, valori e controlli accessibili con meno testo.
+notification_text_2|Two buttons adjust the chosen parameter; the third stops speech and noise. Changes apply to upcoming sentences. Speed, pitch and language chosen here override the requesting app.|Zwei Tasten ändern den gewählten Parameter; die dritte stoppt Sprache und Rauschen. Änderungen gelten für folgende Sätze. Geschwindigkeit, Tonhöhe und Sprache haben Vorrang vor der anfragenden App.|Deux boutons règlent le paramètre choisi ; le troisième arrête voix et bruit. Les changements s’appliquent aux prochaines phrases. Vitesse, hauteur et langue choisies ici priment sur l’application demandeuse.|Due pulsanti regolano il parametro scelto; il terzo arresta voce e rumore. Le modifiche valgono per le prossime frasi. Velocità, altezza e lingua scelte qui hanno priorità sull’app richiedente.
+notification_text_3|Show engine notification|Engine-Benachrichtigung anzeigen|Afficher la notification du moteur|Mostra notifica del motore
+notification_text_4|Allow this app’s notifications in Android to see controls.|Erlauben Sie Android-Benachrichtigungen dieser App, um die Steuerung zu sehen.|Autorisez les notifications de cette application dans Android pour voir les commandes.|Consenti le notifiche di questa app in Android per vedere i controlli.
+notification_text_5|Enable customizable controls|Anpassbare Steuerung aktivieren|Activer les commandes personnalisables|Attiva controlli personalizzabili
+notification_text_6|Notification parameter|Benachrichtigungsparameter|Paramètre de notification|Parametro della notifica
+notification_text_7|TTS output ear|TTS-Ausgabeohr|Oreille pour le TTS|Orecchio per il TTS
+notification_text_9|Left only|Nur links|Gauche seulement|Solo sinistro
+notification_text_11|Right only|Nur rechts|Droite seulement|Solo destro
+notification_text_12|Only engine audio is changed. Music and videos keep their balance. Android may mix channels when mono audio is enabled.|Nur das Engine-Audio wird geändert. Musik und Videos behalten ihre Balance. Android kann bei Mono-Audio die Kanäle mischen.|Seul le son du moteur est modifié. Musique et vidéos gardent leur balance. Android peut mélanger les canaux si le son mono est activé.|Cambia solo l’audio del motore. Musica e video mantengono il bilanciamento. Android può mescolare i canali se l’audio mono è attivo.
+notification_text_13|Wireless maintenance with white noise|Drahtlosverbindung mit weißem Rauschen erhalten|Maintien sans fil avec bruit blanc|Mantenimento wireless con rumore bianco
+notification_text_15|Maximum noise level|Maximaler Rauschpegel|Niveau maximal de bruit|Livello massimo del rumore
+notification_text_17|Stop and disable wireless noise|Drahtlosrauschen stoppen und deaktivieren|Arrêter et désactiver le bruit sans fil|Arresta e disattiva rumore wireless
+notification_text_18|Stop speech and noise now|Sprache und Rauschen jetzt stoppen|Arrêter voix et bruit maintenant|Arresta subito voce e rumore
+settings_text_1|Install Principal and Auxiliar. They are separate apps with their own settings, process and synthesis queue.|Installieren Sie Principal und Auxiliar. Sie sind getrennte Apps mit eigenen Einstellungen, Prozessen und Synthesewarteschlangen.|Installez Principal et Auxiliar. Ce sont des applications distinctes avec leurs réglages, processus et files de synthèse.|Installa Principal e Auxiliar. Sono app distinte con impostazioni, processi e code di sintesi propri.
+settings_text_2|If your screen reader follows Android’s default engine, select Principal in the system and Auxiliar in the other app. If the reader lets you choose an engine, assign Auxiliar to it and keep Principal for other apps.|Folgt Ihr Screenreader der Android-Standardengine, wählen Sie Principal im System und Auxiliar in der anderen App. Erlaubt der Reader die Engine-Wahl, weisen Sie ihm Auxiliar zu und behalten Principal für andere Apps.|Si votre lecteur utilise le moteur Android par défaut, choisissez Principal dans le système et Auxiliar dans l’autre application. S’il permet de choisir le moteur, affectez-lui Auxiliar et gardez Principal pour les autres applications.|Se il lettore segue il motore predefinito di Android, scegli Principal nel sistema e Auxiliar nell’altra app. Se permette di scegliere il motore, assegnagli Auxiliar e mantieni Principal per le altre app.
+settings_text_3|Apps using only the default engine share its queue. The engine cannot change their selection. Android and apps may mix audio or reduce volume.|Apps mit Standardengine teilen deren Warteschlange. Die Engine kann ihre Wahl nicht ändern. Android und Apps können Audio mischen oder die Lautstärke senken.|Les applications utilisant uniquement le moteur par défaut partagent sa file. Le moteur ne peut modifier leur choix. Android et les applications peuvent mélanger l’audio ou réduire son volume.|Le app che usano solo il motore predefinito condividono la coda. Il motore non può cambiare la loro scelta. Android e le app possono mescolare l’audio o ridurre il volume.
+eq_band|%1$d Hz band|%1$d-Hz-Band|Bande de %1$d Hz|Banda di %1$d Hz
+eq_applied|Applied %1$s profile to %2$s.|Profil %1$s auf %2$s angewendet.|Profil %1$s appliqué à %2$s.|Profilo %1$s applicato a %2$s.
+eq_method_value|Resampling: %1$s|Neuabtastung: %1$s|Rééchantillonnage : %1$s|Ricampionamento: %1$s
+notification_decrease|Decrease %1$s|%1$s verringern|Diminuer %1$s|Diminuisci %1$s
+notification_increase|Increase %1$s|%1$s erhöhen|Augmenter %1$s|Aumenta %1$s
+notification_previous|%1$s: previous|%1$s: vorherige|%1$s : précédent|%1$s: precedente
+notification_next|%1$s: next|%1$s: nächste|%1$s : suivant|%1$s: successivo
+notification_noise_value|Level: %1$d dBFS|Pegel: %1$d dBFS|Niveau : %1$d dBFS|Livello: %1$d dBFS
+seconds_value|%1$d seconds|%1$d Sekunden|%1$d secondes|%1$d secondi
+eq_profile_value|Equalizer profile: %1$s|Equalizer-Profil: %1$s|Profil d’égalisation : %1$s|Profilo di equalizzazione: %1$s
+interface_mode_value|Mode: %1$s|Modus: %1$s|Mode : %1$s|Modalità: %1$s
+notification_parameter_value|Parameter: %1$s|Parameter: %1$s|Paramètre : %1$s|Parametro: %1$s
+notification_time_value|Maximum time: %1$d seconds|Maximale Zeit: %1$d Sekunden|Durée maximale : %1$d secondes|Tempo massimo: %1$d secondi
+notification_balance_value|TTS balance: %1$d|TTS-Balance: %1$d|Balance TTS : %1$d|Bilanciamento TTS: %1$d
+control_text_3|Pitch variation|Tonhöhenvariation|Variation tonale|Variazione tonale
+control_text_4|Resonance|Resonanz|Résonance|Risonanza
+control_text_7|Voice volume|Stimmlautstärke|Volume vocal|Volume vocale
+control_text_12|Balanced|Ausgewogen|Équilibré|Bilanciato
+control_text_16|Follow quality setting|Qualitätseinstellung folgen|Selon la qualité|Secondo la qualità
+control_text_21|Language|Sprache|Langue|Lingua
+control_text_22|English (United States)|Englisch (Vereinigte Staaten)|Anglais (États-Unis)|Inglese (Stati Uniti)
+control_text_23|English (United Kingdom)|Englisch (Vereinigtes Königreich)|Anglais (Royaume-Uni)|Inglese (Regno Unito)
+control_text_24|Spanish (Spain)|Spanisch (Spanien)|Espagnol (Espagne)|Spagnolo (Spagna)
+control_text_25|Spanish (Mexico)|Spanisch (Mexiko)|Espagnol (Mexique)|Spagnolo (Messico)
+control_text_26|French (France)|Französisch (Frankreich)|Français (France)|Francese (Francia)
+control_text_27|French (Canada)|Französisch (Kanada)|Français (Canada)|Francese (Canada)
+control_text_28|German|Deutsch|Allemand|Tedesco
+control_text_29|Italian|Italienisch|Italien|Italiano
+control_text_36|Output frequency|Ausgabefrequenz|Fréquence de sortie|Frequenza di uscita
+control_text_37|Playback channel|Wiedergabekanal|Canal de lecture|Canale di riproduzione
+control_text_41|Duplicated|Doppelt|Dupliqué|Duplicato
+control_text_42|TTS balance|TTS-Balance|Balance TTS|Bilanciamento TTS
+control_text_43|Noise level, dBFS|Rauschpegel, dBFS|Niveau de bruit, dBFS|Livello del rumore, dBFS
+control_text_44|Maintenance time, seconds|Haltezeit, Sekunden|Durée de maintien, secondes|Tempo di mantenimento, secondi
+control_text_45|Wireless noise|Drahtlosrauschen|Bruit sans fil|Rumore wireless
+control_text_48|Equalizer gain, dB|Equalizer-Verstärkung, dB|Gain d’égaliseur, dB|Guadagno equalizzatore, dB
+control_eq_band|Equalizer %1$d Hz, dB|Equalizer %1$d Hz, dB|Égaliseur %1$d Hz, dB|Equalizzatore %1$d Hz, dB
+control_default|Voice default|Stimmstandard|Valeur par défaut de la voix|Valore predefinito della voce
+control_notification|%1$s: %2$s. Open to customize controls.|%1$s: %2$s. Zum Anpassen öffnen.|%1$s : %2$s. Ouvrez pour personnaliser les commandes.|%1$s: %2$s. Apri per personalizzare i controlli.
+control_load_voice|Play a sentence in the selected language to load its voice values.|Spielen Sie einen Satz in der gewählten Sprache, um die Stimmwerte zu laden.|Lisez une phrase dans la langue choisie pour charger les valeurs de sa voix.|Riproduci una frase nella lingua selezionata per caricare i valori della voce.
+about_distribution|The original updater is disabled. This edition does not download or install updates. Engine improvements are distributed in new APKs from this branch.|Der ursprüngliche Updater ist deaktiviert. Diese Ausgabe lädt oder installiert keine Updates. Engine-Verbesserungen werden als neue APKs dieses Zweigs verteilt.|Le programme de mise à jour original est désactivé. Cette édition ne télécharge ni n’installe de mises à jour. Les améliorations du moteur sont distribuées dans de nouveaux APK de cette branche.|L’aggiornatore originale è disattivato. Questa edizione non scarica né installa aggiornamenti. Le migliorie del motore vengono distribuite in nuovi APK di questo ramo.
+about_installation|Installation ID: %1$s|Installationskennung: %1$s|Identifiant d’installation : %1$s|Identificatore installazione: %1$s
+default_tts_do_not_show|Do not show again|Nicht mehr anzeigen|Ne plus afficher|Non mostrare più
+notification_balance_direction|TTS balance: %1$s|TTS-Balance: %1$s|Balance du TTS : %1$s|Bilanciamento TTS: %1$s
+resampling_automatic_value|%1$s (%2$s)|%1$s (%2$s)|%1$s (%2$s)|%1$s (%2$s)
+notification_text_14|Experimental, initially off. Requires an active notification and app playback through Accessibility or Media. Keeps stereo Bluetooth active between synthesis requests, including with the screen off, up to the selected limit. Each utterance restarts the timer. Stops during speech, disconnection or calls. May reduce device wake-up time; does not remove codec delay.|Experimentell, anfangs deaktiviert. Benötigt eine aktive Benachrichtigung und Wiedergabe durch die App über Bedienungshilfen oder Medien. Hält Stereo-Bluetooth zwischen Sprachanfragen bis zum gewählten Limit aktiv, auch bei ausgeschaltetem Bildschirm. Jede Äußerung startet den Timer neu. Stoppt beim Sprechen, bei Trennung oder Anrufen. Kann die Aufwachzeit des Geräts verkürzen; beseitigt die Codec-Verzögerung nicht.|Expérimental, désactivé au départ. Nécessite une notification active et une lecture par l’application via Accessibilité ou Multimédia. Maintient le Bluetooth stéréo entre les demandes de synthèse jusqu’à la limite choisie, même écran éteint. Chaque énoncé relance le délai. S’arrête pendant la parole, une déconnexion ou un appel. Peut réduire le réveil du périphérique ; ne supprime pas le délai du codec.|Sperimentale, inizialmente disattivato. Richiede una notifica attiva e la riproduzione dell’app tramite Accessibilità o Multimedia. Mantiene attivo il Bluetooth stereo tra le richieste di sintesi fino al limite scelto, anche a schermo spento. Ogni frase riavvia il timer. Si arresta durante il parlato, la disconnessione o le chiamate. Può ridurre il tempo di riattivazione del dispositivo; non elimina il ritardo del codec.
+notification_text_16|Maintenance limit without speech synthesis|Zeitlimit ohne Sprachsynthese|Durée limite sans synthèse vocale|Limite di mantenimento senza sintesi vocale
