@@ -2,6 +2,8 @@
 
 Rama de trabajo: `codex/espanol-experimental`. El objetivo de esta etapa es comprobar si una diferencia acústica ayuda a reconocer b/v por oído, conservando comprensión y comodidad. Se mantiene `main` como línea de mantenimiento. El primer experimento usa el motor y la DLL existentes; el banco de pruebas es independiente de NVDA y Android.
 
+Estado tras la tercera escucha: se mantiene `friction` como referencia provisional a **250 palabras por minuto**, con sonoridad y duración originales. Los incrementos de sonoridad no aportaron una mejora clara y la duración ampliada presentó problemas de naturalidad. La selección y los límites de esta conclusión están en `ESCUCHA-03.md`. El siguiente paso es evaluar identificación de b/v con las muestras sin etiquetas de `bv-voicing-01/friction`, antes de seguir ajustando parámetros.
+
 ## Qué se implementó
 
 Un corpus manual de tres pares: baca/vaca, botar/votar y tubo/tuvo. Para cada palabra se generan lectura normal, transcripción fonética de control y transcripción experimental. En el control cada par comparte la misma pronunciación. En la versión experimental se reemplaza únicamente un símbolo interno `b` o `B` por `v` cuando la palabra está escrita con v. Las palabras con b mantienen exactamente su transcripción.

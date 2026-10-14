@@ -43,3 +43,5 @@ Esta prueba permanece en la copia de laboratorio, con español americano, Window
 Se generaron 54 WAV, 18 por perfil, sin muestras saturadas. La referencia reconstruida reproduce los 18 audios generados con la DLL anterior a 250. Cada ajuste de sonoridad cambia solo los tres casos ortográficos con v; conserva los otros 15. Todos los audios mantienen el mismo número de muestras que su referencia.
 
 Las nueve trazas coinciden con el PCM de sus audios sin instrumentación. En los dos ajustes se observan cambios únicamente en la columna AV, con aumento durante tramas que contienen fricación; el resto de las columnas y el número de tramas permanecen idénticos. Pasan las 114 comprobaciones de comparación y las seis pruebas automatizadas del banco. La naturalidad y la identificación auditiva de esta nueva comparación siguen pendientes de la escucha del usuario.
+
+Actualización posterior: la escucha cualitativa de naturalidad y la selección provisional se registran en `ESCUCHA-03.md`. La prueba de identificación de b/v sigue pendiente.
