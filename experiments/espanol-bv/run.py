@@ -175,18 +175,19 @@ def audio_info(path):
             "clipped_samples": sum(x in (-32768, 32767) for x in samples)}
 
 
-def listening_page(out, count):
+def listening_page(out, count, speeds=(180, 400)):
     rows = "\n".join(f'<fieldset><legend>Muestra {n:03}</legend><audio controls preload="none" src="blind/trial-{n:03}.wav"></audio><label> Letra percibida <select name="trial-{n:03}"><option value="">Sin responder</option><option>b</option><option>v</option></select></label></fieldset>' for n in range(1, count+1))
     page = '''<!doctype html><html lang="es"><meta charset="utf-8"><title>Prueba de escucha b/v</title>
 <style>body{font:1.15rem system-ui;max-width:52rem;margin:2rem auto;padding:1rem}fieldset{margin:1rem 0}button,select{font:inherit}audio{display:block;width:100%}</style>
 <h1>Prueba de escucha b/v</h1><p>Escucha cada muestra y elige la letra que percibes. Puedes repetirla o dejarla sin responder. Se mezclan controles y versiones experimentales; algunas muestras no permiten distinguir la escritura por su sonido.</p>
-<p>Antes de la prueba, <a href="entrenar.html">familiarízate con los ejemplos de entrenamiento</a>. Las velocidades configuradas son 180 y 400 palabras por minuto; no son una medición de la velocidad efectiva de cada palabra aislada.</p>
+<p>Antes de la prueba, <a href="entrenar.html">familiarízate con los ejemplos de entrenamiento</a>. Velocidad o velocidades configuradas: SPEEDS palabras por minuto; no son una medición de la velocidad efectiva de cada palabra aislada.</p>
 <form>ROWS<label>Fatiga o dificultad (opcional)<br><textarea id="notes" rows="4" cols="45"></textarea></label><p><button type="button" id="save">Descargar respuestas CSV</button></p><p id="status" role="status"></p></form>
 <script>document.getElementById('save').onclick=()=>{let note='"'+document.getElementById('notes').value.replaceAll('"','""')+'"';let text='trial,response,notes\\n';document.querySelectorAll('select').forEach(s=>text+=s.name+','+s.value+','+note+'\\n');let blob=new Blob([text],{type:'text/csv;charset=utf-8'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download='respuestas.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('status').textContent='Respuestas y observaciones exportadas.';};</script></html>'''.replace("ROWS", rows)
+    page = page.replace("SPEEDS", ", ".join(map(str, speeds)))
     (out / "escuchar.html").write_text(page, encoding="utf-8")
     examples = []
     for case in corpus():
-        for speed in (180, 400):
+        for speed in speeds:
             examples.append(f'<section><h2>{case["id"]}, velocidad configurada {speed}</h2>')
             for mode, title in (("natural", "Lectura normal"), ("control", "Control fonético"), ("orthographic", "Contraste ortográfico experimental")):
                 examples.append(f'<p>{title}</p><audio controls preload="none" aria-label="{case["id"]}, {title}, {speed}" src="{case["id"]}-{speed}-{mode}.wav"></audio>')
@@ -196,11 +197,13 @@ def listening_page(out, count):
 
 def generate(args):
     cases = corpus()
+    if not args.speeds or len(set(args.speeds)) != len(args.speeds) or any(not 80 <= speed <= 500 for speed in args.speeds):
+        raise ValueError("Elegir velocidades distintas entre 80 y 500 palabras por minuto")
     dll = args.dll.resolve(strict=True)
     args.out.mkdir(parents=True, exist_ok=False)
     records = []
     try:
-        for speed in (180, 400):
+        for speed in args.speeds:
             for case in cases:
                 for mode in MODES:
                     name = f'{case["id"]}-{speed}-{mode}.wav'
@@ -220,7 +223,7 @@ def generate(args):
                     records.append(record)
                     print(name, flush=True)
         checks = []
-        for speed in (180, 400):
+        for speed in args.speeds:
             for case in cases:
                 a, b = [next(r for r in records if r["word"] == case["id"] and r["speed_setting_wpm"] == speed and r["mode"] == m) for m in ("control", "orthographic")]
                 natural = next(r for r in records if r["word"] == case["id"] and r["speed_setting_wpm"] == speed and r["mode"] == "natural")
@@ -238,12 +241,13 @@ def generate(args):
             shutil.copyfile(args.out / record["file"], args.out / "blind" / (trial + ".wav"))
             key.append({"trial": trial, **record})
         write_json(args.out / "clave-privada.json", key)
-        listening_page(args.out, len(blind))
+        listening_page(args.out, len(blind), args.speeds)
         report = {"status": "technical_pass" if all(c["pass"] for c in checks) else "technical_fail",
                   "dll": str(dll), "dll_sha256": sha(dll), "corpus_sha256": sha(HERE / "corpus.json"),
                   "runner_sha256": sha(Path(__file__)), "head": git("rev-parse", "HEAD").decode().strip(),
                   "branch": git("branch", "--show-current").decode().strip(), "language": args.language,
                   "seed": args.seed, "sample_rate": 11025, "voice_preset": 1,
+                  "speed_settings_wpm": args.speeds,
                   "caveat": "Diferencia PCM no demuestra reconocimiento ni beneficio educativo. Tiempo de proceso incluye arranque; no mide latencia de streaming.",
                   "checks": checks, "records": records}
         write_json(args.out / "report.json", report)
@@ -286,6 +290,7 @@ def main():
     make.add_argument("--dll", type=Path, default=DEFAULT_DLL)
     make.add_argument("--language", choices=LANGUAGES, default="esus")
     make.add_argument("--seed", type=int, default=20261014)
+    make.add_argument("--speeds", nargs="+", type=int, default=[180, 400])
     worker = commands.add_parser("_synth", help=argparse.SUPPRESS)
     worker.add_argument("--dll", type=Path, required=True)
     worker.add_argument("--wav", type=Path, required=True)

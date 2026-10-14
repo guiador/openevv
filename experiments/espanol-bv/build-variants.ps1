@@ -1,5 +1,8 @@
 param(
     [string]$Out = 'build/espanol-experimental/bv-tuning-01',
+    [ValidateSet('friction', 'voicing')][string]$Study = 'friction',
+    [int[]]$Speeds = @(180, 400),
+    [string]$Reference = '',
     [string]$ToolRoot = 'C:\Users\Guillermo\.codex\build-tools\evvdroid',
     [string]$Python = 'C:\Users\Guillermo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
 )
@@ -18,7 +21,8 @@ if (Test-Path -LiteralPath $destination) { throw 'Usar una carpeta nueva para co
 if ($LASTEXITCODE) { throw 'No se pudo preparar la copia del motor.' }
 Push-Location $sourceCopy
 try {
-    foreach ($profile in @('original', 'friction', 'friction-duration')) {
+    $profiles = if ($Study -eq 'voicing') { @('friction', 'friction-voice3', 'friction-voice6') } else { @('original', 'friction', 'friction-duration') }
+    foreach ($profile in $profiles) {
         & $Python -X utf8 (Join-Path $PSScriptRoot 'tune.py') patch --out $sourceCopy --profile $profile
         if ($LASTEXITCODE) { throw 'No se pudo preparar el perfil.' }
         & "$ToolRoot\usr\bin\make.exe" -f Makefile -f lab.mk -j 6 lab-objects 'RULES=bytecode' 'LANGS=lang/esus' 'CC=x86_64-w64-mingw32-clang' 'CCWIN=x86_64-w64-mingw32-clang' 'CFLAGS=-fsigned-char' "SHELL=$($ToolRoot.Replace('\','/'))/bash.exe" 2>&1 | Out-File (Join-Path $destination "$profile-build.log") -Encoding utf8
@@ -29,9 +33,15 @@ try {
         $rsp | Set-Content 'build/lab-link.rsp' -Encoding utf8
         & "$($compiler.FullName)\bin\x86_64-w64-mingw32-clang.exe" '@build/lab-link.rsp'
         if ($LASTEXITCODE) { throw "Falló el enlace de $profile." }
-        & $Python -X utf8 (Join-Path $PSScriptRoot 'run.py') generate --out (Join-Path $destination $profile) --dll (Join-Path $destination "$profile.dll")
+        $generateArgs = @('-X', 'utf8', (Join-Path $PSScriptRoot 'run.py'), 'generate', '--out', (Join-Path $destination $profile), '--dll', (Join-Path $destination "$profile.dll"), '--speeds') + @($Speeds | ForEach-Object { [string]$_ })
+        & $Python @generateArgs
         if ($LASTEXITCODE) { throw "Falló la generación de $profile." }
     }
-    & $Python -X utf8 (Join-Path $PSScriptRoot 'tune.py') compare --out $destination --reference (Join-Path $repo 'build/espanol-experimental/bv-02/report.json')
+    if ($Study -eq 'voicing') {
+        if (!$Reference) { $Reference = Join-Path $repo 'build/espanol-experimental/bv-tuning-01/friction/report.json' }
+        & $Python -X utf8 (Join-Path $PSScriptRoot 'tune.py') compare-voicing --out $destination --reference $Reference --listening-speed $Speeds[0]
+    } else {
+        & $Python -X utf8 (Join-Path $PSScriptRoot 'tune.py') compare --out $destination --reference (Join-Path $repo 'build/espanol-experimental/bv-02/report.json')
+    }
     if ($LASTEXITCODE) { throw 'La comparación requiere revisión.' }
 } finally { Pop-Location }
