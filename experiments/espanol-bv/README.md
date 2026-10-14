@@ -45,6 +45,8 @@ El informe separa exactitud y respuestas por condición y velocidad; los blancos
 
 ## Etapas posteriores
 
+La primera escucha y el ajuste comparativo siguiente se documentan en `ESCUCHA-01.md`. `build-variants.ps1` prepara dos variantes de fricación/duración en una copia local del motor y una página para compararlas con el primer sonido.
+
 1. Ajustar o descartar el contraste con la evaluación auditiva del usuario.
 2. Ampliar el corpus a frases, posiciones y velocidades habituales; añadir registros de comprensión y comodidad.
 3. Si la hipótesis se sostiene, diseñar una regla optativa con correspondencia entre grafema y fonema. Antes de modificar Delta se trazará el recorrido de la letra v hasta los parámetros acústicos, y se ejecutarán las comprobaciones nativas requeridas por el repositorio.

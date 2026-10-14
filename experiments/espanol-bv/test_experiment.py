@@ -8,9 +8,18 @@ from types import SimpleNamespace
 import unittest
 
 import run
+import tune
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_tuning_changes_only_the_named_rule_and_checks_source(self):
+        text = 'rule other from x\n  store movw imm 40 statefld 2762\nend\nrule span_ph_v from x\n  store movw imm 40 statefld 2762\nend\n'
+        result = tune.replace_rule(text, 'span_ph_v', [('store movw imm 40 statefld 2762', 'store movw imm 52 statefld 2762')])
+        self.assertEqual(result.split('rule span_ph_v')[0], text.split('rule span_ph_v')[0])
+        self.assertIn('store movw imm 52 statefld 2762', result)
+        with self.assertRaises(ValueError):
+            tune.replace_rule(result, 'span_ph_v', [('store movw imm 40 statefld 2762', 'replacement')])
+
     def test_homophone_controls_and_balanced_pairs(self):
         pairs = {}
         for case in run.corpus():
