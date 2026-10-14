@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "description": "Transcripciones manuales para un contraste b/v; no es un G2P general.",
+  "cases": [
+    {"id": "baca", "pair": "baca-vaca", "letter": "b", "control": ".1baka", "orthographic": ".1baka"},
+    {"id": "vaca", "pair": "baca-vaca", "letter": "v", "control": ".1baka", "orthographic": ".1vaka"},
+    {"id": "botar", "pair": "botar-votar", "letter": "b", "control": "bo.1tar", "orthographic": "bo.1tar"},
+    {"id": "votar", "pair": "botar-votar", "letter": "v", "control": "bo.1tar", "orthographic": "vo.1tar"},
+    {"id": "tubo", "pair": "tubo-tuvo", "letter": "b", "control": ".1tuBo", "orthographic": ".1tuBo"},
+    {"id": "tuvo", "pair": "tubo-tuvo", "letter": "v", "control": ".1tuBo", "orthographic": ".1tuvo"}
+  ]
+}
