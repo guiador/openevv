@@ -97,7 +97,7 @@ object TextPipeline {
         checkCancellation()
 		try { text = Spelling.apply(text, s.spellingMode) } catch (_: Throwable) {}
         checkCancellation()
-		return try { Symbols.apply(text, s.symbolMode, s.customSymbols) } catch (_: Throwable) { text }
+		return try { Symbols.apply(text, s.symbolMode, s.customSymbols, Eci.languageOf(language).iso2Language) } catch (_: Throwable) { text }
 	}
 
     private fun checkCancellation() {

@@ -42,3 +42,5 @@ Our own work -- the engine, the two front ends, the tools, the tests and the doc
 The language data under `lang` is not ours. It is transcribed out of IBM's Embedded ViaVoice objects, byte for byte where the engine's arithmetic depends on it, and it is IBM's work. The MIT licence does not cover it and we are in no position to license it to anyone. NOTICE says what it is, whose it is, and who the rights in it may belong to today.
 
 Nothing else of IBM's is here. The objects the port was read out of, and the headers and symbol tables it was read with, are not in the tree and are not needed to build. IBM still serves the SDK they came out of from its own public download host, and `docs/building.md` says where it is and what to do with it -- which is what anyone wanting to check this work against the original would start from.
+
+[Continuidad, construcción y pendientes para otros mantenedores](CONTINUIDAD.md).

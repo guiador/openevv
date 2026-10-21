@@ -19,6 +19,7 @@ internal enum class SettingsPage(val titleRes: Int, val descriptionRes: Int, val
     EQ_TIMBRE(R.string.page_eq_timbre_title, R.string.page_eq_timbre_description, "EQ"),
     RESAMPLING(R.string.page_resampling_title, R.string.page_resampling_description, "EQ"),
     TEXT(R.string.page_text_title, R.string.page_text_description, "READING"),
+    SYMBOLS(R.string.symbol_label, R.string.symbol_description, "READING"),
     NUMBERS(R.string.page_numbers_title, R.string.page_numbers_description, "READING"),
     PROSODY(R.string.page_prosody_title, R.string.page_prosody_description, "READING"),
     CODE(R.string.page_code_title, R.string.page_code_description, "READING"),

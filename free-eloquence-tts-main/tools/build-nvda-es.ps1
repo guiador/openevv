@@ -32,11 +32,17 @@ try {
  if ($LASTEXITCODE) {throw 'Falló la compilación nativa. Consultar build-nvda-es.log.'}
  $objects=Get-ChildItem ('build/nvda-es/objwin-c/'+$tags.Replace(' ','-')) -Filter '*.o'
  $includes=@('include','src')+@(Get-ChildItem src -Directory | ForEach-Object {$_.FullName; Get-ChildItem $_.FullName -Directory | ForEach-Object FullName})+@($languages.Split(' '))
+ # Keep upstream's Windows identity/version resource in the localized DLL.
+ $resource='build/nvda-es/eci.res'
+ & "$compiler\bin\x86_64-w64-mingw32-windres.exe" -DEVV_MAJOR=0 -DEVV_MINOR=5 -DEVV_PATCH=0 -I lib lib/eci.rc -O coff -o $resource
+ if ($LASTEXITCODE) {throw 'Falló el recurso de versión de la DLL.'}
  $rsp=@('-O2','-fno-strict-aliasing','-std=gnu99','-fsigned-char','-DEVV_ARENA=1','-DEVV_NO_BYTECODE','-static','-shared')+@($includes | ForEach-Object {'-I"'+$_.Replace('\','/')+'"'})+@('lib/eci_api.c',('"'+(Join-Path $project 'nvda-es/native/extra.c').Replace('\','/')+'"'))+@($objects | ForEach-Object {'"'+$_.FullName.Replace('\','/')+'"'})+@('-o',('"'+(Join-Path $project 'nvda-es/addon/synthDrivers/openevv_es_engine/eci.dll').Replace('\','/')+'"'))
+ $rsp+=@($resource)
  $rsp | Set-Content 'build/nvda-es/link.rsp' -Encoding utf8
  & "$compiler\bin\x86_64-w64-mingw32-clang.exe" '@build/nvda-es/link.rsp'
  if ($LASTEXITCODE) {throw 'Falló el enlace DLL.'}
  if (!$SkipPackage) {
+  & (Join-Path $project 'tools/verify-updated-native.ps1') -ToolRoot $ToolRoot
   $builtDll=Join-Path $project 'nvda-es/addon/synthDrivers/openevv_es_engine/eci.dll'
   foreach ($nativeTest in @('dictlangs.py','pauses.py')) {
    & "$pythonRoot\python.exe" -X utf8 (Join-Path $native "test/lib/$nativeTest") $builtDll

@@ -69,6 +69,11 @@ for lang,rows in texts.items():
     ui=json.loads((ROOT/'addon/synthDrivers/openevv_es_ui.json').read_text(encoding='utf8'))[lang]
     body+='<h2>'+escape(ui['dictionary_page'])+'</h2><p>'+escape(ui['dictionary_help'])+'</p>'
     body+='<p>'+escape(new)+'</p>' if not any(new in row for row in rows) else ''
+    from importlib.util import spec_from_file_location, module_from_spec
+    spec=spec_from_file_location('openevv_ui',ROOT/'addon/synthDrivers/_openevv_es_ui.py')
+    symbols_ui=module_from_spec(spec);spec.loader.exec_module(symbols_ui)
+    t=symbols_ui.translator(lang)
+    body+='<h2>'+escape(t('symbolPronunciation'))+'</h2><p>'+escape(t('symbolShared'))+'</p>'
     path=ROOT/'addon/doc'/lang/'readme.html';path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text('<!doctype html><html lang="'+lang+'"><head><meta charset="utf-8"><title>'+escape(rows[0])+'</title></head><body>'+body+'</body></html>\n',encoding='utf8')
 print('Documentación: es, en, de, fr, it.')

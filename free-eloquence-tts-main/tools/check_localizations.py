@@ -34,9 +34,12 @@ for language in ('es', 'de', 'fr', 'it'):
             assert 'Ã' not in b and '\ufffd' not in b, f'{language}/{name}: encoding error'
 
 references = set()
+available = set(base)
+for path in (RES/'values').glob('*.xml'):
+    available.update(node.attrib['name'] for node in ET.parse(path).getroot() if node.tag in ('string','plurals'))
 for path in (ROOT/'app/src/main/kotlin').rglob('*.kt'):
     references.update(re.findall(r'R\.string\.(\w+)', path.read_text(encoding='utf-8')))
-assert references <= base.keys(), f'Unresolved resources: {references - base.keys()}'
+assert references <= available, f'Unresolved resources: {references - available}'
 engine = (ROOT/'app/src/main/kotlin/com/blindtechnexus/freeeloquencetts/Eci.kt').read_text(encoding='utf-8')
 families = set(re.findall(r'Language\(\w+, "([a-z]{2})"', engine))
 assert families == {'en', 'es', 'de', 'fr', 'it'}, families

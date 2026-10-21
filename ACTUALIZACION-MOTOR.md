@@ -1,5 +1,13 @@
 # Actualización del motor — 9 de octubre de 2026
 
+El 12 de octubre se integraron 16 commits posteriores en ambas copias,
+hasta `a25d0ee`, y se recompilaron Android Principal `0.4.4-es` (código 13)
+y NVDA `0.4.5`. Incluyen el control de verbalización de símbolos y signos de
+puntuación y los cambios oficiales del motor. Los instaladores anteriores
+se retiraron de la carpeta de entrega y se conservaron en un respaldo.
+Véanse `Instaladores/RECOMPILACION-MOTOR.md` y
+`CONTROL-SIMBOLOS-Y-AUDITORIA.md`. Lo que sigue registra etapas anteriores.
+
 La revisión de funciones recientes del 10 de octubre añade banda ancha,
 base nativa de 16 kHz por instancia, diccionarios de pronunciación de NVDA
 y el control de pausas nativas. Las nuevas ediciones son NVDA `0.4.4` y

@@ -116,6 +116,22 @@ class OpenEVVPanel(SettingsPanel):
         spin(p,s,'_breakPercent',t('break'),0,100)
         for key,label in (('_phrasePrediction','prediction'),('_forceLanguage','force_language_label'),('_forceRate','lockRate'),('_forcePitch','lockPitch'),('_forceVolume','lockVolume')):check(p,s,key,t(label))
         p,s=page('section_text')
+        # Use NVDA's own symbol processing, shared with Speech settings and profiles.
+        # Keep this outside self.controls: it is not a synthesizer parameter.
+        self.oldSymbols=int(config.conf['speech']['symbolLevel'])
+        self.symbolIds=[0,100,200,300]
+        symbolNames=[t('symbol_mode_'+key) for key in ('none','some','most','all')]
+        if self.oldSymbols not in self.symbolIds:
+            # Preserve levels from a manually edited or future NVDA profile.
+            self.symbolIds.append(self.oldSymbols)
+            symbolNames.append(t('symbol_mode_custom')+f' ({self.oldSymbols})')
+        symbolLabel=t('symbolPronunciation')
+        s.Add(wx.StaticText(p,label=symbolLabel),0,wx.ALL,5)
+        self.symbols=wx.Choice(p,choices=symbolNames)
+        self.symbols.SetName(symbolLabel)
+        self.symbols.SetSelection(self.symbolIds.index(self.oldSymbols))
+        s.Add(self.symbols,0,wx.EXPAND|wx.ALL,5)
+        note(p,s,'symbolShared')
         choice(p,s,'_numberMode',t('number_mode_label'),[(i,t(key)) for i,key in enumerate(('number_as_is','number_digits','number_pairs','number_triplets'))])
         check(p,s,'_otp',t('otp_label'))
         choice(p,s,'_spellingMode',t('spelling_label'),[(i,t(key)) for i,key in enumerate(('spelling_off','spelling_letters','spelling_nato','spelling_capitals','spelling_capitals_nato'))])
@@ -237,6 +253,9 @@ class OpenEVVPanel(SettingsPanel):
             self.synth.pitch=self.pendingPitch;section['pitch']=self.pendingPitch;self.pendingPitch=None
         if self.pendingInflection is not None:
             self.synth.inflection=self.pendingInflection;section['inflection']=self.pendingInflection;self.pendingInflection=None
+        symbols=self.symbolIds[self.symbols.GetSelection()]
+        if symbols!=self.oldSymbols:
+            config.conf['speech']['symbolLevel']=symbols;self.oldSymbols=symbols
         awake=self.awakeIds[self.awake.GetSelection()]
         if awake!=self.oldAwake:
             config.conf['audio']['audioAwakeTime']=awake;self.oldAwake=awake

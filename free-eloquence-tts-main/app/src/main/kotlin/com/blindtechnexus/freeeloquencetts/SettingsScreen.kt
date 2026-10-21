@@ -137,6 +137,7 @@ fun SettingsScreen(
                     SettingsPage.EQ_TIMBRE -> EqualizerSection(state, 1)
                     SettingsPage.RESAMPLING -> EqualizerSection(state, 2)
                     SettingsPage.TEXT -> TextReading(state)
+                    SettingsPage.SYMBOLS -> SymbolReading(state)
                     SettingsPage.NUMBERS -> NumberReading(state)
                     SettingsPage.PROSODY -> OtherSettings(state)
                     SettingsPage.CODE -> CodeReadingSection(state)
@@ -594,6 +595,17 @@ private fun OtherSettings(state: SettingsModel) {
 		onChoose = state::choosePauses,
 		description = stringResource(R.string.pauses_description)
 	)
+	SwitchRow(
+		label = stringResource(R.string.intonation_pauses_label),
+		description = stringResource(R.string.intonation_pauses_description),
+		checked = state.phrasePrediction,
+		onChange = state::choosePhrasePrediction
+	)
+}
+
+@Composable
+private fun SymbolReading(state: SettingsModel) {
+	SectionHeading(text = stringResource(R.string.symbol_label))
 	var symbolsOpen by remember { mutableStateOf(false) }
 	Described(description = stringResource(R.string.symbol_description)) {
 		ValueButton(
@@ -608,12 +620,6 @@ private fun OtherSettings(state: SettingsModel) {
 	if (symbolsOpen) {
 		SymbolDialog(state = state, onDismiss = { symbolsOpen = false })
 	}
-	SwitchRow(
-		label = stringResource(R.string.intonation_pauses_label),
-		description = stringResource(R.string.intonation_pauses_description),
-		checked = state.phrasePrediction,
-		onChange = state::choosePhrasePrediction
-	)
 }
 
 /** Hearing it. Nothing on this screen speaks by itself, so this is the only
@@ -1058,12 +1064,17 @@ private fun SymbolDialog(state: SettingsModel, onDismiss: () -> Unit) {
 			}
 		},
 		confirmButton = {
+			Column {
+			TextButton(onClick = { picked = Symbols.SOME; symbols = "" }) {
+				Text(text = stringResource(R.string.reset_defaults))
+			}
 			TextButton(onClick = {
 				state.chooseSymbolMode(picked)
 				state.chooseCustomSymbols(symbols)
 				onDismiss()
 			}) {
 				Text(text = stringResource(R.string.save))
+			}
 			}
 		},
 		dismissButton = {

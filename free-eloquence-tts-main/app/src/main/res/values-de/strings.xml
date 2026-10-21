@@ -294,9 +294,9 @@
     <string name="pauses_keep">Normale Pausen</string>
     <string name="pauses_end">Am Ende verkürzen</string>
     <string name="pauses_all">Alle verkürzen</string>
-    <string name="symbol_label">Symbole</string>
-    <string name="symbol_description">Wählen Sie die vorgelesenen Symbole.</string>
-    <string name="symbol_mode_label">Symbolmodus</string>
+    <string name="symbol_label">Symbole und Satzzeichen</string>
+    <string name="symbol_description">Wählen Sie, welche Symbole und Satzzeichen vorgelesen werden.</string>
+    <string name="symbol_mode_label">Symbole und Satzzeichen</string>
     <string name="symbol_mode_all">Alle</string>
     <string name="symbol_mode_most">Die meisten</string>
     <string name="symbol_mode_some">Einige</string>

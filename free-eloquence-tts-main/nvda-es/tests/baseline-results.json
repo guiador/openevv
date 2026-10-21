@@ -1,7 +1,11 @@
 {
-  "passed": 863,
-  "moved": 0,
+  "additional_checks": [
+    "wideband upstream harness: invalid-mode boundary 3 because local mode 2 is native16; all audio checks unchanged",
+    "Windows DLL delete, live process exit and unload with identical PCM",
+    "official DLL version resource"
+  ],
   "rules": "c",
+  "native_commit": "a25d0ee67dd6470198f766995361eabc84e351a8",
   "languages": [
     "enus",
     "engb",
@@ -12,7 +16,8 @@
     "dede",
     "itit"
   ],
-  "runner": "Standalone probe linked from the same Windows C object files as the packaged DLL",
-  "dll_sha256": "fd967fd13ee62a57604a8e9ccc36ba04dcc201e18bd76a80bfe64fbdea987d13",
-  "native_commit": "f8a9e91221a15be68eb39845313186c683c1b90d"
+  "dll_sha256": "7dce85847d8f58a111ee2a3da85a107f4ddbee90f001faad2dbb47852f42cedc",
+  "moved": 0,
+  "runner": "Upstream probe linked from the same C objects as the packaged DLL",
+  "passed": 871
 }

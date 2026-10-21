@@ -294,9 +294,9 @@
     <string name="pauses_keep">Pauses normales</string>
     <string name="pauses_end">Raccourcir à la fin</string>
     <string name="pauses_all">Tout raccourcir</string>
-    <string name="symbol_label">Symboles</string>
-    <string name="symbol_description">Choisissez les symboles prononcés.</string>
-    <string name="symbol_mode_label">Mode des symboles</string>
+    <string name="symbol_label">Symboles et ponctuation</string>
+    <string name="symbol_description">Choisissez les symboles et les signes de ponctuation à prononcer.</string>
+    <string name="symbol_mode_label">Symboles et ponctuation</string>
     <string name="symbol_mode_all">Tous</string>
     <string name="symbol_mode_most">La plupart</string>
     <string name="symbol_mode_some">Certains</string>

@@ -298,9 +298,9 @@
     <string name="pauses_keep">Pausas normales</string>
     <string name="pauses_end">Acortar al final</string>
     <string name="pauses_all">Acortar todas</string>
-    <string name="symbol_label">Símbolos</string>
-    <string name="symbol_description">Elige los símbolos que se pronuncian.</string>
-    <string name="symbol_mode_label">Modo de símbolos</string>
+    <string name="symbol_label">Símbolos y signos de puntuación</string>
+    <string name="symbol_description">Elige qué símbolos y signos de puntuación se verbalizan.</string>
+    <string name="symbol_mode_label">Símbolos y signos de puntuación</string>
     <string name="symbol_mode_all">Todos</string>
     <string name="symbol_mode_most">La mayoría</string>
     <string name="symbol_mode_some">Algunos</string>

@@ -103,6 +103,8 @@ object Symbols {
 		'\'' to Entry("apostrophe", MOST),
 		'?' to Entry("question mark", MOST),
 		'!' to Entry("exclamation point", MOST),
+		'¿' to Entry("opening question mark", MOST),
+		'¡' to Entry("opening exclamation point", MOST),
 		';' to Entry("semicolon", MOST),
 		':' to Entry("colon", MOST),
 		'.' to Entry("dot", ALL),
@@ -158,14 +160,24 @@ object Symbols {
 	}
 
 	/** The marks the engine needs where they are, to leave its pauses alone. */
-	private const val PROSODY = ",.;:?!"
+	private const val PROSODY = ",.;:?!¿¡"
+
+	// Only names inserted by this filter are translated. Currency, mathematics
+	// and isolated characters keep the selected engine language's own reading.
+	private val NAMED = "()[]{}\"'?!;:.,¿¡"
+	private val LOCAL_NAMES = mapOf(
+		"es" to listOf("abre paréntesis", "cierra paréntesis", "abre corchete", "cierra corchete", "abre llave", "cierra llave", "comillas", "apóstrofo", "interrogación", "exclamación", "punto y coma", "dos puntos", "punto", "coma", "abre interrogación", "abre exclamación"),
+		"de" to listOf("Klammer auf", "Klammer zu", "eckige Klammer auf", "eckige Klammer zu", "geschweifte Klammer auf", "geschweifte Klammer zu", "Anführungszeichen", "Apostroph", "Fragezeichen", "Ausrufezeichen", "Semikolon", "Doppelpunkt", "Punkt", "Komma", "umgekehrtes Fragezeichen", "umgekehrtes Ausrufezeichen"),
+		"fr" to listOf("parenthèse ouvrante", "parenthèse fermante", "crochet ouvrant", "crochet fermant", "accolade ouvrante", "accolade fermante", "guillemet", "apostrophe", "point d’interrogation", "point d’exclamation", "point-virgule", "deux-points", "point", "virgule", "point d’interrogation inversé", "point d’exclamation inversé"),
+		"it" to listOf("parentesi aperta", "parentesi chiusa", "parentesi quadra aperta", "parentesi quadra chiusa", "parentesi graffa aperta", "parentesi graffa chiusa", "virgolette", "apostrofo", "punto interrogativo", "punto esclamativo", "punto e virgola", "due punti", "punto", "virgola", "punto interrogativo capovolto", "punto esclamativo capovolto")
+	)
 
 	/**
 	 * [text] with the symbols [mode] asks for named or silenced. [custom] is
 	 * the caller's own list and is read only at [CUSTOM].
 	 * In SOME mode, isolated commas are removed so comma is not spoken as word.
 	 */
-	fun apply(text: String, mode: Int, custom: String): String {
+	fun apply(text: String, mode: Int, custom: String, language: String = "en"): String {
 		if (text.isEmpty()) return text
 		if (mode == SOME) {
 			// SOME originally left text to engine, but isolated comma would be spoken as "comma"
@@ -194,7 +206,7 @@ object Symbols {
 		// by either. What is said is trimmed, which is what the rebuild below
 		// trims to as well.
 		if (!relevant) return text.trim()
-		val listed = if (mode == CUSTOM) custom.filter { TABLE.containsKey(it) }.toSet() else emptySet()
+		val listed = if (mode == CUSTOM) normalize(custom).filter { TABLE.containsKey(it) }.toSet() else emptySet()
 		val source = normalize(text)
 		val out = StringBuilder(source.length + 32)
 		for (at in source.indices) {
@@ -233,7 +245,7 @@ object Symbols {
 						// mode: a mode that does not silence them leaves them
 						// to the engine.
 						attached(source, at) && entry.level >= MOST && names(mode, entry, c, listed) ->
-							out.append(' ').append(entry.name).append(' ')
+							out.append(' ').append(LOCAL_NAMES[language]?.getOrNull(NAMED.indexOf(c)) ?: entry.name).append(' ')
 
 						// Standing alone, or already read by the engine.
 						else -> out.append(c)

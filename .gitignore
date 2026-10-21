@@ -107,3 +107,21 @@ node_modules/
 # Workflow heredado con credencial incrustada; permanece sólo local
 /free-eloquence-tts-main/.github/workflows/build.yml
 
+# Mantenimiento 2026-10-20: datos locales y resultados regenerables
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+**/.gradle/
+**/local.properties
+*.jks
+*.keystore
+*.p12
+*.pfx
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/.codex-tools/

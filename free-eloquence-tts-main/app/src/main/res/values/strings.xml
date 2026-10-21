@@ -294,9 +294,9 @@
     <string name="pauses_keep">Normal pauses</string>
     <string name="pauses_end">Shorten at the end</string>
     <string name="pauses_all">Shorten all</string>
-    <string name="symbol_label">Symbols</string>
-    <string name="symbol_description">Choose which symbols are spoken.</string>
-    <string name="symbol_mode_label">Symbol mode</string>
+    <string name="symbol_label">Symbols and punctuation</string>
+    <string name="symbol_description">Choose which symbols and punctuation marks are spoken.</string>
+    <string name="symbol_mode_label">Symbols and punctuation</string>
     <string name="symbol_mode_all">All</string>
     <string name="symbol_mode_most">Most</string>
     <string name="symbol_mode_some">Some</string>

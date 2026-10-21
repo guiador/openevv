@@ -20,6 +20,22 @@ import org.junit.runner.RunWith
 class SymbolsTest {
 
 	@Test
+	fun spanishNamesPunctuationInTheVoiceLanguage() {
+		assertEquals("Hola coma mundo punto", Symbols.apply("Hola, mundo.", Symbols.ALL, "", "es"))
+		assertEquals("abre interrogación Sí interrogación", Symbols.apply("¿Sí?", Symbols.ALL, "", "es"))
+		assertEquals("abre exclamación Hola exclamación", Symbols.apply("¡Hola!", Symbols.MOST, "", "es"))
+		assertEquals("3.14 coma 50%", Symbols.apply("3.14, 50%", Symbols.ALL, "", "es"))
+		assertEquals("a abre paréntesis b punto", Symbols.apply("a (b).", Symbols.CUSTOM, "(.", "es"))
+		assertEquals("Hola, mundo.", Symbols.apply("Hola, mundo.", Symbols.SOME, "", "es"))
+	}
+
+	@Test
+	fun customRecognizesTypographicQuotes() {
+		assertEquals("comillas Hola comillas", Symbols.apply("«Hola»", Symbols.CUSTOM, "«»", "es"))
+		assertEquals("comillas Hola comillas", Symbols.apply("“Hola”", Symbols.CUSTOM, "“”", "es"))
+	}
+
+	@Test
 	fun someLeavesTheEngineAlone() {
 		assertEquals("Hello, world. 50% (yes)", Symbols.apply("Hello, world. 50% (yes)", Symbols.SOME, ""))
 	}

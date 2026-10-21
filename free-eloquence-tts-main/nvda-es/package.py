@@ -8,6 +8,15 @@ spec=importlib.util.spec_from_file_location('upstream_build',PROJECT/'native/ope
 builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
 dll=ADDON/'synthDrivers/openevv_es_engine/eci.dll'
 blob=dll.read_bytes();pe=struct.unpack_from('<I',blob,0x3c)[0]
+source_revision=(PROJECT/'native/openevv-revision.txt').read_text(encoding='utf8').strip()
+voice_report=ROOT/'tests/voice-stability-results.json'
+assert voice_report.is_file() and json.loads(voice_report.read_text(encoding='utf8'))['native_commit']==source_revision, 'El motor fuente cambió: recompila la DLL y ejecuta las regresiones antes de empaquetar.'
+# Validate evidence before creating any deliverable.
+for name in ('voice-stability','latest-features','export-mode','baseline'):
+    report=json.loads((ROOT/'tests'/f'{name}-results.json').read_text(encoding='utf-8-sig'))
+    assert report['dll_sha256']==hashlib.sha256(blob).hexdigest(), f'Informe {name} no corresponde a la DLL actual'
+    if 'native_commit' in report:
+        assert report['native_commit']==source_revision, f'Informe {name} corresponde a una revisión anterior'
 assert struct.unpack_from('<H',blob,pe+4)[0]==0x8664, 'Se requiere DLL x64.'
 engine='\n'.join(path.read_text(encoding='utf8') for path in (ADDON/'synthDrivers').glob('*.py'))
 required=set(re.findall(r'\bdll\.(eci\w+|evv\w+)',engine))
@@ -31,7 +40,7 @@ with zipfile.ZipFile(target) as z:
 reports={}
 for name in ('native','pause','baseline','export-memory','nvda-api','voice-stability','panel-reset','latest-features','export-mode'):
     report=ROOT/'tests'/f'{name}-results.json'
-    if report.is_file():reports[name]=json.loads(report.read_text(encoding='utf8'))
+    if report.is_file():reports[name]=json.loads(report.read_text(encoding='utf-8-sig'))
 native_commit=(PROJECT/'native/openevv-revision.txt').read_text(encoding='utf8').strip()
 for name in ('voice-stability','latest-features','export-mode'):
     assert reports[name]['dll_sha256']==hashlib.sha256(blob).hexdigest(), f'Informe {name} no corresponde a la DLL empaquetada'
