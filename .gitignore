@@ -102,6 +102,8 @@ node_modules/
 
 # Ejecutables de entrega: se conservan localmente, fuera del código Git
 *.exe
+/free-eloquence-tts-main/nvda-es/addon/synthDrivers/openevv_es_engine/eci.dll
+/free-eloquence-tts-main/nvda-es/tests/*-results.json
 
 
 # Workflow heredado con credencial incrustada; permanece sólo local

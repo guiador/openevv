@@ -2,6 +2,10 @@
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
+import ast
+import importlib.util
+import json
+import string
 
 ROOT = Path(__file__).resolve().parents[1]
 RES = ROOT / 'app/src/main/res'
@@ -44,3 +48,45 @@ engine = (ROOT/'app/src/main/kotlin/com/blindtechnexus/freeeloquencetts/Eci.kt')
 families = set(re.findall(r'Language\(\w+, "([a-z]{2})"', engine))
 assert families == {'en', 'es', 'de', 'fr', 'it'}, families
 print(f'PASS: {len(required)} localized resources, all five TTS languages, plurals and format arguments.')
+
+for flavor in ('principal','auxiliar'):
+    folder=ROOT/'app/src'/flavor/'res'
+    fallback=read(folder/'values/strings.xml')
+    for language in ('es','de','fr','it'):
+        localized=read(folder/f'values-{language}/strings.xml')
+        assert localized.keys()==fallback.keys(), (flavor,language)
+        assert all(node.text and node.text.strip() for node in localized.values())
+print('PASS: both Android flavors contain all five interface locales.')
+
+addon=ROOT/'nvda-es/addon'
+spec=importlib.util.spec_from_file_location('openevv_ui',addon/'synthDrivers/_openevv_es_ui.py')
+ui=importlib.util.module_from_spec(spec);spec.loader.exec_module(ui)
+languages=('en','es','de','fr','it')
+for key,values in ui.EXTRA.items():
+    assert len(values)==5 and all(isinstance(value,str) and value.strip() for value in values),key
+    for value in values:
+        assert sorted(PATTERN.findall(value))==sorted(PATTERN.findall(values[0])),key
+        fields=lambda text:{(name,format_spec) for _,name,format_spec,_ in string.Formatter().parse(text) if name is not None}
+        assert fields(value)==fields(values[0]),key
+        assert '\ufffd' not in value,key
+keys=set()
+for path in addon.rglob('*.py'):
+    for node in ast.walk(ast.parse(path.read_text(encoding='utf8'))):
+        if isinstance(node,ast.Call) and node.args and isinstance(node.args[0],ast.Constant) and isinstance(node.args[0].value,str):
+            name=node.func.id if isinstance(node.func,ast.Name) else node.func.attr if isinstance(node.func,ast.Attribute) else ''
+            if name in ('t','uiText'):keys.add(node.args[0].value)
+for language in languages:
+    assert {key for key in required if base[key].tag=='string'} <= ui.STRINGS[language].keys(),language
+    for key in keys:
+        assert key in ui.EXTRA or key in ui.STRINGS[language],(language,key)
+        assert ui.translator(language)(key)!=key,(language,key)
+    manifest=(addon/'locale'/language/'manifest.ini').read_text(encoding='utf8')
+    assert ui.translator(language)('addonSummary') in manifest,language
+    assert ui.translator(language)('addonDescription') in manifest,language
+    doc=(addon/'doc'/language/'readme.html').read_text(encoding='utf8')
+    assert 'lang="'+language+'"' in doc and ui.translator(language)('response_title') in doc,language
+    if language!='es':
+        assert 'Con colaboración de Guiador' not in doc,language
+        assert ui.translator(language)('response_explanation')!=ui.translator('es')('response_explanation'),language
+assert not any("\\'" in value or '\\"' in value for values in ui.STRINGS.values() for value in values.values()),'Android quote escapes leaked into NVDA'
+print(f'PASS: NVDA {len(keys)} referenced translation keys, {len(ui.EXTRA)} extra rows, five manifests and installed documents; placeholders preserved.')

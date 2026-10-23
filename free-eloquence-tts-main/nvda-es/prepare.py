@@ -139,6 +139,9 @@ driver=stabilityBuild('openevv_es.py',driver)
 engine=stabilityBuild('_openevv_es.py',engine)
 latestBuild=runpy.run_path(str(root/'latest-build.py'))['apply']
 engine=latestBuild('_openevv_es.py',engine)
+localizationBuild=runpy.run_path(str(root/'localization-build.py'))['apply']
+driver=localizationBuild('openevv_es.py',driver)
+engine=localizationBuild('_openevv_es.py',engine)
 dictionarySource=root.parent/'native/openevv/nvda/addon/synthDrivers/_openevv_dictionaries.py'
 (target/'_openevv_es_dictionaries.py').write_text(dictionarySource.read_text(encoding='utf8'),encoding='utf8')
 (target/'openevv_es.py').write_text(driver,encoding='utf8')
@@ -149,7 +152,9 @@ locales={}
 for language in ('en','es','de','fr','it'):
     directory='values' if language=='en' else 'values-'+language
     nodes=ET.parse(root.parent/'app/src/main/res'/directory/'strings.xml').getroot()
-    locales[language]={node.attrib['name']:node.text for node in nodes if node.tag=='string'}
+    # Android's quote escapes are resource syntax, not text for NVDA to speak.
+    locales[language]={node.attrib['name']:(node.text or '').replace("\\'", "'").replace('\\"', '"') for node in nodes if node.tag=='string'}
 (target/'openevv_es_ui.json').write_text(json.dumps(locales,ensure_ascii=False),encoding='utf8')
+runpy.run_path(str(root/'localization-build.py'))['write_manifests'](root)
 print('Controlador derivado preparado.')
 

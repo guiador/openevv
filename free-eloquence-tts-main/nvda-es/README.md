@@ -1,10 +1,20 @@
-# OpenEVV para NVDA — edición local 0.4.4
+# OpenEVV para NVDA — edición 0.4.6
 
-Instalador: `../dist/nvda/openevv-es-0.4.4-nvda2026.3-x64.nvda-addon`.
-También se entrega una copia en `Instaladores`, con sus metadatos de verificación.
+Instalador: `../dist/nvda/openevv-es-0.4.6-nvda2026.3-x64.nvda-addon`.
+La entrega local y sus metadatos se conservan fuera de Git en
+`Codex/Entregas/OpenEVV`.
 
-Abre el `.nvda-addon`, instala y reinicia NVDA. Selecciona **OpenEVV Español —
-sonido ampliado** con NVDA+Control+S. Elige la voz en la categoría Voz y abre
+La versión 0.4.6 completa la interfaz, los mensajes accesibles, las advertencias
+y la documentación instalada en español, inglés, alemán, francés e italiano.
+Conserva las correcciones de 0.4.5: la extracción del diccionario que podía cerrar el
+motor con el mensaje comunicado en Android, además de límites SSML/UTF-8,
+vida de tareas y fugas acotadas. Véase la [revisión de seguridad](../../docs/notes/auditoria-seguridad-20261023.md).
+La DLL de ocho idiomas pasa 871 comparaciones de audio y respuestas API;
+el empaquetado y las pruebas del controlador no sustituyen una sesión real
+de NVDA con teclado y lector.
+
+Abre el `.nvda-addon`, instala y reinicia NVDA. Selecciona **OpenEVV**
+(con la descripción traducida al idioma de NVDA) con NVDA+Control+S. Elige la voz en la categoría Voz y abre
 **Ajustes → OpenEVV** para los controles ampliados. El panel utiliza español,
 inglés, alemán, francés o italiano según la voz elegida al abrirlo.
 

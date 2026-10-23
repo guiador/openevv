@@ -1,10 +1,25 @@
 # Continuidad — openevv-main
 
-Actualizado el 20 de octubre de 2026. Motor OpenEVV y adaptaciones Android/NVDA con español experimental.
+Actualizado el 23 de octubre de 2026. Motor OpenEVV y adaptaciones Android/NVDA con español experimental.
+
+## Correcciones actuales
+
+La revisión de seguridad, el fallo reproducido en el teléfono y las pruebas de
+las correcciones se describen en [auditoría del 23 de octubre](docs/notes/auditoria-seguridad-20261023.md).
+La entrega actual es Android 0.4.6-es / NVDA 0.4.6, con la interfaz completa en cinco idiomas. Véanse [distribuciones](docs/distributions.md) y [resultados y límites de 0.4.6](docs/notes/distribution-0.4.6.md).
+Los nuevos parches nativos 0004–0006 se conservan junto a los tres anteriores.
+Las entregas y evidencia de ejecución permanecen fuera de Git. Las pruebas
+simuladas de la API NVDA no certifican una sesión real del lector.
+
+Contribución pública: [PR upstream #55](https://github.com/Mudb0y/openevv/pull/55),
+en inglés y como borrador. Se prepara en un worktree aislado desde la rama
+pública actual; sus 1.291 casos Windows x64 bytecode pasan. No incluye el
+historial privado ni convierte las pruebas de una plataforma en validación
+de las seis configuraciones upstream.
 
 ## Punto de partida
 
-Repositorio de trabajo: https://github.com/guiador/openevv (private). Se conserva el historial y la procedencia; esta organización no convierte los componentes de terceros en código propio.
+Repositorio de trabajo y distribución: https://github.com/guiador/openevv. Se conserva el historial y la procedencia; esta organización no convierte los componentes de terceros en código propio.
 
 src/lang: motor y módulos; free-eloquence-tts-main: Android, copia nativa fijada y NVDA; tools/test: generación y comprobaciones; Instaladores: entregas.
 

@@ -1,9 +1,9 @@
-param([string]$ToolRoot='C:/Users/Guillermo/.codex/build-tools/evvdroid',[switch]$MatrixOnly)
+param([string]$ToolRoot="${env:USERPROFILE}/.codex/build-tools/evvdroid",[switch]$MatrixOnly,[switch]$HostMatrix)
 $ErrorActionPreference='Stop'
 $project=Split-Path $PSScriptRoot
 $compiler=(Get-ChildItem $ToolRoot -Directory -Filter 'llvm-mingw-*-ucrt-x86_64' | Select-Object -Last 1).FullName
-$pythonRoot='C:/Users/Guillermo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python'
-$gitRoot='C:/Users/Guillermo/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git'
+$pythonRoot="${env:USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/python"
+$gitRoot="${env:USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git"
 $env:PATH="$compiler/bin;$ToolRoot;$ToolRoot/usr/bin;$pythonRoot;$gitRoot/usr/bin;$gitRoot/mingw64/bin;$compiler/busybox/bin;$env:PATH"
 $env:MSYSTEM='MSYS'
 $native=Join-Path $project 'native/openevv'
@@ -44,11 +44,16 @@ try {
     $probePath=(Join-Path $native 'build/nvda-es/probe.exe').Replace('\','/')
     $env:EVV_MATRIX_NATIVE='/'+$probePath.Substring(0,1).ToLower()+$probePath.Substring(2)
     $env:EVV_JOBS='2'
-    & "$ToolRoot/bash.exe" test/matrix.sh check enus engb eses esus frfr frca dede itit 2>&1 | Tee-Object -FilePath 'build/nvda-es/matrix-results.log'
+    if ($HostMatrix) {
+        & "$pythonRoot/python.exe" (Join-Path (Split-Path $project) 'tools/check-matrix-host.py') $probePath enus engb eses esus frfr frca dede itit --engine $native --jobs 1 --output build/nvda-es/host-matrix.json 2>&1 | Tee-Object -FilePath 'build/nvda-es/matrix-results.log'
+    } else {
+        & "$ToolRoot/bash.exe" test/matrix.sh check enus engb eses esus frfr frca dede itit 2>&1 | Tee-Object -FilePath 'build/nvda-es/matrix-results.log'
+    }
     if ($LASTEXITCODE) {throw 'Falló matriz de regresión.'}
     $summary=Get-Content 'build/nvda-es/matrix-results.log' -Raw
     $match=[regex]::Match($summary,'matrix: (\d+) cases')
     if (!$match.Success) {throw 'No se encontró total en matriz.'}
     $report=@{passed=[int]$match.Groups[1].Value;moved=0;rules='c';languages=@('enus','engb','eses','esus','frfr','frca','dede','itit');runner='Upstream probe linked from the same C objects as the packaged DLL';dll_sha256=(Get-FileHash $dll -Algorithm SHA256).Hash.ToLower();native_commit=(Get-Content '../openevv-revision.txt' -Raw).Trim();additional_checks=@('wideband upstream harness: invalid-mode boundary 3 because local mode 2 is native16; all audio checks unchanged','Windows DLL delete, live process exit and unload with identical PCM','official DLL version resource')}
+    if ($HostMatrix) {$report.runner+='; Python host driver uses the matrix.sh input/mode/audio/stdout hash contract'}
     $report | ConvertTo-Json -Depth 4 | Set-Content (Join-Path $project 'nvda-es/tests/baseline-results.json') -Encoding utf8
 } finally {Pop-Location}

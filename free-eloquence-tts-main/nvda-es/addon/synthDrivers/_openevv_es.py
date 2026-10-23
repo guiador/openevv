@@ -217,7 +217,11 @@ def localeOf(language):
 
 def nameOf(language):
 	"""What to call a language in front of a person."""
-	return LANGUAGE_NAMES.get(language, "0x%x" % language)
+	keys = {0x10000: 'language_enus', 0x10001: 'language_engb',
+        0x20000: 'language_eses', 0x20001: 'language_esus',
+        0x30000: 'language_frfr', 0x30001: 'language_frca',
+        0x40000: 'language_dede', 0x50000: 'language_itit'}
+	return uiText(keys[language]) if language in keys else LANGUAGE_NAMES.get(language, "0x%x" % language)
 
 
 #: The code set each language's text goes in, which is not UTF-8. The engine
@@ -969,7 +973,7 @@ class Engine:
 		for number in range(VOICE_FIRST, VOICE_LAST + 1):
 			self._dll.eciGetVoiceName(self._instance, number, room)
 			name = room.value.decode("latin-1").strip()
-			names[number] = name or ("Voice %d" % number)
+			names[number] = name or (uiText('voiceFallback') % number)
 		return names
 
 	def _readVoiceParams(self):
@@ -1288,3 +1292,8 @@ class Engine:
 			return
 		self._finished = True
 		self._onIndex(None)
+
+
+def uiText(key):
+    from ._openevv_es_ui import uiText as translate
+    return translate(key)

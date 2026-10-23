@@ -83,8 +83,8 @@ android {
 		targetSdk = 36
 		// API 37 adds while-in-use requirements for background audio. Keep the
 		// existing runtime contract until screen-reader/device validation passes.
-		versionCode = 12
-		versionName = "0.4.3-es"
+		versionCode = 15
+		versionName = "0.4.6-es"
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		ndk {
 			abiFilters += abis

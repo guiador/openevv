@@ -118,7 +118,7 @@ def _endsSentence(text):
 
 class SynthDriver(SynthDriver):
 	name = "openevv_es"
-	description = "OpenEVV Español — sonido ampliado"
+	description = _openevv.uiText('driverDescription')
 
 	supportedSettings = (
 		SynthDriver.VoiceSetting(),
@@ -128,27 +128,27 @@ class SynthDriver(SynthDriver):
 		SynthDriver.InflectionSetting(),
 		SynthDriver.VolumeSetting(),
 		# Translators: Label for a setting in voice settings dialog.
-		NumericDriverSetting("_gender", "Tipo de voz", defaultVal=0, minVal=0, maxVal=1),
-		NumericDriverSetting("_headSize", "Tamaño y resonancia", False),
+		NumericDriverSetting("_gender", _openevv.uiText('gender_label'), defaultVal=0, minVal=0, maxVal=1),
+		NumericDriverSetting("_headSize", _openevv.uiText('set_head_size'), False),
 		# Translators: Label for a setting in voice settings dialog.
-		NumericDriverSetting("_roughness", "Aspereza", False, defaultVal=0),
+		NumericDriverSetting("_roughness", _openevv.uiText('set_roughness'), False, defaultVal=0),
 		# Translators: Label for a setting in voice settings dialog.
-		NumericDriverSetting("_breathiness", "Aire en la voz", False, defaultVal=0),
+		NumericDriverSetting("_breathiness", _openevv.uiText('set_breathiness'), False, defaultVal=0),
 		# Translators: Label for a setting in voice settings dialog.
-		BooleanDriverSetting("_expandAbbreviations", "Expandir abreviaturas", False),
+		BooleanDriverSetting("_expandAbbreviations", _openevv.uiText('abbreviations_label'), False),
 		# Translators: Label for a setting in voice settings dialog.
-		BooleanDriverSetting("_allowVoiceTags", "Permitir anotaciones del motor", False),
+		BooleanDriverSetting("_allowVoiceTags", _openevv.uiText('allowVoiceTags'), False),
 		# Translators: Label for a setting in voice settings dialog.
-		DriverSetting("_samplerate", "Frecuencia de muestreo", False, defaultVal="11025"),
-		DriverSetting("_quality", "Mejora de audio", defaultVal="2"),
-		DriverSetting("_resampling", "Remuestreo", defaultVal="4"),
-		DriverSetting("_eqPreset", "Perfil del ecualizador", defaultVal="neutral"),
-		NumericDriverSetting("_preamp", "Ganancia", defaultVal=0, minVal=-12, maxVal=12),
-		NumericDriverSetting("_eq0", "Banda 120 Hz", defaultVal=0, minVal=-12, maxVal=12),
-		NumericDriverSetting("_eq1", "Banda 350 Hz", defaultVal=0, minVal=-12, maxVal=12),
-		NumericDriverSetting("_eq2", "Banda 1000 Hz", defaultVal=0, minVal=-12, maxVal=12),
-		NumericDriverSetting("_eq3", "Banda 2500 Hz", defaultVal=0, minVal=-12, maxVal=12),
-		NumericDriverSetting("_eq4", "Banda 3500 Hz", defaultVal=0, minVal=-12, maxVal=12),
+		DriverSetting("_samplerate", _openevv.uiText('sample_rate_label'), False, defaultVal="11025"),
+		DriverSetting("_quality", _openevv.uiText('audio_optimization_label'), defaultVal="2"),
+		DriverSetting("_resampling", _openevv.uiText('eq_text_21'), defaultVal="4"),
+		DriverSetting("_eqPreset", _openevv.uiText('eq_text_10'), defaultVal="neutral"),
+		NumericDriverSetting("_preamp", _openevv.uiText('eq_text_11'), defaultVal=0, minVal=-12, maxVal=12),
+		NumericDriverSetting("_eq0", _openevv.uiText('eqBand') % 120, defaultVal=0, minVal=-12, maxVal=12),
+		NumericDriverSetting("_eq1", _openevv.uiText('eqBand') % 350, defaultVal=0, minVal=-12, maxVal=12),
+		NumericDriverSetting("_eq2", _openevv.uiText('eqBand') % 1000, defaultVal=0, minVal=-12, maxVal=12),
+		NumericDriverSetting("_eq3", _openevv.uiText('eqBand') % 2500, defaultVal=0, minVal=-12, maxVal=12),
+		NumericDriverSetting("_eq4", _openevv.uiText('eqBand') % 3500, defaultVal=0, minVal=-12, maxVal=12),
 	)
 
 	supportedCommands = {

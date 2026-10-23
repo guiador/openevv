@@ -85,7 +85,7 @@ fun AboutScreen(onBack: () -> Unit) {
 				onRefused = { notice = noEmail }
 			)
 
-            SectionHeading(text = "Motor y actualizaciones", horizontal = 0.dp)
+            SectionHeading(text = stringResource(R.string.about_engine_updates), horizontal = 0.dp)
             Paragraph(text = stringResource(R.string.about_distribution))
             Paragraph(text = stringResource(R.string.about_installation, BuildConfig.APPLICATION_ID))
 			SectionHeading(text = stringResource(R.string.about_build_heading), horizontal = 0.dp)

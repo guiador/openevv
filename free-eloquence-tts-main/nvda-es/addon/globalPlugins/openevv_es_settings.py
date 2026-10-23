@@ -6,14 +6,14 @@ from wx.lib.scrolledpanel import ScrolledPanel
 from gui.settingsDialogs import SettingsPanel, NVDASettingsDialog
 from synthDriverHandler import getSynth
 from synthDrivers._openevv_es_audio import PRESETS
-from synthDrivers._openevv_es_ui import translator
+from synthDrivers._openevv_es_ui import translator, currentLocale
 from synthDrivers import _openevv_es as native
 
 class OpenEVVPanel(SettingsPanel):
     title='OpenEVV'
     def makeSettings(self, settingsSizer):
         self.synth=getSynth();self.controls={};self.pendingPitch=None;self.pendingInflection=None
-        t=translator(native.localeOf(self.synth._home()) if self.synth and self.synth.name=='openevv_es' else 'es')
+        t=translator(native.localeOf(self.synth._home()) if self.synth and self.synth.name=='openevv_es' else currentLocale())
         if not self.synth or self.synth.name!='openevv_es':
             settingsSizer.Add(wx.StaticText(self,label=t('select')),flag=wx.ALL,border=10);return
         notebook=wx.Notebook(self);settingsSizer.Add(notebook,1,wx.EXPAND);pages=[]
@@ -147,31 +147,22 @@ class OpenEVVPanel(SettingsPanel):
         self.noise=wx.SpinCtrl(p,min=0,max=100,initial=int(config.conf['audio']['whiteNoiseVolume']));self.noise.SetName(t('noise'))
         s.Add(wx.StaticText(p,label=t('noise')),0,wx.ALL,5);s.Add(self.noise,0,wx.ALL,5)
         from synthDrivers._openevv_es_response import DEFAULTS, PROFILES
-        spanish=native.localeOf(self.synth._home()).startswith('es')
-        def rtext(es,en):return es if spanish else en
-        p=ScrolledPanel(notebook);s=wx.BoxSizer(wx.VERTICAL);p.SetSizer(s)
-        notebook.AddPage(p,rtext('Respuesta experimental','Experimental response'));pages.append(p)
-        explanation=wx.StaticText(p,label=rtext(
-            'Desactivado por defecto. Aplica o guarda antes de probar. Los cambios se ejecutan entre síntesis. Fragmentos pequeños reducen el trabajo descartado al cancelar, pero pueden añadir pausas. WASAPI, el dispositivo y NVDA controlan la cola de reproducción. No se mide aquí la latencia audible.',
-            'Disabled by default. Apply or save before testing. Changes run between synthesis calls. Small pieces reduce discarded synthesis after cancellation, but may add pauses. WASAPI, the device and NVDA control playback buffering. Audible latency is not measured here.'))
-        explanation.Wrap(480);s.Add(explanation,0,wx.EXPAND|wx.ALL,5)
-        fields=[
-            ('enabled','Activar experimentos','Enable experiments',None,None,'Desactivar restaura el comportamiento habitual y conserva los valores para otra prueba.','Disabling restores normal behavior and keeps values for another test.'),
-            ('pieceChars','Caracteres por fragmento','Characters per piece',32,2000,'Menos: cancelación más ágil, posibles micropausas y menor contexto. Más: continuidad, mayor espera al descartar. Sin corte estricto, una palabra larga puede superar el límite.','Lower: faster cancellation, possible gaps and less context. Higher: smoother speech, longer discard time. Without hard cuts, a long word can exceed the limit.'),
-            ('sentenceEnds','Separar al final de frases','Split at sentence ends',None,None,'Activado: aprovecha pausas naturales. Desactivado: conserva más contexto, pero espera al límite por caracteres.','On: uses natural pauses. Off: keeps more context, but waits for the character limit.'),
-            ('frameSamples','Muestras por bloque nativo','Samples per native block',128,4096,'Menos: entrega antes y más llamadas/CPU. Más: menos llamadas, mayor granularidad. El tiempo depende de la frecuencia de muestreo.','Lower: earlier delivery and more callbacks/CPU. Higher: fewer callbacks, coarser delivery. Duration depends on sample rate.'),
-            ('feedSamples','Muestras acumuladas antes de enviar','Samples accumulated before feeding',128,8192,'Menos: entrega más frecuente y riesgo de interrupciones bajo carga. Más: mayor acumulación. Los índices fuerzan una entrega; se puede exceder el umbral en un bloque. No fija el búfer WASAPI.','Lower: more frequent delivery and gaps under load. Higher: more accumulation. Index marks force delivery; a block can overshoot the threshold. This does not set the WASAPI buffer.'),
-            ('hardCut','Cortar dentro de palabras','Cut within words',None,None,'Puede agilizar el descarte, pero rompe pronunciación, códigos, emojis combinados y prosodia. Se omite con anotaciones, deletreo o tono/velocidad/volumen temporales. No detecta sílabas.','May speed up discard, but breaks pronunciation, codes, combining emoji and prosody. Skipped for annotations, spelling or temporary pitch/rate/volume. Does not detect syllables.'),
-            ('lightOutput','Procesamiento de salida ligero','Light output processing',None,None,'Reduce cálculo de ganancia y saturación suave; mantiene ecualizador y balance. Puede bajar el volumen o introducir distorsión al recortar picos.','Reduces gain calculation and soft limiting; keeps EQ and balance. May lower volume or distort clipped peaks.'),
-        ]
-        for name,es,en,lo,hi,wes,wen in fields:
-            key='_response_'+name;label=rtext(es,en);warning=rtext(wes,wen)
+        p,s=page('response_title')
+        note(p,s,'response_explanation')
+        fields=[('enabled',None,None),('pieceChars',32,2000),('sentenceEnds',None,None),
+                ('frameSamples',128,4096),('feedSamples',128,8192),('hardCut',None,None),
+                ('lightOutput',None,None)]
+        for name,lo,hi in fields:
+            key='_response_'+name;label=t('response_'+name);warning=t('response_'+name+'_help')
             if lo is None:check(p,s,key,label)
             else:spin(p,s,key,label,lo,hi)
             ctrl=self.controls[key][0];ctrl.SetHelpText(warning);ctrl.SetName(label+'. '+warning)
             description=wx.StaticText(p,label=warning);description.Wrap(480);s.Add(description,0,wx.EXPAND|wx.ALL,5)
-        for name,values in [('Restaurar y desactivar',DEFAULTS)]+list(PROFILES.items()):
-            button=wx.Button(p,label=name)
+        profiles=[('response_reset',DEFAULTS)]+[(key,PROFILES[name]) for key,name in
+            [('response_reference','Referencia'),('response_balanced','Equilibrado'),
+             ('response_fast','Rápido'),('response_extreme','Extremo')]]
+        for key,values in profiles:
+            button=wx.Button(p,label=t(key))
             def responsePreset(event,values=values):
                 for key,value in values.items():self.controls['_response_'+key][0].SetValue(value)
             button.Bind(wx.EVT_BUTTON,responsePreset);s.Add(button,0,wx.ALL,5)
@@ -180,9 +171,9 @@ class OpenEVVPanel(SettingsPanel):
             hz=int(self.synth._samplerate)
             frame=self.controls['_response_frameSamples'][0].GetValue()
             feed=self.controls['_response_feedSamples'][0].GetValue()
-            theoretical.SetLabel(rtext('PCM teórico','Theoretical PCM')+f': {hz} Hz; {1000*frame/hz:.1f} ms/bloque; {hz/frame:.1f} callbacks/s; {1000*feed/hz:.1f} ms/umbral. '+rtext('No equivale al tiempo audible.','Not audible latency.'))
+            theoretical.SetLabel(t('response_theory').format(hz=hz,frame=1000*frame/hz,callbacks=hz/frame,feed=1000*feed/hz))
             if event:event.Skip()
-        calculate=wx.Button(p,label=rtext('Actualizar cálculo teórico','Refresh theoretical estimate'));calculate.Bind(wx.EVT_BUTTON,updateTheory)
+        calculate=wx.Button(p,label=t('response_refresh'));calculate.Bind(wx.EVT_BUTTON,updateTheory)
         s.Add(calculate,0,wx.ALL,5);updateTheory()
         p,s=page('section_test')
         self.preview=wx.TextCtrl(p,value=t('preview'),style=wx.TE_MULTILINE);self.preview.SetName(t('section_test'));s.Add(self.preview,1,wx.EXPAND|wx.ALL,5)
@@ -233,7 +224,7 @@ class OpenEVVPanel(SettingsPanel):
         self.Bind(wx.EVT_WINDOW_DESTROY,destroyed)
         p,s=page('about_title')
         note(p,s,'local_credits')
-        s.Add(wx.StaticText(p,label='OpenEVV — Stanislaw Przedzinkowski & contributors. LICENSE / NOTICE.'),0,wx.EXPAND|wx.ALL,5)
+        s.Add(wx.StaticText(p,label=t('upstreamCredits')),0,wx.EXPAND|wx.ALL,5)
         from pathlib import Path
         import re
         manifest=(Path(__file__).resolve().parents[1]/'manifest.ini').read_text(encoding='utf8')

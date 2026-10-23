@@ -94,8 +94,8 @@
     <string name="audio_optimization_volume_description">Aumenta il volume negli ambienti rumorosi.</string>
     <string name="audio_optimization_quality">Priorità alla qualità</string>
     <string name="audio_optimization_quality_description">Filtra il ricampionamento e mantiene un margine di volume.</string>
-    <string name="sample_rate_label">Frequenza di uscita (ricampionata)</string>
-    <string name="sample_rate_description">Il motore genera audio a 11.025 Hz e lo converte alla frequenza scelta. Un’uscita maggiore può rendere la riproduzione più fluida, ma non aggiunge informazioni acustiche e usa più risorse.</string>
+    <string name="sample_rate_label">Frequenza di uscita</string>
+    <string name="sample_rate_description">La modalità classica parte da 11.025 Hz. Le modalità sperimentali offrono banda larga o una base nativa a 16 kHz. Il ricampionatore scelto converte l’audio quando le frequenze di uscita e di sintesi sono diverse. Una frequenza di uscita maggiore non garantisce da sola un suono migliore.</string>
     <string name="routing_label">Canale di sintesi</string>
     <string name="routing_description">Scegli il canale richiesto da ogni app o uno comune. Su Android 17, senza un servizio attivo in primo piano, la riproduzione torna al canale dell’app richiedente.</string>
     <string name="routing_automatic">Automatico</string>
@@ -294,9 +294,9 @@
     <string name="pauses_keep">Pause normali</string>
     <string name="pauses_end">Accorcia alla fine</string>
     <string name="pauses_all">Accorcia tutte</string>
-    <string name="symbol_label">Simboli e punteggiatura</string>
-    <string name="symbol_description">Scegli quali simboli e segni di punteggiatura pronunciare.</string>
-    <string name="symbol_mode_label">Simboli e punteggiatura</string>
+    <string name="symbol_label">Simboli</string>
+    <string name="symbol_description">Scegli i simboli da pronunciare.</string>
+    <string name="symbol_mode_label">Modalità simboli</string>
     <string name="symbol_mode_all">Tutti</string>
     <string name="symbol_mode_most">La maggior parte</string>
     <string name="symbol_mode_some">Alcuni</string>
@@ -556,7 +556,7 @@
     <string name="reset_eq_description">Ripristina le bande e il preamplificatore neutri.</string>
     <string name="defaults_restored">Valori predefiniti ripristinati.</string>
     <string name="reset_voice_help">Ripristina tono, intonazione e timbro della voce scelta. Applica o salva; velocità e volume restano invariati.</string>
-    <string name="local_credits">Con colaboración de Guiador y con la gran colaboración y ayuda de GPT Codex.</string>
+    <string name="local_credits">Con i contributi di Guiador e l’ampia collaborazione e assistenza di GPT Codex.</string>
     <string name="synthesis_mode">Modalità di sintesi</string>
     <string name="synthesis_classic">Classica (predefinita)</string>
     <string name="synthesis_wideband">Banda larga (sperimentale)</string>
@@ -568,4 +568,7 @@
     <string name="dictionary_personal">Usare le voci personali</string>
     <string name="dictionary_none">Nessuno</string>
     <string name="dictionary_help">Supporta Eloquence Dictionary Manager, voci personali e file .dic nella cartella openevv della configurazione NVDA. Le modifiche vengono ricaricate automaticamente durante la lettura. Nessun gruppo gestito è selezionato per impostazione predefinita.</string>
+    <string name="about_engine_updates">Motore e aggiornamenti</string>
+    <string name="dictionary_import_failed">Impossibile importare il file.</string>
+    <string name="dictionary_entry_description">%1$s, si pronuncia %2$s</string>
 </resources>

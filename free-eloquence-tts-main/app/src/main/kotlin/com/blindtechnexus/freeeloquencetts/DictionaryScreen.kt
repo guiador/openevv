@@ -196,7 +196,7 @@ fun DictionaryScreen(onBack: () -> Unit, onOpenFile: (String) -> Unit) {
 					Toast.makeText(context, said, Toast.LENGTH_SHORT).show()
 					recount()
 				} catch (_: Exception) {
-					Toast.makeText(context, "Import failed", Toast.LENGTH_SHORT).show()
+					Toast.makeText(context, context.getString(R.string.dictionary_import_failed), Toast.LENGTH_SHORT).show()
 				}
 			}
 		}.apply { isDaemon = true }.start()
@@ -233,7 +233,7 @@ fun DictionaryScreen(onBack: () -> Unit, onOpenFile: (String) -> Unit) {
 						}
 						Toast.makeText(context, notice, Toast.LENGTH_SHORT).show()
 					} catch (_: Exception) {
-						Toast.makeText(context, "Export failed", Toast.LENGTH_SHORT).show()
+						Toast.makeText(context, context.getString(R.string.dictionary_export_failed), Toast.LENGTH_SHORT).show()
 					}
 				}
 			}.apply { isDaemon = true }.start()
@@ -467,12 +467,13 @@ fun DictionaryScreen(onBack: () -> Unit, onOpenFile: (String) -> Unit) {
 /** One word of the dictionary: what is written, and what is said. */
 @Composable
 internal fun WordRow(word: String, say: String, onPress: () -> Unit) {
+	val entryDescription = stringResource(R.string.dictionary_entry_description, word, say)
 	Column(
 		modifier = Modifier
 			.fillMaxWidth()
 			.clickable(role = Role.Button, onClick = onPress)
 			.semantics(mergeDescendants = true) {
-				contentDescription = "$word, said as $say"
+				contentDescription = entryDescription
 				role = Role.Button
 			}
 			.padding(horizontal = 16.dp, vertical = 12.dp)

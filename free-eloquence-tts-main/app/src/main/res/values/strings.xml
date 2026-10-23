@@ -94,8 +94,8 @@
     <string name="audio_optimization_volume_description">Boosts volume in noisy environments.</string>
     <string name="audio_optimization_quality">Prioritize quality</string>
     <string name="audio_optimization_quality_description">Filters resampling and preserves volume headroom.</string>
-    <string name="sample_rate_label">Output frequency (resampled)</string>
-    <string name="sample_rate_description">The engine generates audio at 11,025 Hz and converts it to the chosen rate. Higher output may smooth playback but adds no acoustic information and uses more resources.</string>
+    <string name="sample_rate_label">Output sample rate</string>
+    <string name="sample_rate_description">Classic mode starts from 11,025 Hz. Experimental modes offer wideband or a native 16 kHz base. The selected resampler converts audio when the output rate differs from the synthesis rate. A higher output rate alone does not guarantee better sound.</string>
     <string name="routing_label">Synthesis channel</string>
     <string name="routing_description">Choose each app’s requested channel or a common one. On Android 17, without an active foreground service, playback returns to the requesting app’s channel.</string>
     <string name="routing_automatic">Automatic</string>
@@ -294,9 +294,9 @@
     <string name="pauses_keep">Normal pauses</string>
     <string name="pauses_end">Shorten at the end</string>
     <string name="pauses_all">Shorten all</string>
-    <string name="symbol_label">Symbols and punctuation</string>
-    <string name="symbol_description">Choose which symbols and punctuation marks are spoken.</string>
-    <string name="symbol_mode_label">Symbols and punctuation</string>
+    <string name="symbol_label">Symbols</string>
+    <string name="symbol_description">Choose which symbols are spoken.</string>
+    <string name="symbol_mode_label">Symbol mode</string>
     <string name="symbol_mode_all">All</string>
     <string name="symbol_mode_most">Most</string>
     <string name="symbol_mode_some">Some</string>
@@ -552,6 +552,25 @@
     <string name="default_tts_do_not_show">Do not show again</string>
     <string name="notification_balance_direction">TTS balance: %1$s</string>
     <string name="resampling_automatic_value">%1$s (%2$s)</string>
+    <string name="reset_defaults">Restore defaults</string>
+    <string name="reset_eq_description">Restore neutral equalizer bands and preamp.</string>
+    <string name="defaults_restored">Defaults restored.</string>
+    <string name="reset_voice_help">Restore the selected voice pitch, inflection and timbre. Apply or save to keep the changes; rate and volume are preserved.</string>
+    <string name="local_credits">With contributions from Guiador and extensive collaboration and assistance from GPT Codex.</string>
+    <string name="synthesis_mode">Synthesis mode</string>
+    <string name="synthesis_classic">Classic (default)</string>
+    <string name="synthesis_wideband">Wideband (experimental)</string>
+    <string name="synthesis_native16">Native 16 kHz base (experimental)</string>
+    <string name="synthesis_mode_help">Wideband combines the original voice with a 22.05 kHz companion. Native mode synthesizes at 16 kHz and selects 16 kHz output; other higher output rates are resampled from this base. Both can change the timbre and can be switched off. At 8,000 or 11,025 Hz output, both modes retain classic synthesis.</string>
+    <string name="synthesis_reset_help">Return to classic synthesis without changing the voice or equalizer.</string>
+    <string name="dictionary_page">Pronunciation dictionaries</string>
+    <string name="dictionary_set">Dictionary set</string>
+    <string name="dictionary_personal">Use personal entries</string>
+    <string name="dictionary_none">None</string>
+    <string name="dictionary_help">Supports Eloquence Dictionary Manager sets, personal entries and .dic files in the openevv folder in your NVDA configuration. Changed files reload automatically while speaking. No managed set is selected by default.</string>
+    <string name="about_engine_updates">Engine and updates</string>
+    <string name="dictionary_import_failed">Could not import the file.</string>
+    <string name="dictionary_entry_description">%1$s, pronounced %2$s</string>
     <string name="dictionary_export_name" translatable="false">eloquence-dictionary.dict</string>
     <string name="expansions_export_name" translatable="false">free-eloquence-short-forms.txt</string>
     <string name="battery_milliseconds" translatable="false">%1$d ms</string>
@@ -566,20 +585,4 @@
     <string name="preview_text_fr" translatable="false">Bonjour, je suis votre nouvelle voix. Voici comment ce programme sonne en français.</string>
     <string name="preview_text_it" translatable="false">Ciao, sono la tua nuova voce. Così suona questo programma in italiano.</string>
     <string name="audio_file_name" translatable="false">eloquence-audio.wav</string>
-    <string name="reset_defaults">Restore defaults</string>
-    <string name="reset_eq_description">Restore neutral equalizer bands and preamp.</string>
-    <string name="defaults_restored">Defaults restored.</string>
-    <string name="reset_voice_help">Restore the selected voice pitch, inflection and timbre. Apply or save to keep the changes; rate and volume are preserved.</string>
-    <string name="local_credits">Con colaboración de Guiador y con la gran colaboración y ayuda de GPT Codex.</string>
-    <string name="synthesis_mode">Synthesis mode</string>
-    <string name="synthesis_classic">Classic (default)</string>
-    <string name="synthesis_wideband">Wideband (experimental)</string>
-    <string name="synthesis_native16">Native 16 kHz base (experimental)</string>
-    <string name="synthesis_mode_help">Wideband combines the original voice with a 22.05 kHz companion. Native mode synthesizes at 16 kHz and selects 16 kHz output; other higher output rates are resampled from this base. Both can change the timbre and can be switched off. At 8,000 or 11,025 Hz output, both modes retain classic synthesis.</string>
-    <string name="synthesis_reset_help">Return to classic synthesis without changing the voice or equalizer.</string>
-    <string name="dictionary_page">Pronunciation dictionaries</string>
-    <string name="dictionary_set">Dictionary set</string>
-    <string name="dictionary_personal">Use personal entries</string>
-    <string name="dictionary_none">None</string>
-    <string name="dictionary_help">Supports Eloquence Dictionary Manager sets, personal entries and .dic files in the openevv folder in your NVDA configuration. Changed files reload automatically while speaking. No managed set is selected by default.</string>
 </resources>
