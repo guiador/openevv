@@ -69,22 +69,7 @@ fi
 # What the engine needs before it is right on this architecture. Each is a bug
 # in openevv rather than a change for Android, and each is written up in its
 # own file; the submodule stays as upstream left it.
-for patch in "$here"/patches/*.patch; do
-	[ -e "$patch" ] || continue
-	if git -C "$engine" apply --reverse --check "$patch" >/dev/null 2>&1; then
-		continue
-	fi
-	if ! git -C "$engine" apply --whitespace=nowarn "$patch"; then
-		# Two builds racing here both see it unapplied and both try it. The
-		# loser has nothing left to do rather than nothing to say.
-		if git -C "$engine" apply --reverse --check "$patch" >/dev/null 2>&1; then
-			continue
-		fi
-		echo "could not apply $(basename "$patch") to native/openevv" >&2
-		exit 1
-	fi
-	echo "applied $(basename "$patch")"
-done
+"${PYTHON:-python3}" "$root/tools/apply-native-patches.py" --engine "$engine"
 
 # Every directory the engine's headers sit in, the same set its Makefile builds
 # its own include path from. They stay relative because the link below runs

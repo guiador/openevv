@@ -1,8 +1,8 @@
-param([string]$ToolRoot='C:/Users/Guillermo/.codex/build-tools/evvdroid',[int]$Jobs=2)
+param([string]$ToolRoot="${env:USERPROFILE}/.codex/build-tools/evvdroid",[int]$Jobs=1,[switch]$IncludeAuxiliary,[switch]$BuildTests)
 $ErrorActionPreference='Stop'
 $project=Split-Path $PSScriptRoot
-$gitRoot='C:/Users/Guillermo/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git'
-$pythonRoot='C:/Users/Guillermo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python'
+$gitRoot="${env:USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git"
+$pythonRoot="${env:USERPROFILE}/.cache/codex-runtimes/codex-primary-runtime/dependencies/python"
 $env:JAVA_HOME="$ToolRoot/jdk21/jdk-21.0.12.1+1"
 $env:ANDROID_HOME="$ToolRoot/sdk"
 $env:ANDROID_SDK_ROOT=$env:ANDROID_HOME
@@ -18,7 +18,10 @@ Push-Location $project
 try {
     & "$ToolRoot/bash.exe" native/build-native.sh *> build-android-native.log
     if ($LASTEXITCODE) {Get-Content build-android-native.log -Tail 35;throw 'Falló compilación Android nativa.'}
-    & ./gradlew.bat :app:assemblePrincipalDebug -x buildNative '-Pevvdroid.ndkVersion=26.1.10909125' '-Dorg.gradle.jvmargs=-Xmx1024m -Dfile.encoding=UTF-8' '-Pkotlin.incremental=false' '-Pkotlin.compiler.execution.strategy=in-process' --max-workers=2 --console=plain *> build-android-current.log
+    $tasks=@(':app:assemblePrincipalDebug')
+    if ($IncludeAuxiliary) {$tasks+=':app:assembleAuxiliarDebug'}
+    if ($BuildTests) {$tasks+=':app:assemblePrincipalDebugAndroidTest'}
+    & ./gradlew.bat @tasks -x buildNative '-Pevvdroid.ndkVersion=26.1.10909125' '-Dorg.gradle.jvmargs=-Xmx1152m -Xms128m -XX:ActiveProcessorCount=2 -XX:+UseSerialGC -Dfile.encoding=UTF-8' '-Pkotlin.incremental=false' '-Pkotlin.compiler.execution.strategy=in-process' --max-workers=1 --no-daemon --console=plain *> build-android-current.log
     if ($LASTEXITCODE) {Get-Content build-android-current.log -Tail 35;throw 'Falló APK Principal.'}
     & "$pythonRoot/python.exe" -X utf8 ../tools/verify-android-delivery.py
     if ($LASTEXITCODE) {throw 'Falló validación de bibliotecas Android.'}

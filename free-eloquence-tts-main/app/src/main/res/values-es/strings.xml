@@ -94,8 +94,8 @@
     <string name="audio_optimization_volume_description">Aumenta el volumen para ambientes ruidosos.</string>
     <string name="audio_optimization_quality">Priorizar calidad</string>
     <string name="audio_optimization_quality_description">Filtra el remuestreo y mantiene margen de volumen.</string>
-    <string name="sample_rate_label">Frecuencia de salida (remuestreada)</string>
-    <string name="sample_rate_description">El motor genera audio a 11 025 Hz y lo convierte a la frecuencia elegida. Una salida mayor puede suavizar la reproducción, pero no añade información acústica y consume más recursos.</string>
+    <string name="sample_rate_label">Frecuencia de salida</string>
+    <string name="sample_rate_description">El modo habitual parte de 11.025 Hz. Los modos experimentales ofrecen banda ancha o una base nativa de 16 kHz. El remuestreador elegido convierte el audio cuando la frecuencia de salida difiere de la síntesis. Una salida más alta no garantiza por sí sola un sonido mejor.</string>
     <string name="routing_label">Canal de síntesis</string>
     <string name="routing_description">Elige dónde se reproduce la voz: el canal solicitado por cada aplicación o uno común. En Android 17, si no hay un servicio en primer plano activo, la reproducción vuelve al canal de la aplicación solicitante.</string>
     <string name="routing_automatic">Automático</string>
@@ -582,4 +582,7 @@
     <string name="dictionary_personal">Usar entradas personales</string>
     <string name="dictionary_none">Ninguno</string>
     <string name="dictionary_help">Compatible con conjuntos de Eloquence Dictionary Manager. También carga archivos .dic de la carpeta openevv de la configuración de NVDA. Los cambios se recargan automáticamente al hablar. Los diccionarios originales permanecen activos si no se selecciona un conjunto.</string>
+    <string name="about_engine_updates">Motor y actualizaciones</string>
+    <string name="dictionary_import_failed">No se pudo importar el archivo.</string>
+    <string name="dictionary_entry_description">%1$s, se pronuncia %2$s</string>
 </resources>

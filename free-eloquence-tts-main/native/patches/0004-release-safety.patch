@@ -1,0 +1,336 @@
+Subject: [PATCH] Keep landing keys consistent; bound SSML and fix task ownership and leaks
+
+diff --git a/src/delta/delta_rules.c b/src/delta/delta_rules.c
+index f30d5ba..dcc94db 100644
+--- a/src/delta/delta_rules.c
++++ b/src/delta/delta_rules.c
+@@ -1283,7 +1283,7 @@ static int32_t run_bytecode(void *state, const delta_rule *r,
+                nothing else moved, so both go back by hand. */
+             depth = st.argn;
+             at = st.pc;
+-            st.reg[0] = EVV_LAND_SAVE((intptr_t)buf);
++            st.reg[0] = EVV_LAND_SAVE(EVV_AT(void *, buf));
+             st.argn = depth;
+             st.pc = at;
+             planted = 1;
+diff --git a/src/delta/delta_rules_c.h b/src/delta/delta_rules_c.h
+index 32b98c8..784ee61 100644
+--- a/src/delta/delta_rules_c.h
++++ b/src/delta/delta_rules_c.h
+@@ -218,7 +218,7 @@ void evv_arg_over(const char *who, int argn, int room);
+ #define LANDING(jb) \
+     do { r0 = SLOT(jb); ARG(0); ARG(SLOT(jb)); \
+          { int32_t buf = (argn > 0) ? arg[argn - 1] : 0; int depth = argn; \
+-           r0 = EVV_LAND_SAVE((intptr_t)buf); \
++           r0 = EVV_LAND_SAVE(EVV_AT(void *, buf)); \
+            argn = depth; } \
+          CMP(testl, r0, r0); } while (0)
+ 
+diff --git a/src/eci/dict/eci_dict.c b/src/eci/dict/eci_dict.c
+index 9394882..46d0378 100644
+--- a/src/eci/dict/eci_dict.c
++++ b/src/eci/dict/eci_dict.c
+@@ -170,8 +170,14 @@ int32_t ed_add_active_dict(OldInst *h, void *dict)
+     int32_t lang;
+     int32_t rc = api_get_dict_language(OI_NEW(h), dict, &lang);
+ 
+-    if (rc >= 0)
++    if (rc >= 0) {
++        int family = (lang & 0xff0000) >> 16;
++        int dialect = lang & 0xff;
++
++        if (family < 1 || family > DICT_FAMILIES || dialect >= DICT_DIALECTS)
++            return -1;
+         ACTIVE_DICT(h, (lang & 0xff0000) >> 16, lang & 0xff) = EVV_REF(dict);
++    }
+     return rc;
+ }
+ 
+@@ -185,6 +191,8 @@ int32_t ed_delete_active_dict(OldInst *h, void *dict)
+         int family = (lang & 0xff0000) >> 16;
+         int dialect = lang & 0xff;
+ 
++        if (family < 1 || family > DICT_FAMILIES || dialect >= DICT_DIALECTS)
++            return -1;
+         if (EVV_AT(void *, ACTIVE_DICT(h, family, dialect)) == dict)
+             ACTIVE_DICT(h, family, dialect) = 0;
+     }
+@@ -435,9 +443,8 @@ static int ed_ownCopy(void **owned, const void *from, int32_t len, int wide)
+ /* Look a key up. What comes back is the translation in the caller's own code
+    set, or nothing.
+  *
+- * The copy of the converted key is never given back, which is the original's
+- * and is left: it leaks a string per call whenever the conversion made one,
+- * and the extended form below frees its own. */
++ * A converted key is copied only for the lookup and freed afterwards; a key
++ * supplied by the caller or converter remains theirs. */
+ static const char *ed_lookup(OldInst *h, void *dict, int32_t volume,
+                              const void *key)
+ {
+@@ -446,6 +453,7 @@ static const char *ed_lookup(OldInst *h, void *dict, int32_t volume,
+     void   *own;
+     int32_t len;
+     int32_t room;
++    int32_t rc;
+ 
+     if (UnicodeConverter(h, key, &wide, 1))
+         return 0;
+@@ -462,9 +470,12 @@ static const char *ed_lookup(OldInst *h, void *dict, int32_t volume,
+     len = own ? (int32_t)strlen(own) : 0;
+     room = OI_DICT_XLATLEN(h);
+ 
+-    if (api_lookup_dict(OI_NEW(h), dict, volume, own, len,
++    rc = api_lookup_dict(OI_NEW(h), dict, volume, own, len,
+                         &OI_DICT_XLAT(h), &room,
+-                        ed_plainPos(h, dict)) != 0)
++                        ed_plainPos(h, dict));
++    if (own != wide)
++        cpp_delete(own);
++    if (rc != 0)
+         return 0;
+     if (room == 0)
+         return 0;
+diff --git a/src/eci/ssml/eci_mbconvert.c b/src/eci/ssml/eci_mbconvert.c
+index 637145d..4ed9f47 100644
+--- a/src/eci/ssml/eci_mbconvert.c
++++ b/src/eci/ssml/eci_mbconvert.c
+@@ -79,6 +79,14 @@ int32_t Mbcs2Sbcs(char *in, char *out)
+         }
+ 
+         if (bytes != 1) {
++            /* Do not encode a terminator or read beyond it when a character
++               was cut short. Check the whole sequence before emitting it. */
++            for (i = 1; i < bytes; i++) {
++                if (((uint8_t)p[i] & 0xc0) != 0x80) {
++                    *q = 0;
++                    return (int32_t)(q - out);
++                }
++            }
+             for (i = 0; i < bytes; i++) {
+                 uint8_t b;
+ 
+@@ -119,8 +127,8 @@ int32_t Mbcs2Sbcs(char *in, char *out)
+             {
+                 uint32_t point = hex ? (uint32_t)strtol(copy, 0, 16)
+                                      : (uint32_t)atoi(copy);
+-                uint8_t  utf8[4];
+-                uint32_t room = sizeof utf8;
++                uint8_t  utf8[5];
++                uint32_t room = sizeof utf8 - 1;
+                 char     narrow[sizeof utf8 * 5 + 1];
+ 
+                 p = p + length + 1;
+diff --git a/src/eci/ssml/eci_parserxml.c b/src/eci/ssml/eci_parserxml.c
+index e234d7b..6c4ff23 100644
+--- a/src/eci/ssml/eci_parserxml.c
++++ b/src/eci/ssml/eci_parserxml.c
+@@ -89,20 +89,30 @@ THIS int32_t px_setFlexVariable(Parserxml *p)
+    are thrown away and made again rather than copied. */
+ THIS int32_t px_reallocTextBuffer(Parserxml *p)
+ {
+-    int32_t want = p->textRoom * 2;
+-    char   *fresh = malloc((size_t)want + 1);
++    int32_t want;
++    char *fresh, *sbcs, *mbcs;
+ 
+-    free(p->sbcs);
+-    free(p->mbcs);
+-    p->sbcs = malloc((size_t)want + 1);
+-    p->mbcs = malloc((size_t)want + 1);
+-
+-    if (fresh == 0 || p->sbcs == 0 || p->mbcs == 0)
++    if (p->textRoom <= 0 || p->textRoom > (INT32_MAX - 1) / 2)
++        return 0;
++    want = p->textRoom * 2;
++    fresh = malloc((size_t)want + 1);
++    sbcs = malloc((size_t)want + 1);
++    mbcs = malloc((size_t)want + 1);
++
++    if (fresh == 0 || sbcs == 0 || mbcs == 0) {
++        free(fresh);
++        free(sbcs);
++        free(mbcs);
+         return 0;
++    }
+ 
+     strncpy(fresh, p->textBuffer, (size_t)p->textRoom);
+     free(p->textBuffer);
++    free(p->sbcs);
++    free(p->mbcs);
+     p->textBuffer = fresh;
++    p->sbcs = sbcs;
++    p->mbcs = mbcs;
+ 
+     TextBuffer     = p->textBuffer;
+     pTextBuffer    = TextBuffer + p->textRoom;
+@@ -117,8 +127,13 @@ THIS int32_t px_reallocTextBuffer(Parserxml *p)
+ THIS int32_t px_reallocTagBuffer(Parserxml *p)
+ {
+     int32_t used = (int32_t)(pTagBuffer - TagBuffer);
+-    int32_t want = used * 2;
+-    char   *fresh = malloc((size_t)want + 1);
++    int32_t want;
++    char *fresh;
++
++    if (used <= 0 || used > (INT32_MAX - 1) / 2)
++        return 0;
++    want = used * 2;
++    fresh = malloc((size_t)want + 1);
+ 
+     if (fresh == 0)
+         return 0;
+@@ -134,10 +149,16 @@ THIS int32_t px_reallocTagBuffer(Parserxml *p)
+ 
+ THIS int32_t px_reallocTagStack(Parserxml *p)
+ {
+-    int32_t want = p->tagSlots * 2;
+-    char  **fresh = malloc((size_t)want * sizeof *fresh);
++    int32_t want;
++    char **fresh;
+     int32_t i;
+ 
++    if (p->tagSlots <= 0 || p->tagSlots > INT32_MAX / 2
++        || (size_t)p->tagSlots > SIZE_MAX / sizeof *fresh / 2)
++        return 0;
++    want = p->tagSlots * 2;
++    fresh = malloc((size_t)want * sizeof *fresh);
++
+     if (fresh == 0)
+         return 0;
+ 
+@@ -154,10 +175,16 @@ THIS int32_t px_reallocTagStack(Parserxml *p)
+ 
+ THIS int32_t px_reallocAtts(Parserxml *p)
+ {
+-    int32_t want = p->attsSlots * 2;
+-    char  **fresh = malloc((size_t)want * sizeof *fresh);
++    int32_t want;
++    char **fresh;
+     int32_t i;
+ 
++    if (p->attsSlots <= 0 || p->attsSlots > INT32_MAX / 2
++        || (size_t)p->attsSlots > SIZE_MAX / sizeof *fresh / 2)
++        return 0;
++    want = p->attsSlots * 2;
++    fresh = malloc((size_t)want * sizeof *fresh);
++
+     if (fresh == 0)
+         return 0;
+ 
+@@ -207,6 +234,13 @@ THIS int8_t px_parseText(Parserxml *p, const char *text, int32_t len,
+ 
+     (void)unused;
+ 
++    /* Conversion consumes a NUL-terminated string, while all scanner lengths
++       are signed 32-bit. Reject disagreement before sizing its expansion. */
++    if (text == 0 || len < 0
++        || (size_t)len > (SIZE_MAX - 1) / NARROW_FACTOR
++        || len > (INT32_MAX - 1) / NARROW_FACTOR
++        || strlen(text) != (size_t)len)
++        return 0;
+     narrow = malloc((size_t)len * NARROW_FACTOR + 1);
+     if (narrow == 0)
+         return 0;
+diff --git a/src/klatt/klatt_run.c b/src/klatt/klatt_run.c
+index b096847..22fe397 100644
+--- a/src/klatt/klatt_run.c
++++ b/src/klatt/klatt_run.c
+@@ -233,9 +233,12 @@ int setSynthToNamedFile(DeltaThis *d, const char *name)
+         SD_SAMPLE_CB(dev) = 0;
+ 
+     if (name && name[0]) {
+-        SD_FILENAME(dev) = dupstr(name);
+-        if (!SD_FILENAME(dev))
++        char *fresh = dupstr(name);
++
++        if (!fresh)
+             return 0;
++        free(SD_FILENAME(dev));
++        SD_FILENAME(dev) = fresh;
+         return 1;
+     }
+ 
+diff --git a/src/port/port_posix.c b/src/port/port_posix.c
+index 0902902..ec0ccfe 100644
+--- a/src/port/port_posix.c
++++ b/src/port/port_posix.c
+@@ -252,7 +252,8 @@ void evv_event_pulse(evv_event *e)
+ 
+ /* ---- threads --------------------------------------------------------- */
+ 
+-struct evv_task { pthread_t id; };
++/* Opaque identity while running; detached threads need no stored pthread_t. */
++struct evv_task { unsigned unused; };
+ 
+ struct evv_start {
+     void (*entry)(void *);
+@@ -299,6 +300,7 @@ static void *evv_trampoline(void *p)
+ evv_task *evv_task_start(void (*entry)(void *), void *arg, int stack_bytes)
+ {
+     pthread_attr_t attr;
++    pthread_t id;
+     struct evv_start *s;
+     evv_task *t;
+     int rc;
+@@ -335,7 +337,9 @@ evv_task *evv_task_start(void (*entry)(void *), void *arg, int stack_bytes)
+     /* Nothing joins these, so let the system reclaim them. */
+     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+ 
+-    rc = pthread_create(&t->id, &attr, evv_trampoline, s);
++    /* The child owns t once it starts and may free it immediately. The
++       pthread implementation must write its result into parent-owned memory. */
++    rc = pthread_create(&id, &attr, evv_trampoline, s);
+     pthread_attr_destroy(&attr);
+ 
+     if (rc != 0) {
+diff --git a/src/port/port_win32.c b/src/port/port_win32.c
+index 2237d5d..1e656fd 100644
+--- a/src/port/port_win32.c
++++ b/src/port/port_win32.c
+@@ -123,7 +123,8 @@ void evv_event_pulse(evv_event *e)    { if (e) PulseEvent(e->h); }
+ 
+ /* ---- threads --------------------------------------------------------- */
+ 
+-struct evv_task { HANDLE h; };
++/* Opaque identity while running; nobody joins or queries an OS handle. */
++struct evv_task { unsigned unused; };
+ 
+ struct evv_start {
+     void (*entry)(void *);
+@@ -154,8 +155,6 @@ static DWORD WINAPI evv_trampoline(LPVOID p)
+        joins these threads, so a block naming one is otherwise held for the
+        life of the process, and every allocation walks the whole region. The
+        handle is good only while its task is running. */
+-    if (self != NULL)
+-        CloseHandle(self->h);
+     free(self);
+     return 0;
+ }
+@@ -164,6 +163,7 @@ evv_task *evv_task_start(void (*entry)(void *), void *arg, int stack_bytes)
+ {
+     struct evv_start *s;
+     evv_task *t;
++    HANDLE h;
+ 
+     if (entry == NULL)
+         return NULL;
+@@ -185,14 +185,17 @@ evv_task *evv_task_start(void (*entry)(void *), void *arg, int stack_bytes)
+ 
+     /* Reserved rather than committed, or a megabyte would be charged to
+        every thread up front. */
+-    t->h = CreateThread(NULL, (SIZE_T)(stack_bytes > 0 ? stack_bytes : 0),
++    /* The child may finish and free t before CreateThread returns. Keep the
++       creation handle local and never access t again after starting it. */
++    h = CreateThread(NULL, (SIZE_T)(stack_bytes > 0 ? stack_bytes : 0),
+                         evv_trampoline, s, STACK_SIZE_PARAM_IS_A_RESERVATION,
+                         NULL);
+-    if (t->h == NULL) {
++    if (h == NULL) {
+         free(s);
+         free(t);
+         return NULL;
+     }
++    CloseHandle(h);
+     return t;
+ }
+ 

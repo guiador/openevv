@@ -80,8 +80,8 @@ audio_optimization_volume|Prioritize volume|Lautstärke priorisieren|Privilégie
 audio_optimization_volume_description|Boosts volume in noisy environments.|Erhöht die Lautstärke in lauter Umgebung.|Augmente le volume dans les environnements bruyants.|Aumenta il volume negli ambienti rumorosi.
 audio_optimization_quality|Prioritize quality|Qualität priorisieren|Privilégier la qualité|Priorità alla qualità
 audio_optimization_quality_description|Filters resampling and preserves volume headroom.|Filtert die Neuabtastung und erhält Pegelreserven.|Filtre le rééchantillonnage et préserve une marge de volume.|Filtra il ricampionamento e mantiene un margine di volume.
-sample_rate_label|Output frequency (resampled)|Ausgabefrequenz (neu abgetastet)|Fréquence de sortie (rééchantillonnée)|Frequenza di uscita (ricampionata)
-sample_rate_description|The engine generates audio at 11,025 Hz and converts it to the chosen rate. Higher output may smooth playback but adds no acoustic information and uses more resources.|Die Engine erzeugt Audio mit 11 025 Hz und wandelt es in die gewählte Rate um. Höhere Raten können die Wiedergabe glätten, fügen aber keine Klanginformationen hinzu und benötigen mehr Ressourcen.|Le moteur produit du son à 11 025 Hz et le convertit à la fréquence choisie. Une sortie plus élevée peut lisser la lecture, mais n’ajoute aucune information acoustique et consomme davantage de ressources.|Il motore genera audio a 11.025 Hz e lo converte alla frequenza scelta. Un’uscita maggiore può rendere la riproduzione più fluida, ma non aggiunge informazioni acustiche e usa più risorse.
+sample_rate_label|Output sample rate|Ausgabe-Abtastrate|Fréquence de sortie|Frequenza di uscita
+sample_rate_description|Classic mode starts from 11,025 Hz. Experimental modes offer wideband or a native 16 kHz base. The selected resampler converts audio when the output rate differs from the synthesis rate. A higher output rate alone does not guarantee better sound.|Der klassische Modus beginnt bei 11.025 Hz. Experimentelle Modi bieten Breitband oder eine native 16-kHz-Basis. Der gewählte Resampler konvertiert Audio, wenn Ausgabe- und Syntheserate voneinander abweichen. Eine höhere Ausgaberate allein garantiert keinen besseren Klang.|Le mode classique part de 11 025 Hz. Les modes expérimentaux proposent une large bande ou une base native de 16 kHz. Le rééchantillonneur choisi convertit le son lorsque les fréquences de sortie et de synthèse diffèrent. Une fréquence de sortie plus élevée ne garantit pas à elle seule un meilleur son.|La modalità classica parte da 11.025 Hz. Le modalità sperimentali offrono banda larga o una base nativa a 16 kHz. Il ricampionatore scelto converte l’audio quando le frequenze di uscita e di sintesi sono diverse. Una frequenza di uscita maggiore non garantisce da sola un suono migliore.
 routing_label|Synthesis channel|Synthesekanal|Canal de synthèse|Canale di sintesi
 routing_description|Choose each app’s requested channel or a common one. On Android 17, without an active foreground service, playback returns to the requesting app’s channel.|Wählen Sie den angeforderten Kanal jeder App oder einen gemeinsamen. Auf Android 17 wird ohne aktiven Vordergrunddienst über den Kanal der anfragenden App wiedergegeben.|Choisissez le canal demandé par chaque application ou un canal commun. Sous Android 17, sans service actif au premier plan, la lecture revient au canal de l’application demandeuse.|Scegli il canale richiesto da ogni app o uno comune. Su Android 17, senza un servizio attivo in primo piano, la riproduzione torna al canale dell’app richiedente.
 routing_automatic|Automatic|Automatisch|Automatique|Automatico
@@ -473,3 +473,91 @@ notification_balance_direction|TTS balance: %1$s|TTS-Balance: %1$s|Balance du TT
 resampling_automatic_value|%1$s (%2$s)|%1$s (%2$s)|%1$s (%2$s)|%1$s (%2$s)
 notification_text_14|Experimental, initially off. Requires an active notification and app playback through Accessibility or Media. Keeps stereo Bluetooth active between synthesis requests, including with the screen off, up to the selected limit. Each utterance restarts the timer. Stops during speech, disconnection or calls. May reduce device wake-up time; does not remove codec delay.|Experimentell, anfangs deaktiviert. Benötigt eine aktive Benachrichtigung und Wiedergabe durch die App über Bedienungshilfen oder Medien. Hält Stereo-Bluetooth zwischen Sprachanfragen bis zum gewählten Limit aktiv, auch bei ausgeschaltetem Bildschirm. Jede Äußerung startet den Timer neu. Stoppt beim Sprechen, bei Trennung oder Anrufen. Kann die Aufwachzeit des Geräts verkürzen; beseitigt die Codec-Verzögerung nicht.|Expérimental, désactivé au départ. Nécessite une notification active et une lecture par l’application via Accessibilité ou Multimédia. Maintient le Bluetooth stéréo entre les demandes de synthèse jusqu’à la limite choisie, même écran éteint. Chaque énoncé relance le délai. S’arrête pendant la parole, une déconnexion ou un appel. Peut réduire le réveil du périphérique ; ne supprime pas le délai du codec.|Sperimentale, inizialmente disattivato. Richiede una notifica attiva e la riproduzione dell’app tramite Accessibilità o Multimedia. Mantiene attivo il Bluetooth stereo tra le richieste di sintesi fino al limite scelto, anche a schermo spento. Ogni frase riavvia il timer. Si arresta durante il parlato, la disconnessione o le chiamate. Può ridurre il tempo di riattivazione del dispositivo; non elimina il ritardo del codec.
 notification_text_16|Maintenance limit without speech synthesis|Zeitlimit ohne Sprachsynthese|Durée limite sans synthèse vocale|Limite di mantenimento senza sintesi vocale
+app_name|OpenEVV|OpenEVV|OpenEVV|OpenEVV
+engine_name|OpenEVV|OpenEVV|OpenEVV|OpenEVV
+set_as_default|Open text-to-speech settings|Sprachausgabe-Einstellungen öffnen|Ouvrir les paramètres de synthèse vocale|Apri le impostazioni di sintesi vocale
+settings_title|Voice settings|Stimmeinstellungen|Réglages vocaux|Impostazioni vocali
+voice_label|Voice|Stimme|Voix|Voce
+dialog_rate_title|Speed|Geschwindigkeit|Vitesse|Velocità
+dialog_pitch_title|Pitch|Tonhöhe|Hauteur|Altezza
+dialog_inflection_title|Pitch variation|Tonhöhenvariation|Variation tonale|Variazione tonale
+dialog_breathiness_title|Breathiness|Behauchtheit|Souffle|Soffiosità
+dialog_head_size_title|Resonance (head size)|Resonanz (Kopfgröße)|Résonance (taille de tête)|Risonanza (dimensione della testa)
+dialog_roughness_title|Roughness|Rauheit|Raucité|Raucedine
+dialog_volume_title|Volume|Lautstärke|Volume|Volume
+dictionary_deleted|Deleted %1$s.|%1$s gelöscht.|%1$s supprimé.|%1$s eliminato.
+expansions_edit|Edit|Bearbeiten|Modifier|Modifica
+expansions_delete|Delete|Löschen|Supprimer|Elimina
+expansions_choice|What would you like to do?|Was möchten Sie tun?|Que souhaitez-vous faire ?|Cosa vuoi fare?
+expansions_import|Import file|Datei importieren|Importer un fichier|Importa file
+expansions_export|Export file|Datei exportieren|Exporter un fichier|Esporta file
+expansions_say_hint|Pronounce as|Aussprechen als|Prononcer comme|Pronuncia come
+expansions_added|Added %1$s.|%1$s hinzugefügt.|%1$s ajouté.|%1$s aggiunto.
+expansions_deleted|Deleted %1$s.|%1$s gelöscht.|%1$s supprimé.|%1$s eliminato.
+expansions_updated|Updated %1$s.|%1$s aktualisiert.|%1$s mis à jour.|%1$s aggiornato.
+expansions_export_failed|Could not write the file.|Die Datei konnte nicht geschrieben werden.|Impossible d’écrire le fichier.|Impossibile scrivere il file.
+capital_none|Normal|Normal|Normal|Normale
+spelling_off|Normal|Normal|Normal|Normale
+section_code|Code reading|Code vorlesen|Lecture de code|Lettura del codice
+about_title|About|Über die App|À propos|Informazioni
+about_email_subject|OpenEVV|OpenEVV|OpenEVV|OpenEVV
+cancel|Cancel|Abbrechen|Annuler|Annulla
+audio_title|Audio generator|Audiogenerator|Générateur audio|Generatore audio
+audio_save|Save|Speichern|Enregistrer|Salva
+dictionary_search_words|%1$d words|%1$d Wörter|%1$d mots|%1$d parole
+page_home_title|Voice settings|Stimmeinstellungen|Réglages vocaux|Impostazioni vocali
+page_timbre_title|Voice characteristics|Stimmeigenschaften|Caractéristiques vocales|Caratteristiche vocali
+eq_text_1|Bands and gain|Bänder und Verstärkung|Bandes et gain|Bande e guadagno
+eq_text_2|Timbre profiles|Klangprofile|Profils de timbre|Profili di timbro
+eq_text_3|Resampling method|Neuabtastungsmethode|Méthode de rééchantillonnage|Metodo di ricampionamento
+eq_text_9|Custom|Benutzerdefiniert|Personnalisé|Personalizzato
+eq_text_15|Soft|Weich|Doux|Morbido
+notification_text_1|Notification customization|Benachrichtigungen anpassen|Personnalisation des notifications|Personalizzazione notifiche
+notification_text_10|Both|Beide|Les deux|Entrambi
+settings_text_4|Numbers and codes|Zahlen und Codes|Nombres et codes|Numeri e codici
+settings_text_5|Pauses and symbols|Pausen und Symbole|Pauses et symboles|Pause e simboli
+control_text_1|Speed|Geschwindigkeit|Vitesse|Velocità
+control_text_2|Pitch|Tonhöhe|Hauteur|Altezza
+control_text_5|Roughness|Rauheit|Raucité|Raucedine
+control_text_6|Breathiness|Behauchtheit|Souffle|Soffiosità
+control_text_8|Vocal gender|Stimmgeschlecht|Genre vocal|Genere vocale
+control_text_9|Male|Männlich|Masculin|Maschile
+control_text_10|Female|Weiblich|Féminin|Femminile
+control_text_11|Audio optimization|Audiooptimierung|Optimisation audio|Ottimizzazione audio
+control_text_13|Volume|Lautstärke|Volume|Volume
+control_text_14|Quality|Qualität|Qualité|Qualità
+control_text_15|Resampling method|Neuabtastungsmethode|Méthode de rééchantillonnage|Metodo di ricampionamento
+control_text_17|Hold|Halten|Maintien|Mantenimento
+control_text_18|Linear|Linear|Linéaire|Lineare
+control_text_19|Cubic|Kubisch|Cubique|Cubico
+control_text_20|Sinc|Sinc|Sinc|Sinc
+control_text_30|Equalizer profile|Equalizer-Profil|Profil d’égalisation|Profilo di equalizzazione
+control_text_31|Neutral|Neutral|Neutre|Neutro
+control_text_32|Deep|Tief|Grave|Profondo
+control_text_33|High|Hoch|Aigu|Acuto
+control_text_34|Soft|Weich|Doux|Morbido
+control_text_35|Clarity|Klarheit|Clarté|Chiarezza
+control_text_38|Automatic|Automatisch|Automatique|Automatico
+control_text_39|Accessibility|Barrierefreiheit|Accessibilité|Accessibilità
+control_text_40|Media|Medien|Multimédia|Multimedia
+control_text_46|Off|Deaktiviert|Désactivé|Disattivato
+control_text_47|On|Aktiviert|Activé|Attivato
+reset_defaults|Restore defaults|Standardwerte wiederherstellen|Rétablir les valeurs par défaut|Ripristina i valori predefiniti
+reset_eq_description|Restore neutral equalizer bands and preamp.|Neutrale Equalizerbänder und Vorverstärkung wiederherstellen.|Rétablit les bandes et la préamplification de l’égaliseur neutre.|Ripristina le bande e il preamplificatore neutri.
+defaults_restored|Defaults restored.|Standardwerte wiederhergestellt.|Valeurs par défaut rétablies.|Valori predefiniti ripristinati.
+reset_voice_help|Restore the selected voice pitch, inflection and timbre. Apply or save to keep the changes; rate and volume are preserved.|Tonhöhe, Intonation und Klang der gewählten Stimme wiederherstellen. Änderungen anwenden oder speichern; Tempo und Lautstärke bleiben erhalten.|Rétablit la hauteur, l’intonation et le timbre de la voix choisie. Appliquez ou enregistrez ; débit et volume sont conservés.|Ripristina tono, intonazione e timbro della voce scelta. Applica o salva; velocità e volume restano invariati.
+local_credits|With contributions from Guiador and extensive collaboration and assistance from GPT Codex.|Mit Beiträgen von Guiador und umfangreicher Zusammenarbeit und Unterstützung durch GPT Codex.|Avec les contributions de Guiador et la collaboration et l’aide importantes de GPT Codex.|Con i contributi di Guiador e l’ampia collaborazione e assistenza di GPT Codex.
+synthesis_mode|Synthesis mode|Synthesemodus|Mode de synthèse|Modalità di sintesi
+synthesis_classic|Classic (default)|Klassisch (Standard)|Classique (par défaut)|Classica (predefinita)
+synthesis_wideband|Wideband (experimental)|Breitband (experimentell)|Large bande (expérimental)|Banda larga (sperimentale)
+synthesis_native16|Native 16 kHz base (experimental)|Native 16-kHz-Basis (experimentell)|Base native de 16 kHz (expérimental)|Base nativa a 16 kHz (sperimentale)
+synthesis_mode_help|Wideband combines the original voice with a 22.05 kHz companion. Native mode synthesizes at 16 kHz and selects 16 kHz output; other higher output rates are resampled from this base. Both can change the timbre and can be switched off. At 8,000 or 11,025 Hz output, both modes retain classic synthesis.|Breitband kombiniert die Originalstimme mit einer 22,05-kHz-Komponente. Der native Modus synthetisiert mit 16 kHz und wählt eine Ausgabe mit 16 kHz; höhere Ausgaberaten werden aus dieser Basis berechnet. Beide können den Klang ändern und lassen sich abschalten. Bei Ausgaben mit 8.000 oder 11.025 Hz behalten beide Modi die klassische Synthese bei.|Le mode large bande combine la voix originale avec une composante de 22,05 kHz. Le mode natif synthétise à 16 kHz et sélectionne une sortie à 16 kHz ; les fréquences supérieures sont rééchantillonnées depuis cette base. Ces modes peuvent modifier le timbre et peuvent être désactivés. À 8 000 ou 11 025 Hz en sortie, les deux modes conservent la synthèse classique.|La banda larga combina la voce originale con una componente a 22,05 kHz. La modalità nativa sintetizza a 16 kHz e seleziona un’uscita a 16 kHz; le frequenze superiori vengono ricampionate da questa base. Entrambe possono cambiare il timbro e possono essere disattivate. Con uscite a 8.000 o 11.025 Hz, entrambe mantengono la sintesi classica.
+synthesis_reset_help|Return to classic synthesis without changing the voice or equalizer.|Zur klassischen Synthese zurückkehren, ohne Stimme oder Equalizer zu ändern.|Revenir au mode classique sans modifier la voix ni l’égaliseur.|Tornare alla sintesi classica senza modificare voce o equalizzatore.
+dictionary_page|Pronunciation dictionaries|Aussprachewörterbücher|Dictionnaires de prononciation|Dizionari di pronuncia
+dictionary_set|Dictionary set|Wörterbuchsatz|Jeu de dictionnaires|Gruppo di dizionari
+dictionary_personal|Use personal entries|Persönliche Einträge verwenden|Utiliser les entrées personnelles|Usare le voci personali
+dictionary_none|None|Keine|Aucun|Nessuno
+dictionary_help|Supports Eloquence Dictionary Manager sets, personal entries and .dic files in the openevv folder in your NVDA configuration. Changed files reload automatically while speaking. No managed set is selected by default.|Unterstützt Eloquence Dictionary Manager, persönliche Einträge und .dic-Dateien im Ordner openevv der NVDA-Konfiguration. Änderungen werden beim Sprechen automatisch geladen. Standardmäßig ist kein verwalteter Satz ausgewählt.|Compatible avec Eloquence Dictionary Manager, les entrées personnelles et les fichiers .dic du dossier openevv de la configuration NVDA. Les modifications sont rechargées automatiquement pendant la lecture. Aucun jeu géré n’est sélectionné par défaut.|Supporta Eloquence Dictionary Manager, voci personali e file .dic nella cartella openevv della configurazione NVDA. Le modifiche vengono ricaricate automaticamente durante la lettura. Nessun gruppo gestito è selezionato per impostazione predefinita.
+about_engine_updates|Engine and updates|Engine und Aktualisierungen|Moteur et mises à jour|Motore e aggiornamenti
+dictionary_import_failed|Could not import the file.|Die Datei konnte nicht importiert werden.|Impossible d’importer le fichier.|Impossibile importare il file.
+dictionary_entry_description|%1$s, pronounced %2$s|%1$s, ausgesprochen %2$s|%1$s, se prononce %2$s|%1$s, si pronuncia %2$s

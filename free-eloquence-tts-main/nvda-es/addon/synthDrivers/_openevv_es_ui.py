@@ -35,6 +35,18 @@ EXTRA={
  'preview':('Hello. This is OpenEVV. Verification code 492801.','Hola. Esta es la voz de OpenEVV. Código de verificación 492801.','Hallo. Dies ist OpenEVV. Bestätigungscode 492801.','Bonjour. Voici OpenEVV. Code de vérification 492801.','Ciao. Questa è la voce di OpenEVV. Codice di verifica 492801.'),
 }
 
+EXTRA.update(json.loads(Path(__file__).with_name('openevv_es_extra.json').read_text(encoding='utf8')))
+
+def currentLocale():
+    try:
+        from languageHandler import getLanguage
+        return getLanguage()
+    except ImportError:
+        return 'en'
+
+def uiText(key):
+    return translator(currentLocale())(key)
+
 def translator(locale):
     language=(locale or 'en').split('_')[0].split('-')[0]
     if language not in STRINGS: language='en'

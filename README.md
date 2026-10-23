@@ -44,3 +44,11 @@ The language data under `lang` is not ours. It is transcribed out of IBM's Embed
 Nothing else of IBM's is here. The objects the port was read out of, and the headers and symbol tables it was read with, are not in the tree and are not needed to build. IBM still serves the SDK they came out of from its own public download host, and `docs/building.md` says where it is and what to do with it -- which is what anyone wanting to check this work against the original would start from.
 
 [Continuidad, construcción y pendientes para otros mantenedores](CONTINUIDAD.md).
+
+<!-- downstream-distributions -->
+## Android and NVDA distributions / Distribuciones Android y NVDA
+
+This repository also contains Guiador's experimental Android and NVDA adaptations. [Download Android APKs, the NVDA add-on and Windows libraries](https://github.com/guiador/openevv/releases/tag/dist-v0.4.6). The five interface languages are English, Spanish, German, French and Italian. These downstream packages are separate from the original engine releases described above.
+
+Este repositorio incluye también las adaptaciones experimentales de Guiador para Android y NVDA. [Descargar los APK, el complemento NVDA y las bibliotecas Windows](https://github.com/guiador/openevv/releases/tag/dist-v0.4.6). La interfaz y la documentación instalada están disponibles en español, inglés, alemán, francés e italiano. [Instalación, diferencias, construcción y límites de las pruebas](docs/distributions.md).
+<!-- /downstream-distributions -->

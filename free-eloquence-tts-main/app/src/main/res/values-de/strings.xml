@@ -94,8 +94,8 @@
     <string name="audio_optimization_volume_description">Erhöht die Lautstärke in lauter Umgebung.</string>
     <string name="audio_optimization_quality">Qualität priorisieren</string>
     <string name="audio_optimization_quality_description">Filtert die Neuabtastung und erhält Pegelreserven.</string>
-    <string name="sample_rate_label">Ausgabefrequenz (neu abgetastet)</string>
-    <string name="sample_rate_description">Die Engine erzeugt Audio mit 11 025 Hz und wandelt es in die gewählte Rate um. Höhere Raten können die Wiedergabe glätten, fügen aber keine Klanginformationen hinzu und benötigen mehr Ressourcen.</string>
+    <string name="sample_rate_label">Ausgabe-Abtastrate</string>
+    <string name="sample_rate_description">Der klassische Modus beginnt bei 11.025 Hz. Experimentelle Modi bieten Breitband oder eine native 16-kHz-Basis. Der gewählte Resampler konvertiert Audio, wenn Ausgabe- und Syntheserate voneinander abweichen. Eine höhere Ausgaberate allein garantiert keinen besseren Klang.</string>
     <string name="routing_label">Synthesekanal</string>
     <string name="routing_description">Wählen Sie den angeforderten Kanal jeder App oder einen gemeinsamen. Auf Android 17 wird ohne aktiven Vordergrunddienst über den Kanal der anfragenden App wiedergegeben.</string>
     <string name="routing_automatic">Automatisch</string>
@@ -294,9 +294,9 @@
     <string name="pauses_keep">Normale Pausen</string>
     <string name="pauses_end">Am Ende verkürzen</string>
     <string name="pauses_all">Alle verkürzen</string>
-    <string name="symbol_label">Symbole und Satzzeichen</string>
-    <string name="symbol_description">Wählen Sie, welche Symbole und Satzzeichen vorgelesen werden.</string>
-    <string name="symbol_mode_label">Symbole und Satzzeichen</string>
+    <string name="symbol_label">Symbole</string>
+    <string name="symbol_description">Wählen Sie die vorgelesenen Symbole.</string>
+    <string name="symbol_mode_label">Symbolmodus</string>
     <string name="symbol_mode_all">Alle</string>
     <string name="symbol_mode_most">Die meisten</string>
     <string name="symbol_mode_some">Einige</string>
@@ -556,7 +556,7 @@
     <string name="reset_eq_description">Neutrale Equalizerbänder und Vorverstärkung wiederherstellen.</string>
     <string name="defaults_restored">Standardwerte wiederhergestellt.</string>
     <string name="reset_voice_help">Tonhöhe, Intonation und Klang der gewählten Stimme wiederherstellen. Änderungen anwenden oder speichern; Tempo und Lautstärke bleiben erhalten.</string>
-    <string name="local_credits">Con colaboración de Guiador y con la gran colaboración y ayuda de GPT Codex.</string>
+    <string name="local_credits">Mit Beiträgen von Guiador und umfangreicher Zusammenarbeit und Unterstützung durch GPT Codex.</string>
     <string name="synthesis_mode">Synthesemodus</string>
     <string name="synthesis_classic">Klassisch (Standard)</string>
     <string name="synthesis_wideband">Breitband (experimentell)</string>
@@ -568,4 +568,7 @@
     <string name="dictionary_personal">Persönliche Einträge verwenden</string>
     <string name="dictionary_none">Keine</string>
     <string name="dictionary_help">Unterstützt Eloquence Dictionary Manager, persönliche Einträge und .dic-Dateien im Ordner openevv der NVDA-Konfiguration. Änderungen werden beim Sprechen automatisch geladen. Standardmäßig ist kein verwalteter Satz ausgewählt.</string>
+    <string name="about_engine_updates">Engine und Aktualisierungen</string>
+    <string name="dictionary_import_failed">Die Datei konnte nicht importiert werden.</string>
+    <string name="dictionary_entry_description">%1$s, ausgesprochen %2$s</string>
 </resources>

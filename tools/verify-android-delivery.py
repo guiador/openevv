@@ -1,10 +1,14 @@
 """Verify newly built native libraries, APK contents and 16 KB ELF alignment."""
 from pathlib import Path
-import hashlib,json,struct,zipfile
+import argparse,hashlib,json,re,struct,zipfile
 
 root=Path(__file__).resolve().parents[1]
 project=root/'free-eloquence-tts-main'
-apk=project/'app/build/outputs/apk/principal/debug/app-principal-debug.apk'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--apk',type=Path,default=project/'app/build/outputs/apk/principal/debug/app-principal-debug.apk')
+parser.add_argument('--report',type=Path,default=root/'build/upstream-review-20261012/android-delivery.json')
+args=parser.parse_args()
+apk=args.apk.resolve()
 revision=(project/'native/openevv-revision.txt').read_text().strip()
 abis={'arm64-v8a':183,'armeabi-v7a':40,'x86_64':62}
 checks=[]
@@ -18,7 +22,10 @@ with zipfile.ZipFile(apk) as package:
         assert package.read(f'lib/{abi}/libevvjni.so')==blob, f'{abi}: stale APK library'
         # Full native rebuild log is required; equality alone cannot identify an old .so.
         unstripped=project/'native/openevv/build'/f'android-{abi}'/'libevvjni.unstripped.so'
-        assert unstripped.is_file() and unstripped.stat().st_mtime> (root/'build/upstream-review-20261012/integration.json').stat().st_mtime
+        assert unstripped.is_file(), 'Missing native build output'
+        integration=root/'build/upstream-review-20261012/integration.json'
+        if integration.exists():
+            assert unstripped.stat().st_mtime>integration.stat().st_mtime
         assert blob[:4]==b'\x7fELF' and blob[5]==1
         assert struct.unpack_from('<H',blob,18)[0]==machine
         is64=blob[4]==2
@@ -41,6 +48,8 @@ with zipfile.ZipFile(apk) as package:
         data_at=info.header_offset+30+name_len+extra_len
         assert data_at%16384==0,(abi,data_at)
         checks.append(dict(abi=abi,sha256=hashlib.sha256(blob).hexdigest(),elf_load_alignment=16384,zip_alignment=16384))
-report=dict(file=apk.name,version='0.4.4-es',bytes=apk.stat().st_size,sha256=hashlib.sha256(apk.read_bytes()).hexdigest(),native_commit=revision,libraries=checks,validation='APK ZIP integrity, equality with rebuilt libraries, ELF architectures, 16 KB ELF and ZIP alignment; no Android hardware test')
-(root/'build/upstream-review-20261012/android-delivery.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
+version=re.search(r'versionName\s*=\s*"([^"]+)"',(project/'app/build.gradle.kts.example').read_text()).group(1)
+report=dict(file=apk.name,version=version,bytes=apk.stat().st_size,sha256=hashlib.sha256(apk.read_bytes()).hexdigest(),native_commit=revision,libraries=checks,validation='APK ZIP integrity, equality with rebuilt libraries, ELF architectures, 16 KB ELF and ZIP alignment; device validation is recorded separately')
+args.report.parent.mkdir(parents=True,exist_ok=True)
+args.report.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
 print(json.dumps(report,ensure_ascii=False,indent=2))

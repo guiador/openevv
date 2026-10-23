@@ -9,6 +9,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 path=ROOT/'addon/globalPlugins/openevv_es_settings.py'
 buttons=[]
+widgets=[]
 
 class Event:
     def Skip(self):pass
@@ -18,6 +19,7 @@ class Widget:
         self.parent=args[0] if args else None
         self.label=kw.get('label','');self.choices=list(kw.get('choices',[]))
         self.value=kw.get('initial',kw.get('value',0));self.selection=0;self.bindings={}
+        widgets.append(self)
     def Bind(self,event,handler):self.__dict__.setdefault('bindings',{})[event]=handler
     def SetValue(self,value):
         self.value=value
@@ -28,8 +30,8 @@ class Widget:
     def AddPage(self,page,label):page.label=label
     def Append(self,label):self.choices.append(label)
     def Add(self,*args,**kw):pass
-    def SetName(self,*args):pass
-    def SetHelpText(self,*args):pass
+    def SetName(self,value):self.accessibleName=value
+    def SetHelpText(self,value):self.helpText=value
     def SetSizer(self,*args):pass
     def Wrap(self,*args):pass
     def SetLabel(self,label):self.label=label
@@ -116,8 +118,22 @@ otherPanel.symbols.SetSelection(otherPanel.symbolIds.index(100));otherPanel.onSa
 assert config.conf['speech']['symbolLevel']==100
 for language in ('es','en','de','fr','it'):
     assert 'Guiador' in ui.translator(language)('local_credits') and 'GPT Codex' in ui.translator(language)('local_credits')
+    native.localeOf=lambda lang,language=language:language
+    buttons.clear();widgets.clear()
+    localizedPanel=env['OpenEVVPanel']();localizedPanel.makeSettings(Widget())
+    t=ui.translator(language)
+    assert t('response_title') in [w.label for w in widgets]
+    assert t('response_explanation') in [w.label for w in widgets]
+    for name in response.DEFAULTS:
+        ctrl,_=localizedPanel.controls['_response_'+name]
+        assert ctrl.accessibleName==t('response_'+name)+'. '+t('response_'+name+'_help')
+    next(b for b in buttons if b.label==t('response_fast')).click()
+    for key,value in response.PROFILES['Rápido'].items():assert localizedPanel.controls['_response_'+key][0].GetValue()==value
+    next(b for b in buttons if b.label==t('response_reset')).click()
+    assert not localizedPanel.controls['_response_enabled'][0].GetValue()
 report={'passed':10,'checks':['symbol selector stages changes until Apply and uses shared NVDA configuration','all four symbol levels save correctly without overwriting external changes when unchanged','voice reset uses selected preset rather than generic 50','Cancel leaves synthesizer and profile untouched','EQ reset remains neutral despite programmatic text events','Apply restores and persists pitch, inflection, timbre and EQ while keeping rate and volume','repeated Apply does not reuse stale pending pitch or inflection','credits available to the About page in all five locales','native16 selection stages a 16000 Hz output without mutating the active synth','synthesis reset returns to classic mode independently of voice and EQ'],'ui':'simulated wx/NVDA; actual panel methods'}
 report['checks'].append('unrecognized profile symbol levels stay unchanged until an explicit supported level is chosen')
+report['checks'].append('all five response tabs translate labels and accessible help; localized profile buttons preserve values and reset stages changes')
 report['passed']=len(report['checks'])
 (ROOT/'tests/panel-reset-results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
 for check in report['checks']:print('PASS:',check)
